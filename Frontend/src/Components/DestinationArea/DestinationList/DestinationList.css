@@ -1,0 +1,16 @@
+.DestinationList .pagination {
+    margin: 10 auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.DestinationList .filter {
+        display: block;  
+        font-style: italic;
+        
+}
+
+.DestinationList .pagination {
+    background-color: beige;
+    padding: 5px;
+}

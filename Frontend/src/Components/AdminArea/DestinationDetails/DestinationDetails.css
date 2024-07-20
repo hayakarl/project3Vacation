@@ -1,0 +1,17 @@
+.DestinationDetails img{
+    border: 1px solid whitesmoke;
+    height: 50px;
+
+}
+
+    .DestinationDetails img {
+    width: 250px;
+    height: 200px;
+    border: 1px solid;
+    border-radius: 10px;
+    vertical-align: middle;
+}
+
+
+
+

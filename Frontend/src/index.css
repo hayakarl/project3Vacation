@@ -1,0 +1,32 @@
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    text-align: center;
+    background-image: linear-gradient(lightblue, #8da1e4);
+}
+
+a {
+    color: blue;
+}
+
+form {
+    width: 200px;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #e0bfcd;
+    box-shadow: 10px 10px 10px gray;
+    border: 3px solid black;
+    text-align: left;
+    color: #6a57bd;
+    font-size: large;
+    font-weight: 100;
+}
+
+form > input, form > button {
+    width: 100%;
+    box-sizing: border-box;
+    height: 30px;
+    background-color: blanchedalmond;
+}
