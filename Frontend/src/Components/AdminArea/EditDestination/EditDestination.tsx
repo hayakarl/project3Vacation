@@ -17,7 +17,7 @@ export function EditDestination(): JSX.Element {
 
 
     useEffect(() => {
-        // fetching the selected vacation by the ID
+        // fetching the selected vacation by the ID from the route: 
         const id = +params.destinationId;
         destinationService.getOneDestination(id)
             .then(destination => {

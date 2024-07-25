@@ -14,6 +14,7 @@ import { useState } from "react";
 
 
 export function AddDestination(): JSX.Element {
+
   const { register, handleSubmit } = useForm<DestinationModel>();
   const [dates, setDates] = useState<Date[]>([null, null]);
   const [dateError, setDateError] = useState<string>('');
@@ -69,8 +70,7 @@ export function AddDestination(): JSX.Element {
           disabledDate={before(new Date())}
           character=" until "
           cleanable={true}
-          onChange={(d) => {
-            setDates(d);
+          onChange={(d) => {setDates(d);
             setDateError('');
           }}
         />
@@ -85,9 +85,8 @@ export function AddDestination(): JSX.Element {
         <input type="file" accept="image/*" {...register('image')} />
 
         <button>Add</button>
-
-          <span> | </span>
-          <NavLink to="/destination">חזור</NavLink>
+          
+        <NavLink to="/destination">חזור</NavLink>
           
       </form>
     </div>

@@ -2,13 +2,9 @@ import {  NavLink, useActionData, useNavigate, useParams } from 'react-router-do
 import { DestinationModel } from '../../../Models/DestinationModel';
 import { destinationService } from '../../../Services/DestinationService';
 import './DestinationCard.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { userService } from '../../../Services/UserService';
 import notifyService from '../../../Services/NotifyService';
-import { userActions } from '../../../Redux/store';
-import { Role } from '../../../Models/enums';
-import { Admin } from '@rsuite/icons';
-import { jwtDecode, JwtPayload } from 'jwt-decode';
 
 type DestinationCardProps = {
     destination: DestinationModel;
@@ -64,8 +60,9 @@ async function deleteDestination() {
 
         <div className="dates">
           <p>
-            <b> {props.destination.fromDate.toLocaleDateString()}</b>
-            🔛 <b>{props.destination.untilDate.toLocaleDateString()}</b>
+            <b> {new Date(props.destination.fromDate).toLocaleDateString()}</b>
+            🔛 
+            <b>{new Date(props.destination.untilDate).toLocaleDateString()}</b>
           </p>
         </div>
 

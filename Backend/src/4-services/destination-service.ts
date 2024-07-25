@@ -54,8 +54,8 @@ class DestinationService {
     const info: OkPacketParams = await dal.execute(sql, [
       destination.destination,
       destination.description,
-      destination.fromDate, 
-      destination.untilDate,
+      parseDate(destination.fromDate), 
+      parseDate(destination.untilDate),
       destination.price,
       imageName,
     ]);
@@ -107,8 +107,8 @@ class DestinationService {
   }
 }
 
- function parseDate(d: Date): string {
-   return `${d.getFullYear()}-${d.getMonth()}- ${d.getDate()}`;
+ function parseDate(date: Date): string {
+   return `${date.getDate()}/${(date.getMonth()+1)}/${date.getFullYear()}`;
  }
 
 export const destinationService = new DestinationService();

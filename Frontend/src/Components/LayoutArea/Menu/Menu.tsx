@@ -13,6 +13,7 @@ export function Menu(): JSX.Element {
       <NavLink to="/about">צור קשר🧙</NavLink>
 
       <TotalDestinations />
+      
     </div>
   );
 }

@@ -10,7 +10,7 @@ export function TotalDestinations(): JSX.Element {
   return (
   <div className="TotalDestinations">
     <div>
-         <span>=========</span>
+         <span>=======</span>
     </div>
      {count > 0 && <span className="border">מספר חופשות: {count}</span>}
   </div>

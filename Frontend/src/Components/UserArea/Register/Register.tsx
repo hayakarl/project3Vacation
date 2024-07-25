@@ -40,6 +40,7 @@ export function Register(): JSX.Element {
         <br /> <br />
         
         <button>Register</button>
+        
       </form>
     </div>
   );

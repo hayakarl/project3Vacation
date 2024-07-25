@@ -1,9 +1,9 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-import { addDestination, deleteDestination, initDestinations, initUser, logoutUser } from './reducers';
+import { addDestination, deleteDestination, initDestinations, initUser, logoutUser, updateDestination } from './reducers';
 import { DestinationModel } from '../Models/DestinationModel';
 import { UserModel } from '../Models/UserModel';
 
-// Application state:
+// Application state: AppState=כלל המידע
 export type AppState = {
   destinations: DestinationModel[];
   user: UserModel;
@@ -13,7 +13,7 @@ export type AppState = {
 const destinationSlice = createSlice({
   name: 'destinations', // Internal use
   initialState: null,
-  reducers: { initDestinations, addDestination , deleteDestination}
+  reducers: { initDestinations, addDestination , deleteDestination, updateDestination}
 });
 
 // Create user slice: 

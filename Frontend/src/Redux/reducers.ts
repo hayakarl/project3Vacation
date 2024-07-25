@@ -10,7 +10,8 @@ export function initDestinations(currentState: DestinationModel[], action: Paylo
   return newState;
 }
 
-// Add destination:
+// Add destination: 
+//action >> what the data i get. action include payload of data we want to change
 export function addDestination(currentState: DestinationModel[], action: PayloadAction<DestinationModel>) {
   const newState: DestinationModel[] = [...currentState];
   newState.push(action.payload); // Here, action.payload is a destination to add.
@@ -26,8 +27,14 @@ export function deleteDestination(currentState: DestinationModel[], action: Payl
   return newState;
 }}
 
-
 // Update destination:
+export function updateDestination(currentState: DestinationModel[], action: PayloadAction<DestinationModel>) {
+  const newState: DestinationModel[] = [...currentState];
+ const  indexToUpdate = newState.findIndex(u => u.id === action.payload.id); //  
+            if (indexToUpdate >= 0) {
+                newState[indexToUpdate] = action.payload; 
+  return newState;
+}}
 
 
 export function initUser(currentState: UserModel, action: PayloadAction<UserModel>) {

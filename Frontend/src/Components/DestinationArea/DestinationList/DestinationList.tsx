@@ -5,14 +5,12 @@ import "./DestinationList.css";
 import { DestinationCard } from "../DestinationCard/DestinationCard";
 import { notify } from "../../../Utils/notify";
 import { errorHandler } from "../../../Utils/ErrorHandler";
-import { Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { FormControlLabel, FormGroup } from "@mui/material";
 import Checkbox from '@mui/material/Checkbox';
 
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { deleteDestination } from "../../../Redux/reducers";
-import notifyService from "../../../Services/NotifyService";
 
 
 export function DestinationList(): JSX.Element {
@@ -40,20 +38,6 @@ export function DestinationList(): JSX.Element {
       .catch((err) => notify.error(err));
   }, []);
 
-  async function deleteDestination() {
-    try {
-      const iAmSure = window.confirm(
-        'Are you sure you want to delete this destination?');
-      if (!iAmSure) return;
-
-      await destinationService.deleteDestination(destination.id);
-      notifyService.success('Destination has been deleted');
-  
-    } catch (err: any) {
-      notifyService.error(err);
-    }
-  }
-
   return (
     <div className="DestinationList">
       <div>
@@ -68,7 +52,7 @@ export function DestinationList(): JSX.Element {
         <NavLink to="/new-destination"> הוספת חופשה ➕</NavLink>
       </div>
 
-      {destinations.map((p) => (<DestinationCard key={p.id} destination={p} />))}
+      {destinations.map(p => <DestinationCard key={p.id} destination={p} />)}
 
       <div className="pagination">
         <Stack spacing={2}>

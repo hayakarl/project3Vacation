@@ -4,7 +4,7 @@ import { appConfig } from '../Utils/AppConfig';
 import { store, userActions } from '../Redux/store';
 import { jwtDecode } from 'jwt-decode'; // npm i jwt-decode
 import { CredentialsModel } from '../Models/CredentialsModel';
-import { initUser } from '../Redux/reducers';
+// import { initUser } from '../Redux/reducers';
 
 class UserService {
     
@@ -37,6 +37,7 @@ class UserService {
   }
 
   public async login(credentials: CredentialsModel) {
+    
     // Send credentials to backend:
     const response = await axios.post<string>(appConfig.loginUrl, credentials);
 

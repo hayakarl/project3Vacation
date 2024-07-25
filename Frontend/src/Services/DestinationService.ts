@@ -4,27 +4,22 @@ import { appConfig } from "../Utils/AppConfig";
 import { destinationActions, store } from "../Redux/store";
 import { deleteDestination } from "../Redux/reducers";
 
-
 class DestinationService {
 
-  public async checkEmpty(): Promise<void> {
-    if (store.getState().destinations === null)
-      await this.getAllDestinations();
-  }
-
-  //Get all destinations from backend:
+  //Get all destinations from backend: --asaf
   public async getAllDestinations() {
+    
     // If we have destinations in the global state - return them, without fetching from server:
     if (store.getState().destinations) return store.getState().destinations;
 
     // We don't have destinations in the global state - fetch them from backend:
     const response = await axios.get<DestinationModel[]>(appConfig.destinationsUrl);
     const destinations = response.data;
-    destinations.map(d => {
-        d.fromDate = new Date(d.fromDate);
-        d.untilDate = new Date(d.untilDate);
-        return d;
-    })
+    // destinations.map(d => {
+        // d.fromDate = new Date(d.fromDate);
+        // d.untilDate = new Date(d.untilDate);
+        // return d;
+    // })
 
     // Init all destinations in the global state:
     const action = destinationActions.initDestinations(destinations);
@@ -36,8 +31,9 @@ class DestinationService {
 
   //Get one destination by id:
   public async getOneDestination(id: number) {
-    // // If we have destinations in the global state - return them, without fetching from server:
-    // if (store.getState().destinations()) return store.getState().destinations;
+
+    // If we have destinations in the global state - return them, without fetching from server:
+//    if (store.getState().destinations) return store.getState().destinations;
 
     // We don't have destinations in the global state - fetch them from backend:
     const response = await axios.get<DestinationModel>(appConfig.destinationsUrl + id);
@@ -47,11 +43,10 @@ class DestinationService {
     return destination;
   }
 
-  //Add new destination
+  //Add new destination  asaf
   public async addDestination(destination: DestinationModel) {
     // Send destination to backend:
     const options: AxiosRequestConfig = {headers: { 'Content-Type': 'multipart/form-data' }};
-
     const response = await axios.post<DestinationModel>(appConfig.destinationsUrl, destination, options);
 
     // Don't add that destination to redux if global state is empty:
@@ -60,8 +55,8 @@ class DestinationService {
     // Get back the added destination:
     const addedDestination = response.data;
 
-    addedDestination.fromDate = new Date(addedDestination.fromDate);
-    addedDestination.untilDate = new Date(addedDestination.untilDate)
+    // addedDestination.fromDate = new Date(addedDestination.fromDate);
+    // addedDestination.untilDate = new Date(addedDestination.untilDate);
 
     // Send added destination to global state:
     const action = destinationActions.addDestination(addedDestination);
@@ -70,10 +65,7 @@ class DestinationService {
 
   //Update destination
   public async updateDestination(destination: DestinationModel) {
-    // after a page refresh, the redux store is empty
-    // this will create a bug if not accounted for
-    await this.checkEmpty();
-
+  
     // Convert DestinationModel into FormData because we need to send text + image:
     const formData = new FormData();
     formData.append('destination', destination.destination);
