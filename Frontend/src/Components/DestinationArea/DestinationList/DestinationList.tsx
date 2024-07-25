@@ -21,22 +21,22 @@ export function DestinationList(): JSX.Element {
 //   const navigate = useNavigate();  
 
   const [destinations, setDestinations] = useState<DestinationModel[]>([]);
-  const [destination, setDestination] = useState<DestinationModel>();
+//   const [destination, setDestination] = useState<DestinationModel>();
 
   useEffect(() => {
     destinationService.getAllDestinations()
-      .then((destinations) => setDestinations(destinations))
+      .then(destinations => setDestinations(destinations))
       .catch((err) => notify.error(errorHandler.getError(err)));
   }, []);
 
-  useEffect(() => {
-    // Getting destination id from the route:
-    const id = +params.destinationId;
+//   useEffect(() => {
+//     // Getting destination id from the route:
+//     const id = +params.destinationId;
 
-    destinationService.getOneDestination(id)
-      .then((destination) => setDestination(destination))
-      .catch((err) => notify.error(err));
-  }, []);
+//     destinationService.getOneDestination(id)
+//       .then((destination) => setDestination(destination))
+//       .catch((err) => notify.error(err));
+//   }, []);
 
   return (
     <div className="DestinationList">
