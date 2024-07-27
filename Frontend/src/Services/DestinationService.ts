@@ -55,8 +55,8 @@ class DestinationService {
     // Get back the added destination:
     const addedDestination = response.data;
 
-    // addedDestination.fromDate = new Date(addedDestination.fromDate);
-    // addedDestination.untilDate = new Date(addedDestination.untilDate);
+    addedDestination.fromDate = new Date(addedDestination.fromDate);
+    addedDestination.untilDate = new Date(addedDestination.untilDate);
 
     // Send added destination to global state:
     const action = destinationActions.addDestination(addedDestination);

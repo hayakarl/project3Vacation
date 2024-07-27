@@ -11,20 +11,25 @@ import { DateRangePicker } from "rsuite";
 import { Add } from '@mui/icons-material';
 import { TextField, Typography} from '@mui/material';
 import { useState } from "react";
-
+import { DateRange } from "rsuite/esm/DateRangePicker";
 
 export function AddDestination(): JSX.Element {
 
   const { register, handleSubmit } = useForm<DestinationModel>();
-  const [dates, setDates] = useState<Date[]>([null, null]);
+  const [dates, setDates] = useState<[Date, Date] | null>(null);
   const [dateError, setDateError] = useState<string>('');
-  const { before } = DateRangePicker;
+  const { beforeToday } = DateRangePicker;
   const navigate = useNavigate();
+
+//   const handleRangeChange = (value: [Date | null, Date | null]) => {
+//     setDateRange(value);
+//   };
 
   async function send(destination: DestinationModel) {
     try {
+        
       destination.image = (destination.image as unknown as FileList)[0];
-      
+    
       destination.fromDate = dates[0];
       destination.untilDate = dates[1];
 
@@ -38,10 +43,7 @@ export function AddDestination(): JSX.Element {
 
   return (
     <div className="AddDestination">
-      <Typography variant="h3">
-        הוסף חופשה &nbsp;
-        <Add fontSize="large" />
-      </Typography>
+      <Typography variant="h3">הוסף חופשה &nbsp;<Add fontSize="small" /></Typography>
 
       <form onSubmit={handleSubmit(send)}>
 
@@ -57,23 +59,24 @@ export function AddDestination(): JSX.Element {
 
         {/* <label>From Date: </label>
         <input type="text" {...register('fromDate')} required />
-
         <label>Until Date: </label>
         <input type="text" {...register('untilDate')} required />  */}
 
-        <label>Dates:</label>
+        <label>Date range:</label>
         <DateRangePicker
-          format="dd-MM-yyyy"
-          defaultValue={[dates[0], dates[1]]}
+          format="dd.MM.yyyy"
+        //   value={dateRange}
+         defaultValue={[dates[0],dates[1]]}
           showOneCalendar
           placement="bottomEnd"
-          disabledDate={before(new Date())}
+          shouldDisableDate={beforeToday()}
           character=" until "
           cleanable={true}
-          onChange={(d) => {setDates(d);
-            setDateError('');
-          }}
-        />
+          onChange=   {(d) => {
+            setDates(d);
+            setDateError(''); 
+          }}/>
+
         <span className="error-message">{dateError}</span>
 
         <TextField label="Price:" type="number" {...register('price')}
