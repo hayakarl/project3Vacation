@@ -11,21 +11,22 @@ a {
 }
 
 form {
-    width: 200px;
+    width: 300px;
     margin: 10px auto;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: #e0bfcd;
     box-shadow: 10px 10px 10px gray;
     border: 3px solid black;
-    text-align: left;
+    text-align: right;
     color: #6a57bd;
-    font-size: large;
-    font-weight: 100;
+    font-size: medium;
+    font-weight: 10;
 }
 
 form > input, form > button {
     width: 100%;
+    margin-bottom: 20px;
     box-sizing: border-box;
     height: 30px;
     background-color: blanchedalmond;

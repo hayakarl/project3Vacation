@@ -21,22 +21,31 @@ export function DestinationList(): JSX.Element {
 //   const navigate = useNavigate();  
 
   const [destinations, setDestinations] = useState<DestinationModel[]>([]);
-//   const [destination, setDestination] = useState<DestinationModel>();
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage = 5; // Number of items to display per page
 
   useEffect(() => {
     destinationService.getAllDestinations()
-      .then(destinations => setDestinations(destinations))
+      .then(destinations => {
+        if(Array.isArray(destinations)) {
+            setDestinations(destinations);
+        } else {
+            throw new Error("Invalid data format");
+        }
+    })
       .catch((err) => notify.error(errorHandler.getError(err)));
   }, []);
 
-//   useEffect(() => {
-//     // Getting destination id from the route:
-//     const id = +params.destinationId;
 
-//     destinationService.getOneDestination(id)
-//       .then((destination) => setDestination(destination))
-//       .catch((err) => notify.error(err));
-//   }, []);
+   // Calculate the destinations to display on the current page
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentDestinations = destinations.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Handle page change
+  const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div className="DestinationList">
@@ -52,12 +61,18 @@ export function DestinationList(): JSX.Element {
         <NavLink to="/new-destination"> הוספת חופשה ➕</NavLink>
       </div>
 
-      {destinations.map(p => <DestinationCard key={p.id} destination={p} />)}
+      {currentDestinations.map(p => <DestinationCard key={p.id} destination={p} />)}
 
       <div className="pagination">
         <Stack spacing={2}>
-          <Pagination count={10} color="primary" />
+          <Pagination
+            count={Math.ceil(destinations.length / itemsPerPage)}
+            page={currentPage}
+            onChange={handlePageChange}
+            color="primary"
+          />
         </Stack>
+
       </div>
     </div>
   );

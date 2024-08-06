@@ -14,7 +14,7 @@ export function Login(): JSX.Element {
   async function send(credentials: CredentialsModel) {
     try {
       await userService.login(credentials);
-      notify.success('Welcome back!');
+      notify.success('Welcome back to our web!');
       navigate('/home');
     } 
     catch (err: any) {
@@ -25,7 +25,9 @@ export function Login(): JSX.Element {
 
   return (
     <div className="Login">
+
       <form onSubmit={handleSubmit(send)}>
+
         <label>Email: </label>
         <input type="email" {...register('email')} />
 
@@ -35,6 +37,7 @@ export function Login(): JSX.Element {
         <br /><br/>
         
         <button>Login</button>
+
       </form>
     </div>
   );

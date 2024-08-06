@@ -8,6 +8,7 @@ import { CredentialsModel } from '../Models/CredentialsModel';
 
 class UserService {
     
+    //token if user refresh page
   public constructor() {
     const token = localStorage.getItem('token');
     if (!token) return;

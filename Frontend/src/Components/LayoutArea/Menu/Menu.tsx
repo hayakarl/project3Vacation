@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './Menu.css';
 import { TotalDestinations } from '../../DestinationArea/TotalDestinations/TotalDestinations';
-import { CheckBox } from '@mui/icons-material';
 
 export function Menu(): JSX.Element {
   return (

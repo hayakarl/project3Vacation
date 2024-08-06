@@ -8,12 +8,29 @@ import { fileSaver } from 'uploaded-file-saver';
 class DestinationService {
 
   // Get all destinations:
-  public async getAllDestinations() {
+//  public async getAllDestinations(userId: number): Promise<DestinationModel[]> { 
+    public async getAllDestinations() { 
     // Create sql:
-    const sql = "select *, concat('http://localhost:4000/api/destinations/images/', imageName) as imageUrl from Destinations";
+    const sql = `SELECT *, 
+                  CONCAT('http://localhost:4000/api/destinations/images/', imageName) as imageUrl 
+                FROM destinations
+                `;
+
+//  const sql = `
+//         SELECT DISTINCT
+//             V.*,
+//             EXISTS(SELECT * FROM likes WHERE destinationId = L.destinationId AND userId = ?) AS isLiked,
+//             COUNT(L.userId) AS likesCount,
+//         FROM destinations as V LEFT JOIN likes as L
+//         ON V.id = L.destinationId
+//         GROUP BY destinationId
+//         ORDER BY fromDate
+//         `;
+
 
     // Execute:
     const destinations = await dal.execute(sql);
+    // const destinations = await dal.execute(sql, [userId]);
 
     // Return:
     return destinations;
@@ -22,7 +39,11 @@ class DestinationService {
   // Get one destination:
   public async getOneDestination(id: number) {
     // SQL:
-    const sql = "select *, concat('http://localhost:4000/api/destinations/images/', imageName) as imageUrl from destinations where id = ?";
+    const sql = `SELECT *, 
+                    CONCAT('http://localhost:4000/api/destinations/images/', imageName) as imageUrl 
+                FROM destinations 
+                WHERE id = ?
+                `;
 
     // Execute:
     const destinations = await dal.execute(sql, [id]);
@@ -48,7 +69,10 @@ class DestinationService {
     const imageName = destination.image ? await fileSaver.add(destination.image): null;
 
     // SQL:
-    const sql = 'insert into destinations values(default,?,?,?,?,?,?)';
+    const sql = `
+        INSERT INTO destinations 
+        values(default,?,?,?,?,?,?)
+        `;
 
     // Execute:
     const info: OkPacketParams = await dal.execute(sql, [
@@ -75,7 +99,7 @@ class DestinationService {
    if (error) throw new ValidationError(error);
 
     // SQL:
-    const sql = 'update destinations set destination = ?, description = ?, fromDate = ?, untilDate = ?, price = ?, where id = ?';
+    const sql = 'update destinations set destination = ?, description = ?, fromDate = ?, untilDate = ?, price = ? where id = ?';
 
     // Execute:
     const info: OkPacketParams = await dal.execute(sql, [
@@ -107,8 +131,10 @@ class DestinationService {
   }
 }
 
- function parseDate(date: Date): string {
-   return `${date.getDate()}/${(date.getMonth()+1)}/${date.getFullYear()}`;
- }
+ function parseDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  // Ensure the format is compatible with your database, typically `YYYY-MM-DD`
+  return date.toISOString().split('T')[0]; // Formats to `YYYY-MM-DD`
+}
 
 export const destinationService = new DestinationService();

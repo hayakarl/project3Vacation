@@ -11,24 +11,28 @@ export function UserMenu(): JSX.Element {
 
   function logout() {
     userService.logout();
-    notify.success('Bye bye');
+    notify.success('We want to thank you for your visit, hope to see you soon');
   }
 
   return (
     <div className="UserMenu">
 
       {!user && <>
-          <span>Hello Guest | </span>
+
+          <span>Hello Guest || </span>
           <NavLink to="/register">Register</NavLink>
           <span> | </span>
           <NavLink to="/login">Login</NavLink>
+
         </>}
 
       {user && <>
+
           <span>
-            Hello {user.firstName} {user.lastName} |{' '}
+            Hello {user.firstName} {user.lastName} ||{' '}
           </span>
           <NavLink to="/home" onClick={logout}>Logout</NavLink>
+
         </>}
     </div>
   );

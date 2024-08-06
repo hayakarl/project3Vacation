@@ -5,34 +5,19 @@ import { destinationService } from '../../../Services/DestinationService';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { notify } from '../../../Utils/notify';
 import { errorHandler } from '../../../Utils/ErrorHandler';
-
-import { DateRangePicker } from "rsuite";
-
 import { Add } from '@mui/icons-material';
-import { TextField, Typography} from '@mui/material';
-import { useState } from "react";
-import { DateRange } from "rsuite/esm/DateRangePicker";
+import { TextField, Typography, Button } from '@mui/material';
+
+import { JSX } from "react/jsx-runtime";
 
 export function AddDestination(): JSX.Element {
-
-  const { register, handleSubmit } = useForm<DestinationModel>();
-  const [dates, setDates] = useState<[Date, Date] | null>(null);
-  const [dateError, setDateError] = useState<string>('');
-  const { beforeToday } = DateRangePicker;
+  const { handleSubmit, register } = useForm<DestinationModel>();
   const navigate = useNavigate();
-
-//   const handleRangeChange = (value: [Date | null, Date | null]) => {
-//     setDateRange(value);
-//   };
 
   async function send(destination: DestinationModel) {
     try {
-        
       destination.image = (destination.image as unknown as FileList)[0];
-    
-      destination.fromDate = dates[0];
-      destination.untilDate = dates[1];
-
+  
       await destinationService.addDestination(destination);
       notify.success('Destination has been added');
       navigate('/destination');
@@ -42,55 +27,45 @@ export function AddDestination(): JSX.Element {
   }
 
   return (
+
     <div className="AddDestination">
+
       <Typography variant="h3">הוסף חופשה &nbsp;<Add fontSize="small" /></Typography>
 
       <form onSubmit={handleSubmit(send)}>
 
-        <TextField label="Destination:" type="text" {...register('destination')}
+        <TextField label="יעד:" type="text" {...register('destination')}
           required
           inputProps={{ minLength: 2, maxLength: 100 }}
         />
 
-        <TextField label="Description:" type="text"{...register('description')}
+        <TextField label="תיאור:" type="text" {...register('description')}
           required
           inputProps={{ minLength: 2, maxLength: 1000 }}
         />
 
-        {/* <label>From Date: </label>
-        <input type="text" {...register('fromDate')} required />
-        <label>Until Date: </label>
-        <input type="text" {...register('untilDate')} required />  */}
+        
+        <TextField label="מתאריך" type="datetime-local" {...register('fromDate')} 
+        required
+        />
 
-        <label>Date range:</label>
-        <DateRangePicker
-          format="dd.MM.yyyy"
-        //   value={dateRange}
-         defaultValue={[dates[0],dates[1]]}
-          showOneCalendar
-          placement="bottomEnd"
-          shouldDisableDate={beforeToday()}
-          character=" until "
-          cleanable={true}
-          onChange=   {(d) => {
-            setDates(d);
-            setDateError(''); 
-          }}/>
+        <TextField label="עד תאריך" type="datetime-local" {...register('untilDate')}
+         required /> 
 
-        <span className="error-message">{dateError}</span>
-
-        <TextField label="Price:" type="number" {...register('price')}
+        <TextField label="מחיר" type="number" {...register('price')}
           required
           inputProps={{ min: 100, max: 5000 }}
         />
 
-        <label>Image:</label>
+        <label>תמונה</label>
         <input type="file" accept="image/*" {...register('image')} />
 
-        <button>Add</button>
-          
+        <br /><br />
+
+        <Button type="submit" variant="contained">Add</Button>
+
         <NavLink to="/destination">חזור</NavLink>
-          
+
       </form>
     </div>
   );

@@ -2,20 +2,16 @@ import { useForm } from "react-hook-form";
 import { DestinationModel } from "../../../Models/DestinationModel";
 import "./EditDestination.css";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { destinationService } from "../../../Services/DestinationService";
 import notifyService from "../../../Services/NotifyService";
-// import { DateRangePicker } from "rsuite";
 
 export function EditDestination(): JSX.Element {
 
     const params = useParams();
     const navigate = useNavigate();
     const { register, handleSubmit, formState, setValue } = useForm<DestinationModel>();
-    // const [destination, setDestination] = useState<DestinationModel>();
-    // const { before } = DateRangePicker;
-
-
+   
     useEffect(() => {
         // fetching the selected vacation by the ID from the route: 
         const id = +params.destinationId;
@@ -24,7 +20,7 @@ export function EditDestination(): JSX.Element {
                 setValue('id', destination.id);
                 setValue('destination', destination.destination);
                 setValue('description', destination.description);
-                setValue('fromDate', destination.fromDate);
+                setValue('fromDate',  destination.fromDate);
                 setValue('untilDate', destination.untilDate);
                 setValue('price', destination.price);
             })
@@ -45,12 +41,13 @@ export function EditDestination(): JSX.Element {
     return (
       <div className="EditDestination Box">
         <form onSubmit={handleSubmit(send)}>
+
           <h2>Edit Destination</h2>
 
           {/* Destination ID: */}
           <input type="hidden" {...register('id')} />
 
-          <label>Destination: </label>
+          <label>יעד: </label>
           <input
             type="text"
             {...register('destination', {
@@ -67,7 +64,7 @@ export function EditDestination(): JSX.Element {
           />
           <span>{formState.errors.destination?.message}</span>
 
-          <label>Description: </label>
+          <label>תיאור יעד: </label>
           <input
             type="text"
             {...register('description', {
@@ -84,38 +81,25 @@ export function EditDestination(): JSX.Element {
           />
           <span>{formState.errors.description?.message}</span>
 
-          <label>From date: </label>
+          <label>מתאריך: </label>
           <input
-            type="Date | string"
+            type="datetime-local"
             {...register('fromDate', {
               required: { value: true, message: 'Missing from date' },
             })}
           />
           <span>{formState.errors.fromDate?.message}</span>
 
-          <label>Until date: </label>
+          <label>עד תאריך: </label>
           <input
-            type="text"
+            type="datetime-local"
             {...register('untilDate', {
               required: { value: true, message: 'Missing until date' },
             })}
           />
           <span>{formState.errors.untilDate?.message}</span>
 
-
-            {/* <label>Dates:</label>
-            <DateRangePicker
-                    format="dd-MM-yyyy"
-                    defaultValue={[destination.fromDate, destination.untilDate]}
-                    showOneCalendar
-                    disabledDate={before(new Date())}
-                    character=" until "
-                    cleanable={false}
-                    // onChange={(dates) => changeDates(dates)} 
-           /> */}
-
-
-          <label>Price: </label>
+          <label>מחיר: </label>
           <input
             type="number"
             step="0.01"

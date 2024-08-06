@@ -47,11 +47,14 @@ class DestinationController {
   // Add destination:
   private async addDestination(request: Request, response: Response, next: NextFunction) {
     try {
-      request.body.image = request.files?.image;
+      // Handle file upload
+        const image = request.files?.image;
+        if (image) {
+            request.body.image = image;
+        }
+
       const destination = new DestinationModel(request.body); //give me the destination
-      destination.fromDate = new Date(destination.fromDate);
-      destination.untilDate = new Date(destination.untilDate);
-      
+          
       const addedDestination = await destinationService.addDestination(destination);
       response.status(StatusCode.Created).json(addedDestination);
     } 
@@ -64,10 +67,11 @@ class DestinationController {
   private async updateDestination(request: Request, response: Response, next: NextFunction) {
     try {
       const id = +request.params.id;
+
       request.body.id = id; //add id to the body
+
       const destination = new DestinationModel(request.body);
-      destination.fromDate = new Date(destination.fromDate);
-      destination.untilDate = new Date(destination.untilDate)
+  
       const updatedDestination = await destinationService.updateDestination(destination);
       response.json(updatedDestination);
     } 

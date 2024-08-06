@@ -5,12 +5,12 @@ export class DestinationModel {
   public id: number;
   public destination: string;
   public description: string;
-  public fromDate: Date;
-  public untilDate: Date;
+  public fromDate: string;
+  public untilDate: string;
   public price: number;
   public image: UploadedFile; // Image bytes sent from frontend.
-  public likesCount: number;
-  public isLike: boolean; 
+//   public likesCount?: number;
+//   public isLiked?: boolean; 
 
   // Copy Constructor
   public constructor(destination: DestinationModel) {
@@ -21,22 +21,38 @@ export class DestinationModel {
     this.untilDate = destination.untilDate;
     this.price = destination.price;
     this.image = destination.image;
- //   this.likesCount = destination.likesCount;
-  //  this.isLike = destination.isLike;
+    // this.likesCount = destination.likesCount;
+    // this.isLiked = destination.isLiked;
   }
 
  private static validationScheme = Joi.object({
         id: Joi.number().optional().positive().integer(),
         destination: Joi.string().required().min(5).max(50),
-        description: Joi.string().required().min(5).max(150),
-        price: Joi.number().required().positive().min(0).max(10000),
-        fromDate: Joi.date().required(),
-        untilDate: Joi.date().required(),
-        image: Joi.object().optional()
-  //      followerCount: Joi.number().integer().min(0).optional(),
- //       isFollow: Joi.boolean().optional()
-        
-    });
+        description: Joi.string().required().min(10).max(1000),
+        price: Joi.number().required().positive().min(90).max(10000),
+        fromDate: Joi.string().required(),
+        untilDate: Joi.string().required(),
+        image: Joi.object().optional(),
+    //    followerCount: Joi.number().integer().min(0).optional(),
+    //    isFollow: Joi.boolean().optional()
+    }).custom((value, helpers) => {
+    const { fromDate, untilDate } = value;
+
+    // Convert dates to comparable format (ISO string or Unix timestamp)
+    const from = new Date(fromDate);
+    const until = new Date(untilDate);
+    const now = new Date();
+
+    // Check if dates are valid and not in the past
+    if (until < from) {
+      return helpers.error('any.invalid');
+    }
+    if (from < now || until < now) {
+        return helpers.error('any.invalid');
+    }
+
+    return value;
+  }, 'Date Validation');
 
     public validate(): string {
         const result = DestinationModel.validationScheme.validate(this);

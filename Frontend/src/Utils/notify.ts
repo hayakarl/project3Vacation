@@ -2,9 +2,9 @@ import { Notyf } from 'notyf';
 
 class Notify {
   private notyf = new Notyf({
-    duration: 3000,
+    duration: 8000,
     dismissible: true,
-    position: { x: 'center', y: 'top' },
+    position: { x: 'left', y: 'top' },
     ripple: true
   });
 

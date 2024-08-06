@@ -1,22 +1,22 @@
-import {  NavLink, useActionData, useNavigate, useParams } from 'react-router-dom';
 import { DestinationModel } from '../../../Models/DestinationModel';
 import { destinationService } from '../../../Services/DestinationService';
 import './DestinationCard.css';
 import { useState } from 'react';
 import { userService } from '../../../Services/UserService';
 import notifyService from '../../../Services/NotifyService';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 type DestinationCardProps = {
     destination: DestinationModel;
 };
 
-
 export function DestinationCard(props: DestinationCardProps): JSX.Element {
     const [destination, setDestination] = useState<DestinationModel>();
+    const navigate = useNavigate();
 
     //delete button
 async function deleteDestination() { 
-    //   const [destination, setDestination] = useState<DestinationModel>();
+    // const [destination, useDestination] = useState<DestinationModel>();
 
     try {
       const iAmShure = window.confirm(`Are you sure you want to delete this destination?`);
@@ -24,7 +24,7 @@ async function deleteDestination() {
 
       await destinationService.deleteDestination(destination.id);  
       notifyService.success('Destination has been deleted');
-        // navigate('/destination');
+        navigate('/destination');
        } catch (err: any) {
          notifyService.error(err);
     }
@@ -37,7 +37,7 @@ async function deleteDestination() {
           <span>{props.destination.destination}</span>
         </div>
 
-        <div> //hide admin
+        <div> 
             <br />
             <span>Like : yes/no </span> ||
             <span>מספר Likes : x</span>
@@ -49,9 +49,10 @@ async function deleteDestination() {
           </NavLink>
         </div>
 
-        <div>
+        <div> 
+           <br/>
           <span>{props.destination.description}</span>
-          <br />
+          <br /><br />
         </div>
         
         <div>   
