@@ -1,11 +1,23 @@
 import jwt, { SignOptions } from 'jsonwebtoken';
 import { UserModel } from '../3-models/user-model';
 import { Role } from '../3-models/enums';
+import crypto from "crypto";
 
 class Cyber {
 
   // Secret key:
   private secretKey = 'TheBestVacation!';
+
+  private hashingSalt = "Good Luck";
+
+  public hash(plainText: string): string {
+
+     // Hash without salt: 
+    // return crypto.createHash("sha512").update(plainText).digest("hex");//return 128 chars string.
+
+        // Hash with salt: 
+    return crypto.createHmac("sha512", this.hashingSalt).update(plainText).digest("hex"); // Returns 128 chars string.
+  }
 
   // Generate new JWT token:
   public generateNewToken(user: UserModel): string {

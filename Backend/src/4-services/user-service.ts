@@ -22,6 +22,9 @@ class UserService {
     // Set role as regular user and not something else:
     user.roleId = Role.User;
 
+    //Hash password
+    user.password = cyber.hash(user.password);
+
     // Values:
     const values = [user.firstName, user.lastName, user.email, user.password, user.roleId];  
 
@@ -46,6 +49,9 @@ class UserService {
 
     // SQL:
     const sql = 'select * from users where email = ? and password = ?';
+
+    //Hash password
+    credentials.password = cyber.hash(credentials.password);
 
     // Values:
     const values = [credentials.email, credentials.password];

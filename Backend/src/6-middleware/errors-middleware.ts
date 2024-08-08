@@ -1,14 +1,22 @@
 import { Request, Response, NextFunction } from 'express';
 import { StatusCode } from '../3-models/enums';
 import { RouteNotFoundError } from '../3-models/client-error';
+import { logger } from '../2-utils/logger';
+import { appConfig } from '../2-utils/app-config';
 
 class ErrorsMiddleware {
+
   public catchAll(err: any, request: Request, response: Response, next: NextFunction) {
     
     console.log(err);
+    
+    logger.logError(err);//תיעוד שגיאות
 
     const statusCode = err.status || StatusCode.InternalServerError;
-    const message = err.message;
+
+    // מניעת החזרת הודעות קריסה ללקוח בייצור
+    const isCrash = statusCode >= 500 && statusCode <= 599;
+    const message = appConfig.isProduction && isCrash ? "Sone error, please try again." : err.message;
 
     response.status(statusCode).send(message);
   }

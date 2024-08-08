@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 class AppConfig {
+    public readonly environment = process.env.ENVIRONMENT;
     public readonly isDevelopment = process.env.ENVIRONMENT === "development";
     public readonly isProduction = process.env.ENVIRONMENT === "production";
 

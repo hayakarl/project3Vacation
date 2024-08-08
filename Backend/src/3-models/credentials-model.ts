@@ -15,7 +15,7 @@ export class CredentialsModel {
 
   private static validationSchema = Joi.object({
     email: Joi.string().required(), //.email({minDomainSegments: 2,tlds: { allow: ['com', 'net', 'inter'] }, }),
-    password: joiPassword.string().required().min(4).max(10).noWhiteSpaces().doesNotInclude(['password']),
+    password: joiPassword.string().required().min(4).max(100).noWhiteSpaces().doesNotInclude(['password']),
   });
 
   public validate(): string {

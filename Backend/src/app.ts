@@ -9,6 +9,7 @@ import cors from 'cors';
 import expressFileUpload from 'express-fileupload';
 import { fileSaver } from 'uploaded-file-saver';
 import path from 'path';
+// import expressRateLimit from "express-rate-limit"
 
 // Configure fileSaver once:
 fileSaver.config(path.join(__dirname, '1-assets', 'images'));
@@ -16,7 +17,15 @@ fileSaver.config(path.join(__dirname, '1-assets', 'images'));
 // Create main server object: 
 const server = express();
 
+// server.use(expressRateLimit({
+//     windowMs: 5000,
+//     limit: 10,
+//     skip: 
+// }));
+
+//enable corse
 server.use(cors());
+// server.use(cors({ origin: "https://mysite.com"}));
 
 // Create the body from json: 
 server.use(express.json());

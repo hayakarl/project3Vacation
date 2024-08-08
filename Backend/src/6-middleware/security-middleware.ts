@@ -9,7 +9,7 @@ class SecurityMiddleware {
     for (const prop in request.body) {
       const value = request.body[prop];
       if (typeof value === 'string' && value.includes('<script')) {
-        response.status(StatusCode.Forbidden).send('Nice try!'); //stop
+        response.status(StatusCode.Forbidden).send('Nice try! Do not'); //stop
         return;
       }
     }
