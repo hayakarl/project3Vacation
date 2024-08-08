@@ -16,7 +16,7 @@ class ErrorsMiddleware {
 
     // מניעת החזרת הודעות קריסה ללקוח בייצור
     const isCrash = statusCode >= 500 && statusCode <= 599;
-    const message = appConfig.isProduction && isCrash ? "Sone error, please try again." : err.message;
+    const message = appConfig.isProduction && isCrash ? "Some error, please try again." : err.message;
 
     response.status(statusCode).send(message);
   }
