@@ -63,6 +63,7 @@ class DestinationService {
 
     //Validate:
     const error = destination.validate();
+    console.log("debug",error);
     if (error) throw new ValidationError(error);
 
     // Save image to disk:

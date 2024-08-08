@@ -47,14 +47,11 @@ class DestinationController {
   // Add destination:
   private async addDestination(request: Request, response: Response, next: NextFunction) {
     try {
-      // Handle file upload
-        const image = request.files?.image;
-        if (image) {
-            request.body.image = image;
-        }
-
-      const destination = new DestinationModel(request.body); //give me the destination
-          
+    //   Handle file upload
+      const image = request.files?.image;
+       
+      const reqParams = {...request.body, image: image}
+      const destination = new DestinationModel(reqParams); //give me the destination
       const addedDestination = await destinationService.addDestination(destination);
       response.status(StatusCode.Created).json(addedDestination);
     } 

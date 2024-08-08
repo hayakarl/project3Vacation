@@ -41,7 +41,7 @@ class DestinationService {
 
   //Add new destination  asaf
   public async addDestination(destination: DestinationModel): Promise<void> {
-
+console.log("destinationdebugg", destination)
  // Convert DestinationModel into FormData
     const formData = new FormData();
     formData.append('destination', destination.destination);
@@ -49,8 +49,8 @@ class DestinationService {
     formData.append('fromDate', destination.fromDate.toString());
     formData.append('untilDate', destination.untilDate.toString());
     formData.append('price', destination.price.toString());
-    if (destination.imageUrl) {
-      formData.append('image', destination.imageUrl[0]);
+    if (destination.image) {
+      formData.append('image', destination.image);
     }
 
     // Send destination to backend:

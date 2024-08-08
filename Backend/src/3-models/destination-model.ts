@@ -27,15 +27,15 @@ export class DestinationModel {
 
  private static validationScheme = Joi.object({
         id: Joi.number().optional().positive().integer(),
-        destination: Joi.string().required().min(5).max(50),
-        description: Joi.string().required().min(10).max(1000),
+        destination: Joi.string().required().min(3).max(50),
+        description: Joi.string().required().min(5).max(1000),
         price: Joi.number().required().positive().min(90).max(10000),
         fromDate: Joi.string().required(),
         untilDate: Joi.string().required(),
-        image: Joi.object().optional(),
+        image: Joi.object().required(),
     //    followerCount: Joi.number().integer().min(0).optional(),
     //    isFollow: Joi.boolean().optional()
-    }).custom((value, helpers) => {
+    })/*.custom((value, helpers) => {
     const { fromDate, untilDate } = value;
 
     // Convert dates to comparable format (ISO string or Unix timestamp)
@@ -52,7 +52,7 @@ export class DestinationModel {
     }
 
     return value;
-  }, 'Date Validation');
+  }, 'Date Validation');*/
 
     public validate(): string {
         const result = DestinationModel.validationScheme.validate(this);
