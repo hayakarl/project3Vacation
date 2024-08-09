@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { destinationService } from "../../../Services/DestinationService";
 import { notify } from "../../../Utils/notify";
 import notifyService from "../../../Services/NotifyService";
+import { appConfig } from "../../../Utils/AppConfig";
 
 export function DestinationDetails(): JSX.Element {
     
@@ -52,7 +53,7 @@ export function DestinationDetails(): JSX.Element {
            {destination.fromDate}🔛 {destination.untilDate}
         
           <h3>מחיר : {destination.price}</h3>
-          <img src={destination.imageUrl} />
+          <img src={appConfig.backendUrl + 'destinations/images/' + destination.imageName} />
           <br />
           <br />
           <NavLink to="/destination">Back</NavLink>

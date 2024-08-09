@@ -23,6 +23,7 @@ class DestinationController {
 
   // Get all destinations:
   private async getAllDestinations(request: Request, response: Response, next: NextFunction) {
+   console.log(response.locals.user)
     try {
       const destinations = await destinationService.getAllDestinations();
       response.json(destinations);

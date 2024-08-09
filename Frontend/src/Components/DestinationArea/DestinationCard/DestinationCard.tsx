@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { userService } from '../../../Services/UserService';
 import notifyService from '../../../Services/NotifyService';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { appConfig } from '../../../Utils/AppConfig';
 
 type DestinationCardProps = {
     destination: DestinationModel;
@@ -33,10 +34,6 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
     //         notifyService.error(err);
     //     }
     // }
-
-
-
-
 
     //delete button
 async function deleteDestination(id: number) { 
@@ -74,7 +71,7 @@ async function deleteDestination(id: number) {
 
         <div>
           <NavLink to={'/destinations/details/' + props.destination.id}>
-            <img src={props.destination.imageUrl} />
+            <img src={appConfig.backendUrl + 'destinations/images/' + props.destination.imageName} />
           </NavLink>
         </div>
 

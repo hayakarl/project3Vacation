@@ -10,24 +10,18 @@ class DestinationService {
   // Get all destinations:
 //  public async getAllDestinations(userId: number): Promise<DestinationModel[]> { 
     public async getAllDestinations() { 
-    // Create sql:
-    // const sql = `SELECT *, 
-    //               CONCAT('http://localhost:4000/api/destinations/images/', imageName) as imageUrl 
-    //             FROM destinations
-    //             `;
-
- const sql = `
-         SELECT DISTINCT
+  
+    const sql = `
+        SELECT DISTINCT
             V.*, 
-             CONCAT('http://localhost:4000/api/destinations/images/', imageName) as imageUrl, 
+            imageName,
             EXISTS(SELECT * FROM likes WHERE id = L.destinationId AND userId = 13) AS isLiked,
-          COUNT(L.userId) AS likesCount
+            COUNT(L.userId) AS likesCount
         FROM destinations as V LEFT JOIN likes as L
-     ON V.id = L.destinationId
-        GROUP BY id
-       ORDER BY fromDate, untilDate
+           ON V.id = L.destinationId
+           GROUP BY id
+        ORDER BY fromDate, untilDate
         `;
-
 
     // Execute:
     const destinations = await dal.execute(sql);
@@ -41,7 +35,7 @@ class DestinationService {
   public async getOneDestination(id: number) {
     // SQL:
     const sql = `SELECT *, 
-                    CONCAT('http://localhost:4000/api/destinations/images/', imageName) as imageUrl 
+                 imageName
                 FROM destinations 
                 WHERE id = ?
                 `;

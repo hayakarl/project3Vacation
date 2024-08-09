@@ -20,7 +20,7 @@ class UserService {
 
   public async register(user: UserModel) {
     // Send user to backend:
-    const response = await axios.post<string>(appConfig.registerUrl, user);
+    const response = await axios.post<string>(appConfig.backendUrl + "register", user);
 
     // Get token:
     const token = response.data;
@@ -40,7 +40,7 @@ class UserService {
   public async login(credentials: CredentialsModel) {
     
     // Send credentials to backend:
-    const response = await axios.post<string>(appConfig.loginUrl, credentials);
+    const response = await axios.post<string>(appConfig.backendUrl + "login", credentials);
 
     // Get token:
     const token = response.data;

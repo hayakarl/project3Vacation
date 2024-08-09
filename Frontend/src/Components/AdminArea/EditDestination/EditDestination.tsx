@@ -24,8 +24,8 @@ export function EditDestination(): JSX.Element {
                 setValue('fromDate',  destination.fromDate.split('.')[0]);
                 setValue('untilDate', destination.untilDate.split('.')[0]);
                 setValue('price', destination.price);
-                setValue('imageUrl', destination.imageUrl);
-                setImageUrl(destination.imageUrl);
+                // setValue('imageUrl', destination.imageUrl);
+                // setImageUrl(destination.imageUrl);
             })
             .catch(err => notifyService.error(err));
     }, []);

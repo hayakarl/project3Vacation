@@ -71,6 +71,20 @@ class Cyber {
     }
   }
 
+  
+  public decodeToken(token: string) {
+
+    try {
+      // Extract container object from token:
+      const container = jwt.decode(token);
+
+      return container;
+    }
+     catch (err: any) {
+      return {};
+    }
+  }
+
 }
 
 export const cyber = new Cyber();

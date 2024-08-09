@@ -14,7 +14,7 @@ class DestinationService {
     if (store.getState().destinations) return store.getState().destinations;
 
     // We don't have destinations in the global state - fetch them from backend:
-    const response = await axios.get<DestinationModel[]>(appConfig.destinationsUrl);
+    const response = await axios.get<DestinationModel[]>(appConfig.backendUrl + "destinations");
    
     const destinations = response.data;
     
@@ -33,7 +33,7 @@ class DestinationService {
 //    if (store.getState().destinations) return store.getState().destinations;
 
     // We don't have destinations in the global state - fetch them from backend:
-    const response = await axios.get<DestinationModel>(appConfig.destinationsUrl + id);
+    const response = await axios.get<DestinationModel>(appConfig.backendUrl + "destinations/" + id);
     const destination = response.data;
 
     // Return:
@@ -56,7 +56,7 @@ class DestinationService {
 
     // Send destination to backend:
     const options: AxiosRequestConfig = {headers: { 'Content-Type': 'multipart/form-data' }};
-    const response = await axios.post<DestinationModel>(appConfig.destinationsUrl, formData, options);
+    const response = await axios.post<DestinationModel>(appConfig.backendUrl + "destinations", formData, options);
 
     // Don't add that destination to redux if global state is empty:
     if (!store.getState().destinations) return;
@@ -79,12 +79,12 @@ class DestinationService {
     formData.append('fromDate', destination.fromDate.toString());
     formData.append('untilDate', destination.untilDate.toString());
     formData.append('price', destination.price.toString());
-    formData.append('image', destination.imageUrl);
-    formData.append("imageName", destination.imageUrl);
+    // formData.append('image', destination.imageUrl);
+    // formData.append("imageName", destination.imageUrl);
    
     // Send destination to backend:
     const options: AxiosRequestConfig = {headers: { 'Content-Type': 'multipart/form-data' }};
-    const response = await axios.put<DestinationModel>(appConfig.destinationsUrl, formData, options);
+    const response = await axios.put<DestinationModel>(appConfig.backendUrl + "destinations", formData, options);
 
     // Don't add that destination to redux if global state is empty:
     if (!store.getState().destinations) return;
@@ -100,7 +100,7 @@ class DestinationService {
   //   Delete destination :
   public async deleteDestination(id: number): Promise<void> {
     // Delete this destination in backend:
-    await axios.delete(appConfig.destinationsUrl + id);
+    await axios.delete(appConfig.backendUrl + "destinations" + id);
 
     // Delete this destination also in redux global state:
     // const action = destinationActions.deleteDestination(id);

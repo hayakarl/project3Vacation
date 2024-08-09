@@ -388,3 +388,476 @@ Message: Route /api/destinations/ on method PUT not exist.
 Stack: undefined
 ---------------------------------------
 
+Time: Fri Aug 09 2024 11:11:06 GMT+0300 (שעון ישראל (קיץ))
+Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '// CONCAT('http://localhost:4000/api/destinations/images/', imageName) as imageU' at line 4
+Stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '// CONCAT('http://localhost:4000/api/destinations/images/', imageName) as imageU' at line 4
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:11:43 GMT+0300 (שעון ישראל (קיץ))
+Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?) AS isLiked,
+            COUNT(L.userId) AS likesCount
+        FROM destinatio' at line 4
+Stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?) AS isLiked,
+            COUNT(L.userId) AS likesCount
+        FROM destinatio' at line 4
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:12:16 GMT+0300 (שעון ישראל (קיץ))
+Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?) AS isLiked,
+            COUNT(L.userId) AS likesCount
+        FROM destinatio' at line 4
+Stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?) AS isLiked,
+            COUNT(L.userId) AS likesCount
+        FROM destinatio' at line 4
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:13:16 GMT+0300 (שעון ישראל (קיץ))
+Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?) AS isLiked,
+            COUNT(L.userId) AS likesCount
+        FROM destinatio' at line 4
+Stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?) AS isLiked,
+            COUNT(L.userId) AS likesCount
+        FROM destinatio' at line 4
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:25:45 GMT+0300 (שעון ישראל (קיץ))
+Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM destinations 
+                WHERE id = 113' at line 3
+Stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM destinations 
+                WHERE id = 113' at line 3
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:40:19 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/802fb4de-8713-4a15-bf5b-f74d21581d83.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:40:19 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/f87e6b97-a452-42ad-b78e-a2979951b7ae.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:40:19 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/6fb8b80c-f4a0-4fab-8fbf-d4247c253d85.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:40:19 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/aa9b509b-8b4a-472b-b201-60dc0dd1f614.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:40:19 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/8da7d105-ec33-49f1-8c71-747940eb3fc8.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:40:19 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/bb5c12b3-0de3-4060-84f4-8c8d26c6ae42.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:40:19 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/5ae4c992-325c-4f6b-915e-823dcf1f2a45.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:40:19 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/be7a8dc9-53ba-437a-8c37-8418b7d4b13b.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:40:19 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/f3612da7-3efa-4f21-bf9a-ff56fdb64c20.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:41:07 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/802fb4de-8713-4a15-bf5b-f74d21581d83.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:41:07 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/f87e6b97-a452-42ad-b78e-a2979951b7ae.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:41:07 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/6fb8b80c-f4a0-4fab-8fbf-d4247c253d85.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:41:07 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/aa9b509b-8b4a-472b-b201-60dc0dd1f614.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:41:07 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/8da7d105-ec33-49f1-8c71-747940eb3fc8.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:41:07 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/bb5c12b3-0de3-4060-84f4-8c8d26c6ae42.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:41:07 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/be7a8dc9-53ba-437a-8c37-8418b7d4b13b.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:41:07 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/5ae4c992-325c-4f6b-915e-823dcf1f2a45.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:41:07 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/f3612da7-3efa-4f21-bf9a-ff56fdb64c20.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:43:34 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images802fb4de-8713-4a15-bf5b-f74d21581d83.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:43:34 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/imagesf87e6b97-a452-42ad-b78e-a2979951b7ae.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:43:34 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images6fb8b80c-f4a0-4fab-8fbf-d4247c253d85.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:43:34 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/imagesaa9b509b-8b4a-472b-b201-60dc0dd1f614.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:43:34 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images8da7d105-ec33-49f1-8c71-747940eb3fc8.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:43:34 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/imagesbb5c12b3-0de3-4060-84f4-8c8d26c6ae42.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:43:34 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/imagesbe7a8dc9-53ba-437a-8c37-8418b7d4b13b.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:43:34 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images5ae4c992-325c-4f6b-915e-823dcf1f2a45.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:43:34 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/imagesf3612da7-3efa-4f21-bf9a-ff56fdb64c20.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images+802fb4de-8713-4a15-bf5b-f74d21581d83.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images+f87e6b97-a452-42ad-b78e-a2979951b7ae.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images+6fb8b80c-f4a0-4fab-8fbf-d4247c253d85.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images+8da7d105-ec33-49f1-8c71-747940eb3fc8.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images+aa9b509b-8b4a-472b-b201-60dc0dd1f614.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images+bb5c12b3-0de3-4060-84f4-8c8d26c6ae42.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images+be7a8dc9-53ba-437a-8c37-8418b7d4b13b.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images+5ae4c992-325c-4f6b-915e-823dcf1f2a45.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images+f3612da7-3efa-4f21-bf9a-ff56fdb64c20.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/+802fb4de-8713-4a15-bf5b-f74d21581d83.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/+f87e6b97-a452-42ad-b78e-a2979951b7ae.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/+6fb8b80c-f4a0-4fab-8fbf-d4247c253d85.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/+8da7d105-ec33-49f1-8c71-747940eb3fc8.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/+aa9b509b-8b4a-472b-b201-60dc0dd1f614.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/+bb5c12b3-0de3-4060-84f4-8c8d26c6ae42.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/+be7a8dc9-53ba-437a-8c37-8418b7d4b13b.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/+5ae4c992-325c-4f6b-915e-823dcf1f2a45.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/+f3612da7-3efa-4f21-bf9a-ff56fdb64c20.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:20 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/f87e6b97-a452-42ad-b78e-a2979951b7ae.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:20 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/802fb4de-8713-4a15-bf5b-f74d21581d83.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:20 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/6fb8b80c-f4a0-4fab-8fbf-d4247c253d85.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:20 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/aa9b509b-8b4a-472b-b201-60dc0dd1f614.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:20 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/bb5c12b3-0de3-4060-84f4-8c8d26c6ae42.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:20 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/8da7d105-ec33-49f1-8c71-747940eb3fc8.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:20 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/be7a8dc9-53ba-437a-8c37-8418b7d4b13b.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:20 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/5ae4c992-325c-4f6b-915e-823dcf1f2a45.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:20 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/f3612da7-3efa-4f21-bf9a-ff56fdb64c20.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:26 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/f87e6b97-a452-42ad-b78e-a2979951b7ae.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:26 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/802fb4de-8713-4a15-bf5b-f74d21581d83.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:26 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/6fb8b80c-f4a0-4fab-8fbf-d4247c253d85.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:26 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/aa9b509b-8b4a-472b-b201-60dc0dd1f614.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:26 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/bb5c12b3-0de3-4060-84f4-8c8d26c6ae42.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:26 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/8da7d105-ec33-49f1-8c71-747940eb3fc8.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:26 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/be7a8dc9-53ba-437a-8c37-8418b7d4b13b.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:26 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/5ae4c992-325c-4f6b-915e-823dcf1f2a45.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:47:26 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/f3612da7-3efa-4f21-bf9a-ff56fdb64c20.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:52:36 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations113 on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:52:50 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations113 on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:52:55 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations113 on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:53:05 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations112 on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:53:25 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations113 on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:58:31 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations113 on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:58:40 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations113 on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:58:58 GMT+0300 (שעון ישראל (קיץ))
+Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM destinations 
+                WHERE id = 113' at line 3
+Stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM destinations 
+                WHERE id = 113' at line 3
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Fri Aug 09 2024 11:59:14 GMT+0300 (שעון ישראל (קיץ))
+Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM destinations 
+                WHERE id = 113' at line 3
+Stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM destinations 
+                WHERE id = 113' at line 3
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
