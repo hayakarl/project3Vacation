@@ -15,7 +15,7 @@ fileSaver.config(path.join(__dirname, '1-assets', 'images'));
 
 // Create main server object: 
 const server = express();
-
+server.options('*',cors());
 //enable corse
 server.use(cors());
 // server.use(cors({ origin: "https://mysite.com"}));

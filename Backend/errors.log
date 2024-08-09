@@ -243,3 +243,148 @@ Message: "image" is required
 Stack: undefined
 ---------------------------------------
 
+Time: Thu Aug 08 2024 15:27:06 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /favicon.ico on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 18:19:56 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /favicon.ico on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 18:53:33 GMT+0300 (שעון ישראל (קיץ))
+Message: Cannot delete or update a parent row: a foreign key constraint fails (`vacations`.`likes`, CONSTRAINT `destinationId` FOREIGN KEY (`destinationId`) REFERENCES `destinations` (`id`))
+Stack: Error: Cannot delete or update a parent row: a foreign key constraint fails (`vacations`.`likes`, CONSTRAINT `destinationId` FOREIGN KEY (`destinationId`) REFERENCES `destinations` (`id`))
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Thu Aug 08 2024 18:54:22 GMT+0300 (שעון ישראל (קיץ))
+Message: Cannot delete or update a parent row: a foreign key constraint fails (`vacations`.`likes`, CONSTRAINT `destinationId` FOREIGN KEY (`destinationId`) REFERENCES `destinations` (`id`))
+Stack: Error: Cannot delete or update a parent row: a foreign key constraint fails (`vacations`.`likes`, CONSTRAINT `destinationId` FOREIGN KEY (`destinationId`) REFERENCES `destinations` (`id`))
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Thu Aug 08 2024 21:44:47 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 22:53:40 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations//124 on method POST not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 22:59:55 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:03:37 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:04:58 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:06:22 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:09:42 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:10:00 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:20:53 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations/ on method PUT not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:21:56 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations/ on method PUT not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:43:09 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:43:10 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:43:19 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:44:06 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:45:05 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:46:12 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:47:08 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Thu Aug 08 2024 23:47:25 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 08:08:41 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations/ on method PUT not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 08:10:12 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations/ on method PUT not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 08:15:43 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations/ on method PUT not exist.
+Stack: undefined
+---------------------------------------
+

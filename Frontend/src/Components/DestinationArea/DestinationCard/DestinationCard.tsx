@@ -14,15 +14,37 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
     const [destination, setDestination] = useState<DestinationModel>();
     const navigate = useNavigate();
 
-    //delete button
-async function deleteDestination() { 
-    // const [destination, useDestination] = useState<DestinationModel>();
+    // //like button
+    // async function buttonLike(ev: any, DId: number) {
+    //     try {
+    //          const action = ev.target.classList;
+    //         if (action[0] === "disLike") {
+    //             await destinationService.dislike(DId);
+    //             ev.target.className = "follow";
+    //             return;
+    //         }
+    //         if (action[0] === "like") {
+    //             await destinationService.like(DId);
+    //             ev.target.className = "unFollow";
+    //             return;
+    //         }
+    //     }
+    //     catch (err: any) {
+    //         notifyService.error(err);
+    //     }
+    // }
 
-    try {
+
+
+
+
+    //delete button
+async function deleteDestination(id: number) { 
+       try {
       const iAmShure = window.confirm(`Are you sure you want to delete this destination?`);
       if (!iAmShure) return;
 
-      await destinationService.deleteDestination(destination.id);  
+      await destinationService.deleteDestination(id);  
       notifyService.success('Destination has been deleted');
         navigate('/destination');
        } catch (err: any) {
@@ -39,8 +61,15 @@ async function deleteDestination() {
 
         <div> 
             <br />
-            <span>Like : yes/no </span> ||
-            <span>מספר Likes : x</span>
+            {/* <button
+              className = {props.destination.isLiked ? "not like" : "❤️"}
+              disabled = {userService.isAdmin()}
+              onClick = {(ev) => buttonLike(ev, destination.id)}>
+              {destination.likesCount}
+
+            </button> */}
+            <span>Like : {props.destination.isLiked} </span> ||
+            <span>מספר Likes : {props.destination.likesCount}</span>
         </div>
 
         <div>
@@ -69,7 +98,7 @@ async function deleteDestination() {
 
         <div>
           {userService.isAdmin() && <>
-             <button onClick={deleteDestination}>Delete</button>
+             <button onClick={() => deleteDestination(props.destination.id)}>Delete</button>
 
              <span> | </span>
              <NavLink to={'/destinations/edit/' + props.destination.id}>Edit</NavLink>

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { DestinationModel } from "../../../Models/DestinationModel";
 import "./EditDestination.css";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { destinationService } from "../../../Services/DestinationService";
 import notifyService from "../../../Services/NotifyService";
 
@@ -11,6 +11,7 @@ export function EditDestination(): JSX.Element {
     const params = useParams();
     const navigate = useNavigate();
     const { register, handleSubmit, formState, setValue } = useForm<DestinationModel>();
+    const [imageUrl, setImageUrl] = useState<string>("");
    
     useEffect(() => {
         // fetching the selected vacation by the ID from the route: 
@@ -20,9 +21,11 @@ export function EditDestination(): JSX.Element {
                 setValue('id', destination.id);
                 setValue('destination', destination.destination);
                 setValue('description', destination.description);
-                setValue('fromDate',  destination.fromDate);
-                setValue('untilDate', destination.untilDate);
+                setValue('fromDate',  destination.fromDate.split('.')[0]);
+                setValue('untilDate', destination.untilDate.split('.')[0]);
                 setValue('price', destination.price);
+                setValue('imageUrl', destination.imageUrl);
+                setImageUrl(destination.imageUrl);
             })
             .catch(err => notifyService.error(err));
     }, []);
@@ -40,63 +43,41 @@ export function EditDestination(): JSX.Element {
 
     return (
       <div className="EditDestination Box">
+
         <form onSubmit={handleSubmit(send)}>
 
-          <h2>Edit Destination</h2>
+          <h2>עדכן יעד</h2>
 
           {/* Destination ID: */}
           <input type="hidden" {...register('id')} />
 
           <label>יעד: </label>
-          <input
-            type="text"
-            {...register('destination', {
+          <input type="text" {...register('destination', {
               required: { value: true, message: 'Missing destination' },
-              minLength: {
-                value: 2,
-                message: 'Destination must be minimum 2 chars',
-              },
-              maxLength: {
-                value: 100,
-                message: "Destination can't exceed 100 chars",
-              },
-            })}
-          />
+              minLength: { value: 2,  message: 'Destination must be minimum 2 chars' },
+              maxLength: { value: 200, message: "Destination can't exceed 200 chars" }
+            })} />
           <span>{formState.errors.destination?.message}</span>
 
           <label>תיאור יעד: </label>
           <input
-            type="text"
-            {...register('description', {
+            type="text" {...register('description', {
               required: { value: true, message: 'Missing description' },
-              minLength: {
-                value: 2,
-                message: 'Description must be minimum 2 chars',
-              },
-              maxLength: {
-                value: 1000,
-                message: "Description can't exceed 100 chars",
-              },
-            })}
-          />
+              minLength: { value: 2, message: 'Description must be minimum 2 chars' },
+              maxLength: { value: 1000, message: "Description can't exceed 100 chars" }
+            })} />
           <span>{formState.errors.description?.message}</span>
 
           <label>מתאריך: </label>
-          <input
-            type="datetime-local"
-            {...register('fromDate', {
-              required: { value: true, message: 'Missing from date' },
-            })}
-          />
+          <input type="datetime-local" {...register('fromDate', {
+              required: { value: true, message: 'Missing from date' }
+            })} />
           <span>{formState.errors.fromDate?.message}</span>
 
           <label>עד תאריך: </label>
-          <input
-            type="datetime-local"
-            {...register('untilDate', {
-              required: { value: true, message: 'Missing until date' },
-            })}
-          />
+          <input type="datetime-local" {...register('untilDate', {
+              required: { value: true, message: 'Missing until date' }
+            })} />
           <span>{formState.errors.untilDate?.message}</span>
 
           <label>מחיר: </label>
@@ -107,18 +88,20 @@ export function EditDestination(): JSX.Element {
               required: { value: true, message: 'Missing price' },
               min: { value: 0, message: "Price can't be negative" },
               max: { value: 10000, message: "Price can't exceed 10000" },
-            })}
-          />
+            })} />
           <span>{formState.errors.price?.message}</span>
 
-          <label>Image: </label>
-          <input type="file" accept="image/*" {...register('image')} />
+          <label>תמונה</label>
+          <br />
+     
+            {imageUrl && <img src={imageUrl} alt="Destination" style={{ width: "200px", height: "auto" }} />}
+            <input type="file" accept="image/*" {...register('image')} />
 
           <br />
-          <br />
+          
 
           <button>עדכן</button>
-          <span> | </span>
+        
           <NavLink to="/destination">חזור</NavLink>
         </form>
       </div>

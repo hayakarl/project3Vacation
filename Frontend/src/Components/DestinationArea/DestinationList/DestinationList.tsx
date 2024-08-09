@@ -22,7 +22,7 @@ export function DestinationList(): JSX.Element {
 
   const [destinations, setDestinations] = useState<DestinationModel[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const itemsPerPage = 5; // Number of items to display per page
+  const itemsPerPage = 9; // Number of items to display per page
 
   useEffect(() => {
     destinationService.getAllDestinations()

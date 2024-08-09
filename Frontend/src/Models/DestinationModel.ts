@@ -7,4 +7,6 @@ export class DestinationModel {
   public price: number;
   public imageUrl: string;
   public image: File;
+  public likesCount: number;
+  public isLiked: boolean;
 }

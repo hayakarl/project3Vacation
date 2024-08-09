@@ -9,8 +9,8 @@ export class DestinationModel {
   public untilDate: string;
   public price: number;
   public image: UploadedFile; // Image bytes sent from frontend.
-//   public likesCount?: number;
-//   public isLiked?: boolean; 
+  public likesCount?: number;
+  public isLiked?: boolean; 
 
   // Copy Constructor
   public constructor(destination: DestinationModel) {
@@ -21,8 +21,8 @@ export class DestinationModel {
     this.untilDate = destination.untilDate;
     this.price = destination.price;
     this.image = destination.image;
-    // this.likesCount = destination.likesCount;
-    // this.isLiked = destination.isLiked;
+    this.likesCount = destination.likesCount;
+     this.isLiked = destination.isLiked;
   }
 
  private static validationScheme = Joi.object({
@@ -33,8 +33,8 @@ export class DestinationModel {
         fromDate: Joi.string().required(),
         untilDate: Joi.string().required(),
         image: Joi.object().required(),
-    //    followerCount: Joi.number().integer().min(0).optional(),
-    //    isFollow: Joi.boolean().optional()
+       followerCount: Joi.number().integer().min(0).optional(),
+       isFollow: Joi.boolean().optional()
     })/*.custom((value, helpers) => {
     const { fromDate, untilDate } = value;
 

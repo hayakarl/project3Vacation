@@ -3,6 +3,7 @@ import { DestinationModel } from "../Models/DestinationModel";
 import { appConfig } from "../Utils/AppConfig";
 import { destinationActions, store } from "../Redux/store";
 import { deleteDestination } from "../Redux/reducers";
+import { Public } from "@mui/icons-material";
 
 class DestinationService {
 
@@ -41,8 +42,8 @@ class DestinationService {
 
   //Add new destination  asaf
   public async addDestination(destination: DestinationModel): Promise<void> {
-console.log("destinationdebugg", destination)
- // Convert DestinationModel into FormData
+
+    // Convert DestinationModel into FormData
     const formData = new FormData();
     formData.append('destination', destination.destination);
     formData.append('description', destination.description);
@@ -78,36 +79,47 @@ console.log("destinationdebugg", destination)
     formData.append('fromDate', destination.fromDate.toString());
     formData.append('untilDate', destination.untilDate.toString());
     formData.append('price', destination.price.toString());
-    formData.append('image', destination.imageUrl[0]);
-    // formData.append("imageName", destination.imageUrl)
-
+    formData.append('image', destination.imageUrl);
+    formData.append("imageName", destination.imageUrl);
+   
     // Send destination to backend:
     const options: AxiosRequestConfig = {headers: { 'Content-Type': 'multipart/form-data' }};
-    const response = await axios.post<DestinationModel>(`${appConfig.destinationsUrl}/${destination.id}`, formData, options);
+    const response = await axios.put<DestinationModel>(appConfig.destinationsUrl, formData, options);
 
     // Don't add that destination to redux if global state is empty:
     if (!store.getState().destinations) return;
 
     // Get back the added destination:
     const updateDestination = response.data;
-    // updateDestination.fromDate = new Date(updateDestination.fromDate);
-    // updateDestination.untilDate = new Date(updateDestination.untilDate);
-
+   
     // Send update destination to global state:
-    const action = destinationActions.addDestination(updateDestination);
+    const action = destinationActions.updateDestination(updateDestination);
     store.dispatch(action);
   }
 
   //   Delete destination :
   public async deleteDestination(id: number): Promise<void> {
     // Delete this destination in backend:
-    await axios.delete("appConfig.destinationsUrl" + id);
+    await axios.delete(appConfig.destinationsUrl + id);
 
     // Delete this destination also in redux global state:
-    // const action: DestinationsAction = { type: DestinationsActionType.DeleteDestination, payload: id };
+    // const action = destinationActions.deleteDestination(id);
     // store.dispatch(action); // Redux will call destinationReducer to perform this action.
   }
+
+
+// like
+    public async like(Did: number): Promise<void> {
+
 }
+
+// dis like
+    public async dislike(Did: number): Promise<void> {
+
+}
+
+}
+
 
 
 export const destinationService = new DestinationService();
