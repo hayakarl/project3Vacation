@@ -61,6 +61,9 @@ export function DestinationList(): JSX.Element {
         <NavLink to="/new-destination"> הוספת חופשה ➕</NavLink>
         <br />
         <NavLink to="/destination/destinationReport"> דוח חופשות 📊</NavLink>
+        <br />
+        <NavLink to="/destination/destinationCsv"> קובץ חופשות 📋</NavLink>
+
       </div>
 
       {currentDestinations.map(p => <DestinationCard key={p.id} destination={p} />)}

@@ -11,6 +11,8 @@ import { Login } from '../../UserArea/Login/Login';
 import { DestinationDetails } from '../../AdminArea/DestinationDetails/DestinationDetails';
 import { EditDestination } from '../../AdminArea/EditDestination/EditDestination';
 import DestinationsReport from '../../AdminArea/DestinationsReport/DestinationsReport';
+import DestinationsCsv from '../../AdminArea/DestinationsCsv/DestinationsCsv';
+
 
 export function Routing(): JSX.Element {
   return (
@@ -35,6 +37,8 @@ export function Routing(): JSX.Element {
         {/* Destinations Report */}
         <Route path="/destination/destinationReport" element={<DestinationsReport />} />
 
+        {/* Destinations csv */}
+        <Route path="/destination/destinationCsv" element={<DestinationsCsv />} />
        
 
         <Route path="/register" element={<Register />} />
