@@ -44,7 +44,6 @@ async function deleteDestination(id: number) {
 
         <div> 
             <br />
-          
             <span onClick={changeLike}> {props.destination.isLiked==1 ? "unlike🩶": "like❤️"} </span> ||
             <span>💞  {props.destination.likesCount}</span>
         </div>
@@ -79,6 +78,9 @@ async function deleteDestination(id: number) {
 
              <span> | </span>
              <NavLink to={'/destinations/edit/' + props.destination.id}>Edit</NavLink>
+
+             <span> | </span>
+
             </>}
         </div>
         

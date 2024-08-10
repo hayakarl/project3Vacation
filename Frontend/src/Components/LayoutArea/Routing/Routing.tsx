@@ -10,6 +10,7 @@ import { Login } from '../../UserArea/Login/Login';
 
 import { DestinationDetails } from '../../AdminArea/DestinationDetails/DestinationDetails';
 import { EditDestination } from '../../AdminArea/EditDestination/EditDestination';
+import DestinationsReport from '../../AdminArea/DestinationsReport/DestinationsReport';
 
 export function Routing(): JSX.Element {
   return (
@@ -30,6 +31,11 @@ export function Routing(): JSX.Element {
 
         {/* Edit destination */}
         <Route path="/destinations/edit/:destinationId" element={<EditDestination />} />
+        
+        {/* Destinations Report */}
+        <Route path="/destination/destinationReport" element={<DestinationsReport />} />
+
+       
 
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
