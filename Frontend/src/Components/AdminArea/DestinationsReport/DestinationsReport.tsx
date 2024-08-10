@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Chart } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, scales, Ticks } from 'chart.js';
 import { destinationService } from '../../../Services/DestinationService';
 import { DestinationModel } from '../../../Models/DestinationModel';
 import { notify } from '../../../Utils/notify';
@@ -48,6 +48,14 @@ const navigate = useNavigate();
         text: 'דוח חופשות',
       },
     },
+    scales: {
+        y: {
+        beginAtZero: true,
+        ticks: {
+            stepSize: 1
+        }
+    }
+    }
   };
 
  const handleGoBack = () => {
