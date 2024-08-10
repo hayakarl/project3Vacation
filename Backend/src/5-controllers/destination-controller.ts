@@ -4,6 +4,7 @@ import { DestinationModel } from '../3-models/destination-model';
 import { StatusCode } from '../3-models/enums';
 import { securityMiddleware } from '../6-middleware/security-middleware';
 import { fileSaver } from 'uploaded-file-saver';
+import { UserModel } from '../3-models/user-model';
 
 // Destination controller - listening to destination requests:
 class DestinationController {
@@ -23,9 +24,10 @@ class DestinationController {
 
   // Get all destinations:
   private async getAllDestinations(request: Request, response: Response, next: NextFunction) {
-   console.log(response.locals.user)
+    const userId = response.locals.tokenData.user.id
+
     try {
-      const destinations = await destinationService.getAllDestinations();
+      const destinations = await destinationService.getAllDestinations(userId);
       response.json(destinations);
     } 
     catch (err: any) {

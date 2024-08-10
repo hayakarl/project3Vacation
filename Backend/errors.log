@@ -861,3 +861,48 @@ Stack: Error: You have an error in your SQL syntax; check the manual that corres
     at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
 ---------------------------------------
 
+Time: Fri Aug 09 2024 16:36:22 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/802fb4de-8713-4a15-bf5b-f74d21581d83.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 16:36:22 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/6fb8b80c-f4a0-4fab-8fbf-d4247c253d85.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 16:36:22 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/8da7d105-ec33-49f1-8c71-747940eb3fc8.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 16:36:22 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/f87e6b97-a452-42ad-b78e-a2979951b7ae.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 16:36:22 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/bb5c12b3-0de3-4060-84f4-8c8d26c6ae42.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 16:36:22 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/be7a8dc9-53ba-437a-8c37-8418b7d4b13b.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 16:36:22 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/aa9b509b-8b4a-472b-b201-60dc0dd1f614.jpeg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 16:36:22 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/5ae4c992-325c-4f6b-915e-823dcf1f2a45.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 09 2024 16:36:22 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/images/f3612da7-3efa-4f21-bf9a-ff56fdb64c20.jpg on method GET not exist.
+Stack: undefined
+---------------------------------------
+

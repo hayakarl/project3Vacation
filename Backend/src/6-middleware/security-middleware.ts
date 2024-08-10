@@ -35,8 +35,8 @@ class SecurityMiddleware {
       next(new UnauthorizedError('You are not logged in.'));
     } 
     else {
-        const user = cyber.decodeToken(token)
-        response.locals.user = user;
+        const tokenData = cyber.decodeToken(token)
+        response.locals.tokenData = tokenData;
       next();
     }
   }

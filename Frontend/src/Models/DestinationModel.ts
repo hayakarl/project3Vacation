@@ -8,5 +8,5 @@ export class DestinationModel {
   public imageName: string;
   public image: File;
   public likesCount: number;
-  public isLiked: boolean;
+  public isLiked: number;
 }

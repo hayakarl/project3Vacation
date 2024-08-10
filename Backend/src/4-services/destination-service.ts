@@ -8,14 +8,15 @@ import { fileSaver } from 'uploaded-file-saver';
 class DestinationService {
 
   // Get all destinations:
-//  public async getAllDestinations(userId: number): Promise<DestinationModel[]> { 
-    public async getAllDestinations() { 
-  
+
+    public async getAllDestinations(userId: number) { 
+        console.log("userId: ", userId);
+
     const sql = `
         SELECT DISTINCT
             V.*, 
             imageName,
-            EXISTS(SELECT * FROM likes WHERE id = L.destinationId AND userId = 13) AS isLiked,
+            EXISTS(SELECT * FROM likes WHERE id = L.destinationId AND userId = ?) AS isLiked,
             COUNT(L.userId) AS likesCount
         FROM destinations as V LEFT JOIN likes as L
            ON V.id = L.destinationId
@@ -24,8 +25,7 @@ class DestinationService {
         `;
 
     // Execute:
-    const destinations = await dal.execute(sql);
-    // const destinations = await dal.execute(sql, [userId]);
+    const destinations = await dal.execute(sql, [userId]);
 
     // Return:
     return destinations;

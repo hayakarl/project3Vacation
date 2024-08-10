@@ -108,18 +108,10 @@ class DestinationService {
   }
 
 
-// like
-    public async like(Did: number): Promise<void> {
+    public async changeLike(destinationId: number, likeStatus: number) {
+      await axios.post(appConfig.backendUrl + "destinations/" + destinationId + "/changeLike");
+    }
 
 }
-
-// dis like
-    public async dislike(Did: number): Promise<void> {
-
-}
-
-}
-
-
 
 export const destinationService = new DestinationService();
