@@ -921,3 +921,13 @@ Message: "likesCount" is not allowed
 Stack: undefined
 ---------------------------------------
 
+Time: Tue Aug 13 2024 19:08:18 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations/123/changeLike on method POST not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Tue Aug 13 2024 19:10:23 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations/123/changeLike on method POST not exist.
+Stack: undefined
+---------------------------------------
+

@@ -45,13 +45,13 @@ class DestinationService {
 
         // Convert DestinationModel into FormData
         const formData = new FormData();
-        formData.append('destination', destination.destination);
-        formData.append('description', destination.description);
-        formData.append('fromDate', destination.fromDate.toString());
-        formData.append('untilDate', destination.untilDate.toString());
-        formData.append('price', destination.price.toString());
-        if (destination.image) {
-        formData.append('image', destination.image);
+            formData.append('destination', destination.destination);
+            formData.append('description', destination.description);
+            formData.append('fromDate', destination.fromDate.toString());
+            formData.append('untilDate', destination.untilDate.toString());
+            formData.append('price', destination.price.toString());
+            if (destination.image) {
+            formData.append('image', destination.image);
         }
 
         // Send destination to backend:
@@ -74,13 +74,13 @@ class DestinationService {
   
         // Convert DestinationModel into FormData because we need to send text + image:
         const formData = new FormData();
-        formData.append('destination', destination.destination);
-        formData.append('description', destination.description);
-        formData.append('fromDate', destination.fromDate.toString());
-        formData.append('untilDate', destination.untilDate.toString());
-        formData.append('price', destination.price.toString());
-        // formData.append('image', destination.imageUrl);
-        // formData.append("imageName", destination.imageUrl);
+            formData.append('destination', destination.destination);
+            formData.append('description', destination.description);
+            formData.append('fromDate', destination.fromDate.toString());
+            formData.append('untilDate', destination.untilDate.toString());
+            formData.append('price', destination.price.toString());
+            // formData.append('image', destination.imageUrl);
+            // formData.append("imageName", destination.imageUrl);
     
         // Send destination to backend:
         const options: AxiosRequestConfig = {headers: { 'Content-Type': 'multipart/form-data' }};

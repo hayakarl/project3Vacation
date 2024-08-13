@@ -16,11 +16,15 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
     const navigate = useNavigate();
 
 async function changeLike() {
-        try{
-            console.log(props.destination.id, props.destination.isLiked==1 ? 0 : 1);
-        } catch (err: any) {
-            notifyService.error(err);
-        } 
+    try{
+         const newLikeStatus = props.destination.isLiked == 1 ? 0 : 1;
+        await destinationService.changeLike(props.destination.id, newLikeStatus);
+        // Optionally update the UI based on the new like status
+        notifyService.success(newLikeStatus ? "Liked" : "Unliked");
+    //    console.log(props.destination.id, props.destination.isLiked==1 ? 0 : 1);
+    } catch (err: any) {
+        notifyService.error(err);
+    } 
    }
 
     //delete button
@@ -37,58 +41,54 @@ async function deleteDestination(id: number) {
     }
 }
 
-  return (
+return (
     <div className="DestinationCard">
-      <div className="information">
-        <div>
-          <span>{props.destination.destination}</span>
-        </div>
+        <div className="information">
+            <div>
+               <span>{props.destination.destination}</span>
+            </div>
 
-        <div> 
-            <br />
-            <span onClick={changeLike}> {props.destination.isLiked==1 ? "unlike🩶": "like❤️"} </span> ||
-            <span>💞  {props.destination.likesCount}</span>
-        </div>
+            <div> 
+               <br />
+               <span onClick={changeLike}> {props.destination.isLiked==1 ? "like❤️": "unlike🩶"} </span> || 
+               <span>💞  {props.destination.likesCount}</span>
+            </div>
 
-        <div>
-          <NavLink to={'/destinations/details/' + props.destination.id}>
-            <img src={appConfig.backendUrl + 'destinations/images/' + props.destination.imageName} />
-          </NavLink>
-        </div>
+            <div>
+                <NavLink to={'/destinations/details/' + props.destination.id}>
+                   <img src={appConfig.backendUrl + 'destinations/images/' + props.destination.imageName} />
+                </NavLink>
+            </div>
 
-        <div> 
-           <br/>
-          <span>{props.destination.description}</span>
-          <br /><br />
-        </div>
+            <div> 
+                <br/>
+                   <span>{props.destination.description}</span>
+                <br /><br />
+            </div>
         
-        <div>   
-          <span>מחיר :$ {props.destination.price} </span>
+            <div>   
+                <span>מחיר :$ {props.destination.price} </span>
+            </div>
+
+            <div className="dates">
+               <p>
+                     <b> {new Date(props.destination.fromDate).toLocaleDateString()}</b>
+                    🔛 
+                    <b>{new Date(props.destination.untilDate).toLocaleDateString()}</b>
+                </p>
+            </div>
+
+            <div>
+                {userService.isAdmin() && <>
+                  <button onClick={() => deleteDestination(props.destination.id)}>Delete</button>
+
+                <span> | </span>
+                   <NavLink to={'/destinations/edit/' + props.destination.id}>Edit</NavLink>
+                <span> | </span>
+
+                </>}
+            </div>   
         </div>
-
-        <div className="dates">
-          <p>
-            <b> {new Date(props.destination.fromDate).toLocaleDateString()}</b>
-            🔛 
-            <b>{new Date(props.destination.untilDate).toLocaleDateString()}</b>
-          </p>
-        </div>
-
-        <div>
-          {userService.isAdmin() && <>
-             <button onClick={() => deleteDestination(props.destination.id)}>Delete</button>
-
-             <span> | </span>
-             <NavLink to={'/destinations/edit/' + props.destination.id}>Edit</NavLink>
-
-             <span> | </span>
-
-            </>}
-        </div>
-        
     </div>
-
-</div>
-
   );
 }

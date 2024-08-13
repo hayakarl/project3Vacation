@@ -41,8 +41,8 @@ const DestinationsCsv: React.FC = () => {
 
   const handleDownloadCSV = () => {
     const csvData = destinations.map(dest => ({
-      Destination: dest.destination,
-      Likes: dest.likesCount,
+      יעדים : dest.destination,
+      Likes : dest.likesCount,
     }));
 
     const csv = Papa.unparse(csvData);
