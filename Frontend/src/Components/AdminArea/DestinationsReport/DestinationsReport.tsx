@@ -73,7 +73,7 @@ const navigate = useNavigate();
         onClick={handleGoBack} 
         style={{ marginTop: '20px' }}
       >
-        Go Back
+       חזור
       </Button>
       
     </div>

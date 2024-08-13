@@ -15,10 +15,12 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
     const [destination, setDestination] = useState<DestinationModel>();
     const navigate = useNavigate();
 
-   async function changeLike() {
-
-console.log(props.destination.id, props.destination.isLiked==1 ? 0 : 1);
-
+async function changeLike() {
+        try{
+            console.log(props.destination.id, props.destination.isLiked==1 ? 0 : 1);
+        } catch (err: any) {
+            notifyService.error(err);
+        } 
    }
 
     //delete button
@@ -31,7 +33,7 @@ async function deleteDestination(id: number) {
       notifyService.success('Destination has been deleted');
         navigate('/destination');
        } catch (err: any) {
-         notifyService.error(err);
+        notifyService.error(err);
     }
 }
 

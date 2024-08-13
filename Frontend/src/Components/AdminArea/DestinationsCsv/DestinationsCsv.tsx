@@ -61,14 +61,14 @@ const DestinationsCsv: React.FC = () => {
 
   return (
     <div>
-      <h1>Destinations Report</h1>
+      <h1>קובץ חופשות</h1>
       <Button 
         variant="contained" 
         color="secondary" 
         onClick={handleDownloadCSV} 
         style={{ marginTop: '20px' }}
       >
-        Download CSV
+        הורד קובץ
       </Button>
    
    
@@ -77,8 +77,9 @@ const DestinationsCsv: React.FC = () => {
         color="primary" 
         onClick={handleGoBack} 
         style={{ marginTop: '20px' }}
+
       >
-        Go Back
+        חזור
       </Button>
      </div>
   );

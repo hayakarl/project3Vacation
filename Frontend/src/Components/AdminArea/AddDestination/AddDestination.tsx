@@ -43,7 +43,6 @@ export function AddDestination(): JSX.Element {
           required
           inputProps={{ minLength: 2, maxLength: 1000 }}
         />
-
         
         <TextField label="מתאריך" type="datetime-local" {...register('fromDate')} 
         required
