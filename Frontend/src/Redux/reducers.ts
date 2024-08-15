@@ -10,7 +10,7 @@ export function initDestinations(currentState: DestinationModel[], action: Paylo
   return newState;
 }
 
-// Add destination: 
+// Add destination:
 //action >> what the data i get. action include payload of data we want to change
 export function addDestination(currentState: DestinationModel[], action: PayloadAction<DestinationModel>) {
   const newState: DestinationModel[] = [...currentState];
@@ -21,28 +21,29 @@ export function addDestination(currentState: DestinationModel[], action: Payload
 // Delete destination:
 export function deleteDestination(currentState: DestinationModel[], action: PayloadAction<DestinationModel>) {
   const newState: DestinationModel[] = [...currentState];
- const  indexToDelete = newState.findIndex(p => p.id === action.payload.id); // -1 if not exist
-            if (indexToDelete >= 0) {
-                newState.splice(indexToDelete, 1); // Delete
-  return newState;
-}}
+  const indexToDelete = newState.findIndex((p) => p.id === action.payload.id); // -1 if not exist
+  if (indexToDelete >= 0) {
+    newState.splice(indexToDelete, 1); // Delete
+    return newState;
+  }
+}
 
 // Update destination:
 export function updateDestination(currentState: DestinationModel[], action: PayloadAction<DestinationModel>) {
   const newState: DestinationModel[] = [...currentState];
- const  indexToUpdate = newState.findIndex(u => u.id === action.payload.id); //  
-            if (indexToUpdate >= 0) {
-                newState[indexToUpdate] = action.payload; 
-  return newState;
-}}
-
+  const indexToUpdate = newState.findIndex((u) => u.id === action.payload.id); //
+  if (indexToUpdate >= 0) {
+    newState[indexToUpdate] = action.payload;
+    return newState;
+  }
+}
 
 export function initUser(currentState: UserModel, action: PayloadAction<UserModel>) {
-    const newState: UserModel = action.payload;
-    return newState;
+  const newState: UserModel = action.payload;
+  return newState;
 }
 
 export function logoutUser(currentState: UserModel, action: Action) {
-    const newState: UserModel = null;
-    return newState;
+  const newState: UserModel = null;
+  return newState;
 }

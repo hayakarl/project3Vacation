@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from 'joi';
 
 import joi from 'joi';
 import { joiPasswordExtendCore } from 'joi-password';

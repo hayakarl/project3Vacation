@@ -1,6 +1,6 @@
-import { createTheme } from "@mui/material";
-import { MuiTextField } from "./TextFieldTheme";
-import { MuiButton } from "./ButtonTheme";
+import { createTheme } from '@mui/material';
+import { MuiTextField } from './TextFieldTheme';
+import { MuiButton } from './ButtonTheme';
 
 export const theme = createTheme({
   //Theme colors:
@@ -22,6 +22,6 @@ export const theme = createTheme({
   //Theme components:
   components: {
     MuiTextField,
-    MuiButton
-  }
+    MuiButton,
+  },
 });

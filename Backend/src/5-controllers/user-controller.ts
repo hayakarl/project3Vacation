@@ -17,8 +17,7 @@ class UserController {
       const user = new UserModel(request.body);
       const token = await userService.register(user);
       response.status(StatusCode.Created).json(token);
-    } 
-    catch (err: any) {
+    } catch (err: any) {
       next(err);
     }
   }
@@ -28,8 +27,7 @@ class UserController {
       const credentials = new CredentialsModel(request.body);
       const token = await userService.login(credentials);
       response.json(token);
-    }
-    catch (err: any) {
+    } catch (err: any) {
       next(err);
     }
   }

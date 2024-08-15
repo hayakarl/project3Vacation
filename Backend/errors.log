@@ -931,3 +931,38 @@ Message: Route /api/destinations/123/changeLike on method POST not exist.
 Stack: undefined
 ---------------------------------------
 
+Time: Wed Aug 14 2024 00:07:02 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations/113/changeLike on method POST not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Wed Aug 14 2024 00:24:10 GMT+0300 (שעון ישראל (קיץ))
+Message: Destination ID and User ID are required
+Stack: Error: Destination ID and User ID are required
+    at DestinationService.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\4-services\destination-service.ts:215:13)
+    at Generator.next (<anonymous>)
+    at C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\4-services\destination-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\4-services\destination-service.ts:4:12)
+    at DestinationService.changeLike (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\4-services\destination-service.ts:199:16)
+    at C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\5-controllers\destination-controller.ts:103:52
+    at Generator.next (<anonymous>)
+    at C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\5-controllers\destination-controller.ts:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Wed Aug 14 2024 00:24:15 GMT+0300 (שעון ישראל (קיץ))
+Message: Destination ID and User ID are required
+Stack: Error: Destination ID and User ID are required
+    at DestinationService.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\4-services\destination-service.ts:215:13)
+    at Generator.next (<anonymous>)
+    at C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\4-services\destination-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\4-services\destination-service.ts:4:12)
+    at DestinationService.changeLike (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\4-services\destination-service.ts:199:16)
+    at C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\5-controllers\destination-controller.ts:103:52
+    at Generator.next (<anonymous>)
+    at C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\5-controllers\destination-controller.ts:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+

@@ -1,139 +1,128 @@
-import axios, { AxiosRequestConfig } from "axios"
-import { DestinationModel } from "../Models/DestinationModel";
-import { appConfig } from "../Utils/AppConfig";
-import { destinationActions, store } from "../Redux/store";
-import { deleteDestination } from "../Redux/reducers";
-import { Public } from "@mui/icons-material";
+import axios, { AxiosRequestConfig } from 'axios';
+import { DestinationModel } from '../Models/DestinationModel';
+import { appConfig } from '../Utils/AppConfig';
+import { destinationActions, store } from '../Redux/store';
+import { deleteDestination } from '../Redux/reducers';
+import { Public } from '@mui/icons-material';
 
 class DestinationService {
+  //Get all destinations from backend: --asaf
+  public async getAllDestinations(): Promise<DestinationModel[]> {
+    // If we have destinations in the global state - return them, without fetching from server:
+    if (store.getState().destinations) return store.getState().destinations;
 
-     //Get all destinations from backend: --asaf
-    public async getAllDestinations(): Promise<DestinationModel[]> {
-        
-        // If we have destinations in the global state - return them, without fetching from server:
-        if (store.getState().destinations) return store.getState().destinations;
+    // We don't have destinations in the global state - fetch them from backend:
+    const response = await axios.get<DestinationModel[]>(appConfig.backendUrl + 'destinations');
 
-        // We don't have destinations in the global state - fetch them from backend:
-        const response = await axios.get<DestinationModel[]>(appConfig.backendUrl + "destinations");
-    
-        const destinations = response.data;
-        
-        // Init all destinations in the global state:
-        const action = destinationActions.initDestinations(destinations);
-        store.dispatch(action);
+    const destinations = response.data;
 
-        // Return:
-        return destinations;
+    // Init all destinations in the global state:
+    const action = destinationActions.initDestinations(destinations);
+    store.dispatch(action);
+
+    // Return:
+    return destinations;
+  }
+
+  //Get one destination by id:
+  public async getOneDestination(id: number): Promise<DestinationModel> {
+    // If we have destinations in the global state - return them, without fetching from server:
+    //  if (store.getState().destinations) return store.getState().destinations;
+
+    // We don't have destinations in the global state - fetch them from backend:
+    const response = await axios.get<DestinationModel>(appConfig.backendUrl + 'destinations/' + id);
+    const destination = response.data;
+
+    // Return:
+    return destination;
+  }
+
+  //Add new destination  asaf
+  public async addDestination(destination: DestinationModel): Promise<void> {
+    // Convert DestinationModel into FormData
+    const formData = new FormData();
+    formData.append('destination', destination.destination);
+    formData.append('description', destination.description);
+    formData.append('fromDate', destination.fromDate.toString());
+    formData.append('untilDate', destination.untilDate.toString());
+    formData.append('price', destination.price.toString());
+    if (destination.image) {
+      formData.append('image', destination.image);
     }
 
-    //Get one destination by id:
-    public async getOneDestination(id: number): Promise<DestinationModel> {
+    // Send destination to backend:
+    const options: AxiosRequestConfig = { headers: { 'Content-Type': 'multipart/form-data' } };
+    const response = await axios.post<DestinationModel>(appConfig.backendUrl + 'destinations', formData, options);
 
-        // If we have destinations in the global state - return them, without fetching from server:
-        //  if (store.getState().destinations) return store.getState().destinations;
+    // Don't add that destination to redux if global state is empty:
+    if (!store.getState().destinations) return;
 
-        // We don't have destinations in the global state - fetch them from backend:
-        const response = await axios.get<DestinationModel>(appConfig.backendUrl + "destinations/" + id);
-        const destination = response.data;
+    // Get back the added destination:
+    const addedDestination = response.data;
 
-        // Return:
-        return destination;
-    }
+    // Send added destination to global state:
+    const action = destinationActions.addDestination(addedDestination);
+    store.dispatch(action);
+  }
 
-    //Add new destination  asaf
-    public async addDestination(destination: DestinationModel): Promise<void> {
+  //Update destination
+  public async updateDestination(destination: DestinationModel): Promise<void> {
+    // Convert DestinationModel into FormData because we need to send text + image:
+    const formData = new FormData();
+    formData.append('destination', destination.destination);
+    formData.append('description', destination.description);
+    formData.append('fromDate', destination.fromDate.toString());
+    formData.append('untilDate', destination.untilDate.toString());
+    formData.append('price', destination.price.toString());
+    // formData.append('image', destination.imageUrl);
+    // formData.append("imageName", destination.imageUrl);
 
-        // Convert DestinationModel into FormData
-        const formData = new FormData();
-            formData.append('destination', destination.destination);
-            formData.append('description', destination.description);
-            formData.append('fromDate', destination.fromDate.toString());
-            formData.append('untilDate', destination.untilDate.toString());
-            formData.append('price', destination.price.toString());
-            if (destination.image) {
-            formData.append('image', destination.image);
-        }
+    // Send destination to backend:
+    const options: AxiosRequestConfig = { headers: { 'Content-Type': 'multipart/form-data' } };
+    const response = await axios.put<DestinationModel>(appConfig.backendUrl + 'destinations', formData, options);
 
-        // Send destination to backend:
-        const options: AxiosRequestConfig = {headers: { 'Content-Type': 'multipart/form-data' }};
-        const response = await axios.post<DestinationModel>(appConfig.backendUrl + "destinations", formData, options);
+    // Don't add that destination to redux if global state is empty:
+    if (!store.getState().destinations) return;
 
-        // Don't add that destination to redux if global state is empty:
-        if (!store.getState().destinations) return;
+    // Get back the added destination:
+    const updateDestination = response.data;
 
-        // Get back the added destination:
-        const addedDestination = response.data;
+    // Send update destination to global state:
+    const action = destinationActions.updateDestination(updateDestination);
+    store.dispatch(action);
+  }
 
-        // Send added destination to global state:
-        const action = destinationActions.addDestination(addedDestination);
-        store.dispatch(action);
-        }
+  //   Delete destination :
+  public async deleteDestination(id: number): Promise<void> {
+    // Delete this destination in backend:
+    await axios.delete(appConfig.backendUrl + 'destinations' + id);
 
-    //Update destination
-    public async updateDestination(destination: DestinationModel): Promise<void> {
-  
-        // Convert DestinationModel into FormData because we need to send text + image:
-        const formData = new FormData();
-            formData.append('destination', destination.destination);
-            formData.append('description', destination.description);
-            formData.append('fromDate', destination.fromDate.toString());
-            formData.append('untilDate', destination.untilDate.toString());
-            formData.append('price', destination.price.toString());
-            // formData.append('image', destination.imageUrl);
-            // formData.append("imageName", destination.imageUrl);
-    
-        // Send destination to backend:
-        const options: AxiosRequestConfig = {headers: { 'Content-Type': 'multipart/form-data' }};
-        const response = await axios.put<DestinationModel>(appConfig.backendUrl + "destinations", formData, options);
+    // Delete this destination also in redux global state:
+    // const action = destinationActions.deleteDestination(id);
+    // store.dispatch(action); // Redux will call destinationReducer to perform this action.
+  }
 
-        // Don't add that destination to redux if global state is empty:
-        if (!store.getState().destinations) return;
+  public async changeLike(destinationId: number) {
+    const response = await axios.post(appConfig.backendUrl + 'destinations/' + destinationId + '/changeLike');
+    return response.data.changedLike;
+  }
 
-        // Get back the added destination:
-        const updateDestination = response.data;
-    
-        // Send update destination to global state:
-        const action = destinationActions.updateDestination(updateDestination);
-        store.dispatch(action);
-    }
+  public async filterFutureDestinations(destinations: DestinationModel[]): Promise<DestinationModel[]> {
+    const now = new Date();
+    return destinations.filter((d) => {
+      const fromDate = new Date(d.fromDate);
+      return fromDate > now;
+    });
+  }
 
-    //   Delete destination :
-    public async deleteDestination(id: number): Promise<void> {
-        // Delete this destination in backend:
-        await axios.delete(appConfig.backendUrl + "destinations" + id);
-
-        // Delete this destination also in redux global state:
-        // const action = destinationActions.deleteDestination(id);
-        // store.dispatch(action); // Redux will call destinationReducer to perform this action.
-    }
-
-    public async changeLike(destinationId: number, likeStatus: number) {
-        await axios.post(appConfig.backendUrl + "destinations/" + destinationId + "/changeLike");
-    }
-
-    public async filterFutureDestinations(destinations: DestinationModel[]): Promise<DestinationModel[]> {
-        const now = new Date();
-        const futureDestinations = destinations.filter(d => {
-            const fromDate = new Date(d.fromDate);
-            return fromDate > now;
-        });
-        return futureDestinations;
-    }
-       
-    public async filterActiveDestinations(destinations: DestinationModel[]): Promise<DestinationModel[]> {
-        const now = new Date();
-        const activeDestinations = destinations.filter(d => {
-            const fromDate = new Date(d.fromDate);
-            const untilDate = new Date(d.untilDate);
-            return fromDate <= now && untilDate >= now;
-        });
-        return activeDestinations;
-        }
-    }
-
-
-
-
-
+  public async filterActiveDestinations(destinations: DestinationModel[]): Promise<DestinationModel[]> {
+    const now = new Date();
+    return destinations.filter((d) => {
+      const fromDate = new Date(d.fromDate);
+      const untilDate = new Date(d.untilDate);
+      return fromDate <= now && untilDate >= now;
+    });
+  }
+}
 
 export const destinationService = new DestinationService();

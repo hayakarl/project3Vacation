@@ -1,24 +1,21 @@
 import jwt, { SignOptions } from 'jsonwebtoken';
 import { UserModel } from '../3-models/user-model';
 import { Role } from '../3-models/enums';
-import crypto from "crypto";
+import crypto from 'crypto';
 
 class Cyber {
-
   // Secret key:
   private secretKey = 'TheBestVacation!';
 
-  private hashingSalt = "Good Luck";
+  private hashingSalt = 'Good Luck';
 
   public hash(plainText: string): string {
-
-     // Hash with salt: 
-    return crypto.createHmac("sha512", this.hashingSalt).update(plainText).digest("hex"); // Returns 128 chars string.
+    // Hash with salt:
+    return crypto.createHmac('sha512', this.hashingSalt).update(plainText).digest('hex'); // Returns 128 chars string.
   }
 
   // Generate new JWT token:
   public generateNewToken(user: UserModel): string {
-
     // Remove password:
     delete user.password;
 
@@ -37,7 +34,6 @@ class Cyber {
 
   // Is token valid:
   public isTokenValid(token: string): boolean {
-    
     try {
       // If no token:
       if (!token) return false;
@@ -47,15 +43,14 @@ class Cyber {
 
       // Token valid:
       return true;
-    } 
-    catch (err: any) {  // Token not valid
+    } catch (err: any) {
+      // Token not valid
       return false;
     }
   }
 
   // Is user admin:
   public isAdmin(token: string): boolean {
-
     try {
       // Extract container object from token:
       const container = jwt.decode(token) as { user: UserModel };
@@ -65,26 +60,21 @@ class Cyber {
 
       // Return true if user is admin, or false if not:
       return user.roleId === Role.Admin;
-    }
-     catch (err: any) {
+    } catch (err: any) {
       return false;
     }
   }
 
-  
   public decodeToken(token: string) {
-
     try {
       // Extract container object from token:
       const container = jwt.decode(token);
 
       return container;
-    }
-     catch (err: any) {
+    } catch (err: any) {
       return {};
     }
   }
-
 }
 
 export const cyber = new Cyber();

@@ -7,8 +7,7 @@ import { CredentialsModel } from '../Models/CredentialsModel';
 // import { initUser } from '../Redux/reducers';
 
 class UserService {
-    
-    //token if user refresh page
+  //token if user refresh page
   public constructor() {
     const token = localStorage.getItem('token');
     if (!token) return;
@@ -20,7 +19,7 @@ class UserService {
 
   public async register(user: UserModel) {
     // Send user to backend:
-    const response = await axios.post<string>(appConfig.backendUrl + "register", user);
+    const response = await axios.post<string>(appConfig.backendUrl + 'register', user);
 
     // Get token:
     const token = response.data;
@@ -38,9 +37,8 @@ class UserService {
   }
 
   public async login(credentials: CredentialsModel) {
-    
     // Send credentials to backend:
-    const response = await axios.post<string>(appConfig.backendUrl + "login", credentials);
+    const response = await axios.post<string>(appConfig.backendUrl + 'login', credentials);
 
     // Get token:
     const token = response.data;
@@ -62,14 +60,15 @@ class UserService {
     const action = userActions.logoutUser();
     store.dispatch(action);
   }
-//check if user admin
-    public isAdmin(user: UserModel = null): boolean {
-        if (!user) { //if no user
-            user = store.getState().user;
-            if (!user) return false;
-        }
-        return user.roleId === 1;
+  //check if user admin
+  public isAdmin(user: UserModel = null): boolean {
+    if (!user) {
+      //if no user
+      user = store.getState().user;
+      if (!user) return false;
     }
+    return user.roleId === 1;
+  }
 }
 
 export const userService = new UserService();

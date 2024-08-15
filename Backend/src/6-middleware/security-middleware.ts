@@ -15,10 +15,9 @@ class SecurityMiddleware {
     }
     next(); // Continue the request to the next middleware.
   }
-//=====================
+  //=====================
   // Validate token:
   public validateLogin(request: Request, response: Response, next: NextFunction) {
-
     // Take header:
     const authorizationHeader = request.headers.authorization;
 
@@ -33,17 +32,15 @@ class SecurityMiddleware {
     // If not valid:
     if (!isValid) {
       next(new UnauthorizedError('You are not logged in.'));
-    } 
-    else {
-        const tokenData = cyber.decodeToken(token)
-        response.locals.tokenData = tokenData;
+    } else {
+      const tokenData = cyber.decodeToken(token);
+      response.locals.tokenData = tokenData;
       next();
     }
   }
 
   // Validate admin:
   public validateAdmin(request: Request, response: Response, next: NextFunction) {
-
     // Take header:
     const authorizationHeader = request.headers.authorization;
 

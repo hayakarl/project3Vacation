@@ -10,7 +10,7 @@ export class DestinationModel {
   public price: number;
   public image: UploadedFile; // Image bytes sent from frontend.
   public likesCount: number;
-  public isLiked: boolean; 
+  public isLiked: boolean;
 
   // Copy Constructor
   public constructor(destination: DestinationModel) {
@@ -22,20 +22,20 @@ export class DestinationModel {
     this.price = destination.price;
     this.image = destination.image;
     this.likesCount = destination.likesCount;
-     this.isLiked = destination.isLiked;
+    this.isLiked = destination.isLiked;
   }
 
- private static validationScheme = Joi.object({
-        id: Joi.number().optional().positive().integer(),
-        destination: Joi.string().required().min(3).max(50),
-        description: Joi.string().required().min(5).max(1000),
-        price: Joi.number().required().positive().min(90).max(10000),
-        fromDate: Joi.string().required(),
-        untilDate: Joi.string().required(),
-        image: Joi.object().required(),
-        // likesCount: Joi.number().integer().min(0).optional(),
-        // isLiked: Joi.boolean().optional()
-    })/*.custom((value, helpers) => {
+  private static validationScheme = Joi.object({
+    id: Joi.number().optional().positive().integer(),
+    destination: Joi.string().required().min(3).max(50),
+    description: Joi.string().required().min(5).max(1000),
+    price: Joi.number().required().positive().min(90).max(10000),
+    fromDate: Joi.string().required(),
+    untilDate: Joi.string().required(),
+    image: Joi.object().required(),
+    // likesCount: Joi.number().integer().min(0).optional(),
+    // isLiked: Joi.boolean().optional()
+  }); /*.custom((value, helpers) => {
     const { fromDate, untilDate } = value;
 
     // Convert dates to comparable format (ISO string or Unix timestamp)
@@ -54,9 +54,8 @@ export class DestinationModel {
     return value;
   }, 'Date Validation');*/
 
-    public validate(): string {
-        const result = DestinationModel.validationScheme.validate(this);
-        return result.error?.message;
-
-}
+  public validate(): string {
+    const result = DestinationModel.validationScheme.validate(this);
+    return result.error?.message;
+  }
 }

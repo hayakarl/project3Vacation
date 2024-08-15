@@ -13,12 +13,10 @@ import { EditDestination } from '../../AdminArea/EditDestination/EditDestination
 import DestinationsReport from '../../AdminArea/DestinationsReport/DestinationsReport';
 import DestinationsCsv from '../../AdminArea/DestinationsCsv/DestinationsCsv';
 
-
 export function Routing(): JSX.Element {
   return (
     <div className="Routing">
       <Routes>
-        
         {/* Home */}
         <Route path="/home" element={<Home />} />
 
@@ -33,13 +31,12 @@ export function Routing(): JSX.Element {
 
         {/* Edit destination */}
         <Route path="/destinations/edit/:destinationId" element={<EditDestination />} />
-        
+
         {/* Destinations Report */}
         <Route path="/destination/destinationReport" element={<DestinationsReport />} />
 
         {/* Destinations csv */}
         <Route path="/destination/destinationCsv" element={<DestinationsCsv />} />
-       
 
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
@@ -52,7 +49,6 @@ export function Routing(): JSX.Element {
 
         {/* Page not found */}
         <Route path="*" element={<Page404 />} />
-
       </Routes>
     </div>
   );

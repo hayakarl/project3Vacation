@@ -16,24 +16,25 @@ export function UserMenu(): JSX.Element {
 
   return (
     <div className="UserMenu">
-
-      {!user && <>
-
+      {!user && (
+        <>
           <span>Hello Guest || </span>
           <NavLink to="/register">Register</NavLink>
           <span> | </span>
           <NavLink to="/login">Login</NavLink>
+        </>
+      )}
 
-        </>}
-
-      {user && <>
-
+      {user && (
+        <>
           <span>
             Hello {user.firstName} {user.lastName} ||{' '}
           </span>
-          <NavLink to="/home" onClick={logout}>Logout</NavLink>
-
-        </>}
+          <NavLink to="/home" onClick={logout}>
+            Logout
+          </NavLink>
+        </>
+      )}
     </div>
   );
 }

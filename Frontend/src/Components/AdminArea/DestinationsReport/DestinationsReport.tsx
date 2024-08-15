@@ -11,27 +11,28 @@ import { useNavigate } from 'react-router-dom';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const DestinationsReport: React.FC = () => {
-const [destinations, setDestinations] = useState<DestinationModel[]>([]);
-const navigate = useNavigate();
+  const [destinations, setDestinations] = useState<DestinationModel[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    destinationService.getAllDestinations()
-      .then(destinations => {
-        if(Array.isArray(destinations)) {
-            setDestinations(destinations);
+    destinationService
+      .getAllDestinations()
+      .then((destinations) => {
+        if (Array.isArray(destinations)) {
+          setDestinations(destinations);
         } else {
-            throw new Error("Invalid data format");
+          throw new Error('Invalid data format');
         }
-    })
+      })
       .catch((err) => notify.error(errorHandler.getError(err)));
   }, []);
 
   const chartData = {
-    labels: destinations.map(item => item.destination), // Assuming 'name' is a column in your table
+    labels: destinations.map((item) => item.destination), // Assuming 'name' is a column in your table
     datasets: [
       {
         label: 'מספר לייקים',
-        data: destinations.map(item => item.likesCount), // Assuming 'value' is a column in your table
+        data: destinations.map((item) => item.likesCount), // Assuming 'value' is a column in your table
         backgroundColor: 'rgba(75, 192, 192, 0.6)',
       },
     ],
@@ -49,33 +50,27 @@ const navigate = useNavigate();
       },
     },
     scales: {
-        y: {
+      y: {
         beginAtZero: true,
         ticks: {
-            stepSize: 1
-        }
-    }
-    }
+          stepSize: 1,
+        },
+      },
+    },
   };
 
- const handleGoBack = () => {
+  const handleGoBack = () => {
     navigate(-1); // This will navigate the user back to the previous page
   };
 
   return (
     <div>
-        <div style={{ width: '60%', height: '400px', margin: '0 auto' }}>
-           <Chart type='bar' data={chartData} options={options} />
-        </div>
-      <Button 
-        variant="contained" 
-        color="primary" 
-        onClick={handleGoBack} 
-        style={{ marginTop: '20px' }}
-      >
-       חזור
+      <div style={{ width: '60%', height: '400px', margin: '0 auto' }}>
+        <Chart type="bar" data={chartData} options={options} />
+      </div>
+      <Button variant="contained" color="primary" onClick={handleGoBack} style={{ marginTop: '20px' }}>
+        חזור
       </Button>
-      
     </div>
   );
 };

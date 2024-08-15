@@ -28,8 +28,7 @@ export class ValidationError extends ClientError {
 
 // Unauthorized error:
 export class UnauthorizedError extends ClientError {
-    public constructor(message: string) {
-        super(StatusCode.Unauthorized, message);
-    }
+  public constructor(message: string) {
+    super(StatusCode.Unauthorized, message);
+  }
 }
-

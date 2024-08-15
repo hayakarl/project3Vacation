@@ -5,7 +5,7 @@ class Notify {
     duration: 8000,
     dismissible: true,
     position: { x: 'left', y: 'top' },
-    ripple: true
+    ripple: true,
   });
 
   public success(message: string) {

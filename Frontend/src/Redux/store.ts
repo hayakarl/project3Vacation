@@ -13,14 +13,14 @@ export type AppState = {
 const destinationSlice = createSlice({
   name: 'destinations', // Internal use
   initialState: null,
-  reducers: { initDestinations, addDestination , deleteDestination, updateDestination}
+  reducers: { initDestinations, addDestination, deleteDestination, updateDestination },
 });
 
-// Create user slice: 
+// Create user slice:
 const userSlice = createSlice({
-    name: "user",
-    initialState: null,
-    reducers: { initUser, logoutUser }
+  name: 'user',
+  initialState: null,
+  reducers: { initUser, logoutUser },
 });
 
 // Creating action creators:
@@ -31,6 +31,6 @@ export const userActions = userSlice.actions;
 export const store = configureStore<AppState>({
   reducer: {
     destinations: destinationSlice.reducer, // Destination state.
-    user: userSlice.reducer // User state
-  }
+    user: userSlice.reducer, // User state
+  },
 });

@@ -10,17 +10,14 @@ import { interceptor } from './Utils/Interceptor';
 import { ThemeProvider } from '@mui/material';
 import { theme } from './Theme/Theme';
 
-
 interceptor.create();
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-    <ThemeProvider theme={theme}>
-      <Layout />
+      <ThemeProvider theme={theme}>
+        <Layout />
       </ThemeProvider>
     </BrowserRouter>
   </Provider>

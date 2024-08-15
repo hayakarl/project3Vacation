@@ -8,10 +8,8 @@ import { UnauthorizedError, ValidationError } from '../3-models/client-error';
 
 // Deals with users:
 class UserService {
-    
   // Register new user:
   public async register(user: UserModel) {
-
     //validation
     const error = user.validate();
     if (error) throw new ValidationError(error);
@@ -26,7 +24,7 @@ class UserService {
     user.password = cyber.hash(user.password);
 
     // Values:
-    const values = [user.firstName, user.lastName, user.email, user.password, user.roleId];  
+    const values = [user.firstName, user.lastName, user.email, user.password, user.roleId];
 
     // Execute:
     const info: OkPacketParams = await dal.execute(sql, values);
@@ -40,9 +38,8 @@ class UserService {
     // Return:
     return token;
   }
-  
-  public async login(credentials: CredentialsModel) {
 
+  public async login(credentials: CredentialsModel) {
     //validation
     const error = credentials.validate();
     if (error) throw new ValidationError(error);

@@ -5,18 +5,16 @@ import { logger } from '../2-utils/logger';
 import { appConfig } from '../2-utils/app-config';
 
 class ErrorsMiddleware {
-
   public catchAll(err: any, request: Request, response: Response, next: NextFunction) {
-    
     console.log(err);
-    
-    logger.logError(err);//תיעוד שגיאות
+
+    logger.logError(err); //תיעוד שגיאות
 
     const statusCode = err.status || StatusCode.InternalServerError;
 
     // מניעת החזרת הודעות קריסה ללקוח בייצור
     const isCrash = statusCode >= 500 && statusCode <= 599;
-    const message = appConfig.isProduction && isCrash ? "Some error, please try again." : err.message;
+    const message = appConfig.isProduction && isCrash ? 'Some error, please try again.' : err.message;
 
     response.status(statusCode).send(message);
   }
