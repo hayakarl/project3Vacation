@@ -9,12 +9,13 @@ import { appConfig } from '../../../Utils/AppConfig';
 
 type DestinationCardProps = {
   destination: DestinationModel;
+  onDelete: (id: number) => void;
 };
 
 export function DestinationCard(props: DestinationCardProps): JSX.Element {
   const [destination, setDestination] = useState<DestinationModel>(props.destination);
   const navigate = useNavigate();
-
+  const onDelete = props.onDelete;
   async function changeLike() {
     try {
       const changedLike = await destinationService.changeLike(props.destination.id);
@@ -26,19 +27,6 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
     }
   }
 
-  //delete button
-  async function deleteDestination(id: number) {
-    try {
-      const iAmShure = window.confirm(`Are you sure you want to delete this destination?`);
-      if (!iAmShure) return;
-
-      await destinationService.deleteDestination(id);
-      notifyService.success('Destination has been deleted');
-      navigate('/destination');
-    } catch (err: any) {
-      notifyService.error(err);
-    }
-  }
 
   return (
     <div className="DestinationCard">
@@ -48,8 +36,11 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
         </div>
 
         <div>
-          <br />
-          <span onClick={changeLike}> {destination.isLiked == 1 ? 'like❤️' : 'unlike🩶'} </span> ||
+          {!userService.isAdmin() && (
+            <>
+              <span onClick={changeLike}> {destination.isLiked == 1 ? 'like❤️' : 'unlike🩶'} </span> ||
+            </>
+          )}
           <span>💞 {destination.likesCount}</span>
         </div>
 
@@ -81,7 +72,7 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
         <div>
           {userService.isAdmin() && (
             <>
-              <button onClick={() => deleteDestination(destination.id)}>Delete</button>
+              <button onClick={() => onDelete(destination.id)}>Delete</button>
 
               <span> | </span>
               <NavLink to={'/destinations/edit/' + destination.id}>Edit</NavLink>

@@ -100,10 +100,8 @@ class DestinationController {
   // change like:
   private async changeLike(request: Request, response: Response, next: NextFunction) {
     try {
-      const changedLike = await destinationService.changeLike({
-        destinationId: +request.params.id,
-        userId: response.locals.tokenData.user.id,
-      });
+      const changedLike = await destinationService.changeLike(+request.params.id, response.locals.tokenData.user);
+
       response.status(StatusCode.OK).json({ changedLike });
     } catch (err: any) {
       next(err);

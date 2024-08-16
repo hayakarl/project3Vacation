@@ -1,24 +1,15 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { DestinationModel } from '../Models/DestinationModel';
 import { appConfig } from '../Utils/AppConfig';
-import { destinationActions, store } from '../Redux/store';
-import { deleteDestination } from '../Redux/reducers';
 import { Public } from '@mui/icons-material';
 
 class DestinationService {
   //Get all destinations from backend: --asaf
   public async getAllDestinations(): Promise<DestinationModel[]> {
-    // If we have destinations in the global state - return them, without fetching from server:
-    if (store.getState().destinations) return store.getState().destinations;
-
-    // We don't have destinations in the global state - fetch them from backend:
+    // fetch them from backend:
     const response = await axios.get<DestinationModel[]>(appConfig.backendUrl + 'destinations');
 
     const destinations = response.data;
-
-    // Init all destinations in the global state:
-    const action = destinationActions.initDestinations(destinations);
-    store.dispatch(action);
 
     // Return:
     return destinations;
@@ -26,10 +17,9 @@ class DestinationService {
 
   //Get one destination by id:
   public async getOneDestination(id: number): Promise<DestinationModel> {
-    // If we have destinations in the global state - return them, without fetching from server:
-    //  if (store.getState().destinations) return store.getState().destinations;
+  
 
-    // We don't have destinations in the global state - fetch them from backend:
+    //  - fetch them from backend:
     const response = await axios.get<DestinationModel>(appConfig.backendUrl + 'destinations/' + id);
     const destination = response.data;
 
@@ -54,15 +44,8 @@ class DestinationService {
     const options: AxiosRequestConfig = { headers: { 'Content-Type': 'multipart/form-data' } };
     const response = await axios.post<DestinationModel>(appConfig.backendUrl + 'destinations', formData, options);
 
-    // Don't add that destination to redux if global state is empty:
-    if (!store.getState().destinations) return;
-
     // Get back the added destination:
     const addedDestination = response.data;
-
-    // Send added destination to global state:
-    const action = destinationActions.addDestination(addedDestination);
-    store.dispatch(action);
   }
 
   //Update destination
@@ -81,25 +64,14 @@ class DestinationService {
     const options: AxiosRequestConfig = { headers: { 'Content-Type': 'multipart/form-data' } };
     const response = await axios.put<DestinationModel>(appConfig.backendUrl + 'destinations', formData, options);
 
-    // Don't add that destination to redux if global state is empty:
-    if (!store.getState().destinations) return;
-
     // Get back the added destination:
     const updateDestination = response.data;
-
-    // Send update destination to global state:
-    const action = destinationActions.updateDestination(updateDestination);
-    store.dispatch(action);
   }
 
   //   Delete destination :
   public async deleteDestination(id: number): Promise<void> {
     // Delete this destination in backend:
-    await axios.delete(appConfig.backendUrl + 'destinations' + id);
-
-    // Delete this destination also in redux global state:
-    // const action = destinationActions.deleteDestination(id);
-    // store.dispatch(action); // Redux will call destinationReducer to perform this action.
+    await axios.delete(appConfig.backendUrl + 'destinations/' + id);
   }
 
   public async changeLike(destinationId: number) {

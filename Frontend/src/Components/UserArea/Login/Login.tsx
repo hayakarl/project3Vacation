@@ -1,20 +1,18 @@
 import { useForm } from 'react-hook-form';
 import './Login.css';
 import { CredentialsModel } from '../../../Models/CredentialsModel';
-import { useNavigate } from 'react-router-dom';
 import { userService } from '../../../Services/UserService';
 import { errorHandler } from '../../../Utils/ErrorHandler';
 import { notify } from '../../../Utils/notify';
 
 export function Login(): JSX.Element {
   const { register, handleSubmit } = useForm<CredentialsModel>();
-  const navigate = useNavigate();
-
+ 
   async function send(credentials: CredentialsModel) {
     try {
       await userService.login(credentials);
-      notify.success('Welcome back to our web!');
-      navigate('/home');
+      //refresh page
+      window.location.href= "/home";
     } catch (err: any) {
       const errorMessage = errorHandler.getError(err);
       notify.error(errorMessage);

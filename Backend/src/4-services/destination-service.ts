@@ -3,6 +3,8 @@ import { dal } from '../2-utils/dal';
 import { ResourceNotFoundError, ValidationError } from '../3-models/client-error';
 import { DestinationModel } from '../3-models/destination-model';
 import { fileSaver } from 'uploaded-file-saver';
+import { cyber } from '../2-utils/cyber';
+import { UserModel } from '../3-models/user-model';
 
 // Destination service - any logic regarding destinations:
 class DestinationService {
@@ -177,17 +179,24 @@ class DestinationService {
     }
   }
 
-  public async changeLike(like: { destinationId: number; userId: number }): Promise<any> {
+  public async changeLike(destinationId: number, user: UserModel): Promise<any> {
+
+    const userId = user.id;
+
     //Validate:
-    if (!like.destinationId || !like.userId) {
+    if (!destinationId || !userId) {
       throw new Error('Destination ID and User ID are required');
     }
 
-    const isLike = await this.checkLike({ destinationId: like.destinationId, userId: like.userId });
+    if (user.roleId === 1) {
+         throw new Error('Admin not allowed to Like destination');
+    }
+
+    const isLike = await this.checkLike({ destinationId: destinationId, userId: userId });
     if (isLike === false) {
-      await this.addLike({ destinationId: like.destinationId, userId: like.userId });
+      await this.addLike({ destinationId: destinationId, userId: userId });
     } else {
-      await this.deleteLike({ destinationId: like.destinationId, userId: like.userId });
+      await this.deleteLike({ destinationId: destinationId, userId: userId });
     }
     return !isLike;
   }

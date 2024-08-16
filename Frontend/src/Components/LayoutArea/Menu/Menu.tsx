@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './Menu.css';
-import { TotalDestinations } from '../../DestinationArea/TotalDestinations/TotalDestinations';
+// import { TotalDestinations } from '../../DestinationArea/TotalDestinations/TotalDestinations';
 
 export function Menu(): JSX.Element {
   return (
@@ -11,7 +11,8 @@ export function Menu(): JSX.Element {
       {/* <NavLink to="/edit-destination"> עדכן חופשה  🔃</NavLink> */}
       <NavLink to="/about">צור קשר🧙</NavLink>
 
-      <TotalDestinations />
+      {/* <TotalDestinations /> */}
+    
     </div>
   );
 }

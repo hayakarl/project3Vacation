@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { UserModel } from '../Models/UserModel';
 import { appConfig } from '../Utils/AppConfig';
-import { store, userActions } from '../Redux/store';
 import { jwtDecode } from 'jwt-decode'; // npm i jwt-decode
 import { CredentialsModel } from '../Models/CredentialsModel';
+import { Token } from '@mui/icons-material';
 // import { initUser } from '../Redux/reducers';
 
 class UserService {
@@ -13,8 +13,6 @@ class UserService {
     if (!token) return;
     const container = jwtDecode<{ user: UserModel }>(token);
     const dbUser = container.user;
-    const action = userActions.initUser(dbUser);
-    store.dispatch(action);
   }
 
   public async register(user: UserModel) {
@@ -31,9 +29,6 @@ class UserService {
     const container = jwtDecode<{ user: UserModel }>(token);
     const dbUser = container.user;
 
-    // Send to redux:
-    const action = userActions.initUser(dbUser);
-    store.dispatch(action);
   }
 
   public async login(credentials: CredentialsModel) {
@@ -49,23 +44,30 @@ class UserService {
     // Extract db user from token:
     const container = jwtDecode<{ user: UserModel }>(token);
     const dbUser = container.user;
+  }
 
-    // Send to redux:
-    const action = userActions.initUser(dbUser);
-    store.dispatch(action);
+  public getUserData() {
+    const token = localStorage.getItem('token');
+    console.log("token", token)
+    if (token === null) {
+        return null;
+    } 
+
+
+    // Extract db user from token:
+    const container = jwtDecode<{ user: UserModel }>(token);
+   return container.user;
+    
   }
 
   public logout() {
     localStorage.removeItem('token');
-    const action = userActions.logoutUser();
-    store.dispatch(action);
   }
   //check if user admin
-  public isAdmin(user: UserModel = null): boolean {
-    if (!user) {
-      //if no user
-      user = store.getState().user;
-      if (!user) return false;
+  public isAdmin(): boolean {
+    const user = this.getUserData()
+    if (user === null) {
+        return false;    
     }
     return user.roleId === 1;
   }

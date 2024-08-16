@@ -11,13 +11,14 @@ import Checkbox from '@mui/material/Checkbox';
 
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import notifyService from '../../../Services/NotifyService';
 
 export function DestinationList(): JSX.Element {
   // Getting all route parameters:
   const params = useParams();
 
   const [destinations, setDestinations] = useState<DestinationModel[]>([]);
-  const [filteredDestinations, setFilteredDestinations] = useState<DestinationModel[]>([]);
+//   const [filteredDestinations, setFilteredDestinations] = useState<DestinationModel[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [activeFilter, setActiveFilter] = useState<string>('all'); // Manage active filter
 
@@ -29,7 +30,7 @@ export function DestinationList(): JSX.Element {
       .then((destinations) => {
         if (Array.isArray(destinations)) {
           setDestinations(destinations);
-          setFilteredDestinations(destinations);
+        //   setDestinations(destinations);
         } else {
           throw new Error('Invalid data format');
         }
@@ -61,7 +62,7 @@ export function DestinationList(): JSX.Element {
         break;
     }
 
-    setFilteredDestinations(filtered);
+    setDestinations(filtered);
     setCurrentPage(1); // Reset to the first page when filters change
   };
 
@@ -77,7 +78,20 @@ export function DestinationList(): JSX.Element {
   // Calculate the destinations to display on the current page
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentDestinations = filteredDestinations.slice(indexOfFirstItem, indexOfLastItem);
+  const currentDestinations = destinations.slice(indexOfFirstItem, indexOfLastItem);
+
+  async function handleDestinationDelete(destinationId: number) {
+    try {
+      const iAmShure = window.confirm(`Are you sure you want to delete this destination?`);
+      if (!iAmShure) return;
+
+      await destinationService.deleteDestination(destinationId);
+      notifyService.success('Destination has been deleted');
+      applyFilters();
+    } catch (err: any) {
+      notifyService.error(err);
+    }
+  }
 
   return (
     <div className="DestinationList">
@@ -99,12 +113,12 @@ export function DestinationList(): JSX.Element {
       </div>
 
       {currentDestinations.map((p) => (
-        <DestinationCard key={p.id} destination={p} />
+        <DestinationCard key={p.id} destination={p} onDelete={handleDestinationDelete} />
       ))}
 
       <div className="pagination">
         <Stack spacing={2}>
-          <Pagination count={Math.ceil(filteredDestinations.length / itemsPerPage)} page={currentPage} onChange={handlePageChange} color="primary" />
+          <Pagination count={Math.ceil(destinations.length / itemsPerPage)} page={currentPage} onChange={handlePageChange} color="primary" />
         </Stack>
       </div>
     </div>

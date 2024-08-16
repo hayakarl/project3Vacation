@@ -966,3 +966,88 @@ Stack: Error: Destination ID and User ID are required
     at new Promise (<anonymous>)
 ---------------------------------------
 
+Time: Fri Aug 16 2024 14:02:25 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 14:11:06 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 16:06:01 GMT+0300 (שעון ישראל (קיץ))
+Message: Admin not allowed to Like destination
+Stack: Error: Admin not allowed to Like destination
+    at DestinationService.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\4-services\destination-service.ts:192:16)
+    at Generator.next (<anonymous>)
+    at C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\4-services\destination-service.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\4-services\destination-service.ts:4:12)
+    at DestinationService.changeLike (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\4-services\destination-service.ts:184:16)
+    at C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\5-controllers\destination-controller.ts:103:52
+    at Generator.next (<anonymous>)
+    at C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\src\5-controllers\destination-controller.ts:8:71
+    at new Promise (<anonymous>)
+---------------------------------------
+
+Time: Fri Aug 16 2024 16:09:57 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations119 on method DELETE not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 16:49:56 GMT+0300 (שעון ישראל (קיץ))
+Message: Cannot delete or update a parent row: a foreign key constraint fails (`vacations`.`likes`, CONSTRAINT `destinationId` FOREIGN KEY (`destinationId`) REFERENCES `destinations` (`id`))
+Stack: Error: Cannot delete or update a parent row: a foreign key constraint fails (`vacations`.`likes`, CONSTRAINT `destinationId` FOREIGN KEY (`destinationId`) REFERENCES `destinations` (`id`))
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Fri Aug 16 2024 16:50:33 GMT+0300 (שעון ישראל (קיץ))
+Message: id 121 not found.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 16:50:42 GMT+0300 (שעון ישראל (קיץ))
+Message: Cannot delete or update a parent row: a foreign key constraint fails (`vacations`.`likes`, CONSTRAINT `destinationId` FOREIGN KEY (`destinationId`) REFERENCES `destinations` (`id`))
+Stack: Error: Cannot delete or update a parent row: a foreign key constraint fails (`vacations`.`likes`, CONSTRAINT `destinationId` FOREIGN KEY (`destinationId`) REFERENCES `destinations` (`id`))
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Fri Aug 16 2024 17:06:30 GMT+0300 (שעון ישראל (קיץ))
+Message: Cannot delete or update a parent row: a foreign key constraint fails (`vacations`.`likes`, CONSTRAINT `destinationId` FOREIGN KEY (`destinationId`) REFERENCES `destinations` (`id`))
+Stack: Error: Cannot delete or update a parent row: a foreign key constraint fails (`vacations`.`likes`, CONSTRAINT `destinationId` FOREIGN KEY (`destinationId`) REFERENCES `destinations` (`id`))
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Fri Aug 16 2024 17:07:19 GMT+0300 (שעון ישראל (קיץ))
+Message: id 122 not found.
+Stack: undefined
+---------------------------------------
+
