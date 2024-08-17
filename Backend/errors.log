@@ -1051,3 +1051,313 @@ Message: id 122 not found.
 Stack: undefined
 ---------------------------------------
 
+Time: Fri Aug 16 2024 17:34:09 GMT+0300 (שעון ישראל (קיץ))
+Message: "likesCount" is not allowed
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 17:35:12 GMT+0300 (שעון ישראל (קיץ))
+Message: "likesCount" is not allowed
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 17:39:49 GMT+0300 (שעון ישראל (קיץ))
+Message: "likesCount" is not allowed
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 17:41:51 GMT+0300 (שעון ישראל (קיץ))
+Message: "likesCount" is not allowed
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 17:44:41 GMT+0300 (שעון ישראל (קיץ))
+Message: "likesCount" is not allowed
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 17:57:45 GMT+0300 (שעון ישראל (קיץ))
+Message: "isLiked" is not allowed
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 18:13:36 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 18:14:58 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 18:15:15 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 18:15:27 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 18:15:48 GMT+0300 (שעון ישראל (קיץ))
+Message: "email" is not allowed to be empty
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 18:16:37 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 18:17:03 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Aug 16 2024 18:34:28 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 12:18:34 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 12:22:50 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 12:22:57 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 12:23:07 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 12:26:43 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 12:26:47 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 12:30:44 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 12:38:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 13:39:22 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations on method PUT not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:16:55 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations on method PUT not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:17:07 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations on method PUT not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:17:38 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations on method PUT not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:25:29 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/destinations126 on method PUT not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:27:16 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:27:29 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:30:15 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:31:07 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:33:24 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" must be of type object
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:41:34 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:49:11 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:53:41 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:55:51 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" must be of type object
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:58:30 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 14:58:39 GMT+0300 (שעון ישראל (קיץ))
+Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+Stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Sat Aug 17 2024 15:08:04 GMT+0300 (שעון ישראל (קיץ))
+Message: "image" is required
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 15:44:56 GMT+0300 (שעון ישראל (קיץ))
+Message: Unknown column 'fileName' in 'field list'
+Stack: Error: Unknown column 'fileName' in 'field list'
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Sat Aug 17 2024 15:47:18 GMT+0300 (שעון ישראל (קיץ))
+Message: Unknown column 'fileName' in 'field list'
+Stack: Error: Unknown column 'fileName' in 'field list'
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Sat Aug 17 2024 15:50:19 GMT+0300 (שעון ישראל (קיץ))
+Message: Unknown column 'fileName' in 'field list'
+Stack: Error: Unknown column 'fileName' in 'field list'
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Sat Aug 17 2024 16:12:17 GMT+0300 (שעון ישראל (קיץ))
+Message: Duplicate entry 'khaya@gmail.com' for key 'users.email_UNIQUE'
+Stack: Error: Duplicate entry 'khaya@gmail.com' for key 'users.email_UNIQUE'
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Sat Aug 17 2024 16:12:44 GMT+0300 (שעון ישראל (קיץ))
+Message: Duplicate entry 'khaya@gmail.com' for key 'users.email_UNIQUE'
+Stack: Error: Duplicate entry 'khaya@gmail.com' for key 'users.email_UNIQUE'
+    at Packet.asError (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at Query.execute (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:481:34)
+    at PacketParser.onPacket (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:97:12)
+    at PacketParser.executeStart (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Haya\Full_Stack\project3_vacationApp\Full Stack Vacations\Backend\node_modules\mysql2\lib\connection.js:104:25)
+    at Socket.emit (node:events:518:28)
+    at Socket.emit (node:domain:488:12)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+---------------------------------------
+
+Time: Sat Aug 17 2024 16:34:33 GMT+0300 (שעון ישראל (קיץ))
+Message: This email all ready in use
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 16:35:11 GMT+0300 (שעון ישראל (קיץ))
+Message: "firstName" is not allowed to be empty
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 16:35:30 GMT+0300 (שעון ישראל (קיץ))
+Message: "lastName" is not allowed to be empty
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 17:51:39 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 18:02:36 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+
+Time: Sat Aug 17 2024 18:06:19 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not logged in.
+Stack: undefined
+---------------------------------------
+

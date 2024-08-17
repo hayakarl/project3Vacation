@@ -62,9 +62,11 @@ class DestinationController {
   // Update destination:
   private async updateDestination(request: Request, response: Response, next: NextFunction) {
     try {
+      const image = request.files?.image;
       const id = +request.params.id;
 
       request.body.id = id; //add id to the body
+      request.body.image = image
 
       const destination = new DestinationModel(request.body);
 

@@ -12,7 +12,7 @@ export function Login(): JSX.Element {
     try {
       await userService.login(credentials);
       //refresh page
-      window.location.href= "/home";
+      window.location.href = '/destination';
     } catch (err: any) {
       const errorMessage = errorHandler.getError(err);
       notify.error(errorMessage);

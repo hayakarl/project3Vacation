@@ -10,18 +10,20 @@ import { appConfig } from '../../../Utils/AppConfig';
 type DestinationCardProps = {
   destination: DestinationModel;
   onDelete: (id: number) => void;
+  onLike: (id: number, isLiked: boolean) => void;
+
 };
 
 export function DestinationCard(props: DestinationCardProps): JSX.Element {
   const [destination, setDestination] = useState<DestinationModel>(props.destination);
   const navigate = useNavigate();
   const onDelete = props.onDelete;
+  const onLike = props.onLike
   async function changeLike() {
     try {
+      onLike(destination.id, Boolean(destination.isLiked));
       const changedLike = await destinationService.changeLike(props.destination.id);
-      console.log('before', destination);
       setDestination({ ...destination, isLiked: changedLike });
-      console.log('after', destination);
     } catch (err: any) {
       notifyService.error(err);
     }

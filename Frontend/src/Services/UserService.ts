@@ -48,7 +48,7 @@ class UserService {
 
   public getUserData() {
     const token = localStorage.getItem('token');
-    console.log("token", token)
+   
     if (token === null) {
         return null;
     } 

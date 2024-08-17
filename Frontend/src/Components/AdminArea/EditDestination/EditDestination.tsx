@@ -5,12 +5,13 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { destinationService } from '../../../Services/DestinationService';
 import notifyService from '../../../Services/NotifyService';
+import { appConfig } from '../../../Utils/AppConfig';
 
 export function EditDestination(): JSX.Element {
   const params = useParams();
   const navigate = useNavigate();
   const { register, handleSubmit, formState, setValue } = useForm<DestinationModel>();
-  const [imageUrl, setImageUrl] = useState<string>('');
+  const [imageName, setImageName] = useState<string>('');
 
   useEffect(() => {
     // fetching the selected vacation by the ID from the route:
@@ -24,14 +25,15 @@ export function EditDestination(): JSX.Element {
         setValue('fromDate', destination.fromDate.split('.')[0]);
         setValue('untilDate', destination.untilDate.split('.')[0]);
         setValue('price', destination.price);
-        // setValue('imageUrl', destination.imageUrl);
-        // setImageUrl(destination.imageUrl);
+        setImageName(destination.imageName);
       })
       .catch((err) => notifyService.error(err));
   }, []);
 
   async function send(destination: DestinationModel) {
     try {
+      destination.image = (destination.image as unknown as FileList)[0];
+      
       await destinationService.updateDestination(destination);
       notifyService.success('Destination has been updated');
       navigate('/destination');
@@ -103,7 +105,7 @@ export function EditDestination(): JSX.Element {
         <label>תמונה</label>
         <br />
 
-        {imageUrl && <img src={imageUrl} alt="Destination" style={{ width: '200px', height: 'auto' }} />}
+        {imageName && <img src={appConfig.backendUrl + 'destinations/images/' + imageName} alt="Destination" style={{ width: '200px', height: 'auto' }} />}
         <input type="file" accept="image/*" {...register('image')} />
 
         <br />

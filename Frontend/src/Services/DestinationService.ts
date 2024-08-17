@@ -51,18 +51,19 @@ class DestinationService {
   //Update destination
   public async updateDestination(destination: DestinationModel): Promise<void> {
     // Convert DestinationModel into FormData because we need to send text + image:
+    console.log("dest", destination);
     const formData = new FormData();
     formData.append('destination', destination.destination);
     formData.append('description', destination.description);
     formData.append('fromDate', destination.fromDate.toString());
     formData.append('untilDate', destination.untilDate.toString());
     formData.append('price', destination.price.toString());
-    // formData.append('image', destination.imageUrl);
+    formData.append('image', destination.image);
     // formData.append("imageName", destination.imageUrl);
 
     // Send destination to backend:
     const options: AxiosRequestConfig = { headers: { 'Content-Type': 'multipart/form-data' } };
-    const response = await axios.put<DestinationModel>(appConfig.backendUrl + 'destinations', formData, options);
+    const response = await axios.put<DestinationModel>(appConfig.backendUrl + 'destinations/' + destination.id, formData, options);
 
     // Get back the added destination:
     const updateDestination = response.data;

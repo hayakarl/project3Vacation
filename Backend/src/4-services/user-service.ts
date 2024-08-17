@@ -27,16 +27,16 @@ class UserService {
     const values = [user.firstName, user.lastName, user.email, user.password, user.roleId];
 
     // Execute:
-    const info: OkPacketParams = await dal.execute(sql, values);
-
-    // Set back id:
-    user.id = info.insertId;
-
-    // Create JWT (Json Web Token):
-    const token = cyber.generateNewToken(user);
-
-    // Return:
-    return token;
+    try {
+      const info: OkPacketParams = await dal.execute(sql, values);
+      user.id = info.insertId;
+      return cyber.generateNewToken(user);
+    } catch (err) {
+        if (err.code === "ER_DUP_ENTRY") {
+            throw new ValidationError('This email all ready in use');
+        }
+        throw (err); 
+    }
   }
 
   public async login(credentials: CredentialsModel) {

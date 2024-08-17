@@ -10,12 +10,11 @@ import { UserModel } from '../3-models/user-model';
 class DestinationService {
   // Get all destinations:
   public async getAllDestinations(userId: number) {
-    console.log('userId: ', userId);
     const sql = `
             SELECT DISTINCT
                 V.*, 
                 imageName,
-                EXISTS(SELECT * FROM likes WHERE id = L.destinationId AND userId = ?) AS isLiked,
+                EXISTS(SELECT * FROM likes WHERE destinationId = L.destinationId AND userId = ?) AS isLiked,
                 COUNT(L.userId) AS likesCount
             FROM destinations as V LEFT JOIN likes as L
             ON V.id = L.destinationId
@@ -56,7 +55,6 @@ class DestinationService {
   public async addDestination(destination: DestinationModel) {
     //Validate:
     const error = destination.validate();
-    console.log('debug', error);
     if (error) throw new ValidationError(error);
 
     // Save image to disk:
@@ -81,15 +79,25 @@ class DestinationService {
   // Update destination:
   public async updateDestination(destination: DestinationModel) {
     //validation
-    const error = destination.validate();
+    const error = destination.validateUpdate();
+    console.log('err :', error);
+    console.log('des:', destination);
     if (error) throw new ValidationError(error);
 
-    // SQL:
-    const sql = 'update destinations set destination = ?, description = ?, fromDate = ?, untilDate = ?, price = ? where id = ?';
+    // Save image to disk:
+   
+    const imageName = destination.image ? await fileSaver.add(destination.image) : null;
+   
+    let info: OkPacketParams;
+    if (imageName === null) {
+      const sql = 'update destinations set destination = ?, description = ?, fromDate = ?, untilDate = ?, price = ? where id = ?';
+      info = await dal.execute(sql, [destination.destination, destination.description, parseDate(destination.fromDate), parseDate(destination.untilDate), destination.price, destination.id]);
 
-    // Execute:
-    const info: OkPacketParams = await dal.execute(sql, [destination.destination, destination.description, parseDate(destination.fromDate), parseDate(destination.untilDate), destination.id]);
-
+    } else {
+         const sql = 'update destinations set destination = ?, description = ?, fromDate = ?, untilDate = ?, price = ?, imageName = ? where id = ?';
+         info = await dal.execute(sql, [destination.destination, destination.description, parseDate(destination.fromDate), parseDate(destination.untilDate), destination.price, imageName, destination.id]);
+    }
+    
     // If destination not found:
     if (info.affectedRows === 0) throw new ResourceNotFoundError(destination.id);
 
@@ -129,6 +137,7 @@ class DestinationService {
     } catch (err) {
       throw new Error('Failed to add like: ' + err.message);
     }
+    return info.affectedRows>0;
   }
 
   private async deleteLike(like: { destinationId: number; userId: number }): Promise<any> {
@@ -139,7 +148,7 @@ class DestinationService {
 
     // SQL:
     const sql = `  
-            DELETE  FROM likes
+            DELETE FROM likes
             WHERE destinationId = ? AND userId = ?;
             `;
 
@@ -150,6 +159,7 @@ class DestinationService {
     } catch (err) {
       throw new Error('Failed to delete like: ' + err.message);
     }
+    return info.affectedRows > 0;
   }
 
   private async checkLike(like: { destinationId: number; userId: number }): Promise<any> {
@@ -193,11 +203,16 @@ class DestinationService {
     }
 
     const isLike = await this.checkLike({ destinationId: destinationId, userId: userId });
+    console.log("isLike before", isLike)
     if (isLike === false) {
-      await this.addLike({ destinationId: destinationId, userId: userId });
+      const addLike = await this.addLike({ destinationId: destinationId, userId: userId });
+       console.log('addLike', addLike);
     } else {
-      await this.deleteLike({ destinationId: destinationId, userId: userId });
+      const deleteLike = await this.deleteLike({ destinationId: destinationId, userId: userId });
+       console.log('deleteLike', deleteLike);
     }
+     const isLikeAfter = await this.checkLike({ destinationId: destinationId, userId: userId });
+     console.log('isLike AFTER', isLikeAfter);
     return !isLike;
   }
 }
