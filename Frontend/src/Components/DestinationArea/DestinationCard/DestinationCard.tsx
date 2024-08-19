@@ -16,7 +16,6 @@ type DestinationCardProps = {
 
 export function DestinationCard(props: DestinationCardProps): JSX.Element {
   const [destination, setDestination] = useState<DestinationModel>(props.destination);
-  const navigate = useNavigate();
   const onDelete = props.onDelete;
   const onLike = props.onLike
   async function changeLike() {

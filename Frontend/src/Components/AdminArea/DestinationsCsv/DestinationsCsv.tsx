@@ -9,15 +9,10 @@ import { notify } from '../../../Utils/notify';
 import { errorHandler } from '../../../Utils/ErrorHandler';
 import { useNavigate } from 'react-router-dom';
 
-const convertToCSV = (data: any[]) => {
-  const header = Object.keys(data[0]).join(',') + '\n';
-  const rows = data.map((row) => Object.values(row).join(',')).join('\n');
-  return header + rows;
-};
 
 const downloadCSV = (csv: string, filename: string) => {
   const utf8Bom = '\uFEFF'; // UTF-8 BOM
-  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const blob = new Blob([utf8Bom + csv], { type: 'text/csv;charset=utf-8;' });
   saveAs(blob, filename);
 };
 
@@ -46,12 +41,6 @@ const DestinationsCsv: React.FC = () => {
 
     const csv = Papa.unparse(csvData);
     downloadCSV(csv, 'destinations_report.csv');
-  };
-
-  const downloadCSV = (csv: string, filename: string) => {
-    const utf8Bom = '\uFEFF'; // UTF-8 BOM
-    const blob = new Blob([utf8Bom + csv], { type: 'text/csv;charset=utf-8;' });
-    saveAs(blob, filename);
   };
 
   const handleGoBack = () => {

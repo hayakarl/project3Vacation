@@ -6,8 +6,6 @@ import { appConfig } from '../2-utils/app-config';
 
 class ErrorsMiddleware {
   public catchAll(err: any, request: Request, response: Response, next: NextFunction) {
-    console.log(err);
-
     logger.logError(err); //תיעוד שגיאות
 
     const statusCode = err.status || StatusCode.InternalServerError;

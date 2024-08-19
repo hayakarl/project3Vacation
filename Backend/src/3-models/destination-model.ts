@@ -12,7 +12,6 @@ export class DestinationModel {
   public likesCount?: number;
   public isLiked?: boolean;
 
-  // Copy Constructor
   public constructor(destination: DestinationModel) {
     this.destination = destination.destination;
     this.description = destination.description;
@@ -41,7 +40,7 @@ export class DestinationModel {
   };
 
   private static validationScheme = Joi.object({
-   ...this.joiBase,
+    ...this.joiBase,
     image: Joi.object().required(),
   });
 

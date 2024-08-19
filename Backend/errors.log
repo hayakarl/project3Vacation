@@ -1361,3 +1361,13 @@ Message: You are not logged in.
 Stack: undefined
 ---------------------------------------
 
+Time: Sat Aug 17 2024 20:04:27 GMT+0300 (שעון ישראל (קיץ))
+Message: You are not authorized.
+Stack: undefined
+---------------------------------------
+
+Time: Sun Aug 18 2024 22:06:15 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+

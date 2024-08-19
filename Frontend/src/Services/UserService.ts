@@ -28,7 +28,6 @@ class UserService {
     // Extract db user from token:
     const container = jwtDecode<{ user: UserModel }>(token);
     const dbUser = container.user;
-
   }
 
   public async login(credentials: CredentialsModel) {
@@ -48,16 +47,14 @@ class UserService {
 
   public getUserData() {
     const token = localStorage.getItem('token');
-   
-    if (token === null) {
-        return null;
-    } 
 
+    if (token === null) {
+      return null;
+    }
 
     // Extract db user from token:
     const container = jwtDecode<{ user: UserModel }>(token);
-   return container.user;
-    
+    return container.user;
   }
 
   public logout() {
@@ -65,9 +62,9 @@ class UserService {
   }
   //check if user admin
   public isAdmin(): boolean {
-    const user = this.getUserData()
+    const user = this.getUserData();
     if (user === null) {
-        return false;    
+      return false;
     }
     return user.roleId === 1;
   }

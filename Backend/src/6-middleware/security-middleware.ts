@@ -13,7 +13,7 @@ class SecurityMiddleware {
         return;
       }
     }
-    next(); // Continue the request to the next middleware.
+    next(); 
   }
   //=====================
   // Validate token:
@@ -21,8 +21,7 @@ class SecurityMiddleware {
     // Take header:
     const authorizationHeader = request.headers.authorization;
 
-    // "Bearer the-token..."
-    //  01234567 token start in 7 position
+   
     // ?. if its null or undefine then not allowed to enter
     const token = authorizationHeader?.substring(7);
 

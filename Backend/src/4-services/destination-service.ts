@@ -3,12 +3,9 @@ import { dal } from '../2-utils/dal';
 import { ResourceNotFoundError, ValidationError } from '../3-models/client-error';
 import { DestinationModel } from '../3-models/destination-model';
 import { fileSaver } from 'uploaded-file-saver';
-import { cyber } from '../2-utils/cyber';
 import { UserModel } from '../3-models/user-model';
 
-// Destination service - any logic regarding destinations:
 class DestinationService {
-  // Get all destinations:
   public async getAllDestinations(userId: number) {
     const sql = `
             SELECT DISTINCT
@@ -25,13 +22,10 @@ class DestinationService {
     // Execute:
     const destinations = await dal.execute(sql, [userId]);
 
-    // Return:
     return destinations;
   }
 
-  // Get one destination:
   public async getOneDestination(id: number) {
-    // SQL:
     const sql = `SELECT *, 
                     imageName
                     FROM destinations 
@@ -47,11 +41,9 @@ class DestinationService {
     // If destination not found:
     if (!destination) throw new ResourceNotFoundError(id);
 
-    // Return:
     return destination;
   }
 
-  // Add destination:
   public async addDestination(destination: DestinationModel) {
     //Validate:
     const error = destination.validate();
@@ -60,7 +52,6 @@ class DestinationService {
     // Save image to disk:
     const imageName = destination.image ? await fileSaver.add(destination.image) : null;
 
-    // SQL:
     const sql = `
             INSERT INTO destinations 
             values(default,?,?,?,?,?,?);
@@ -72,42 +63,33 @@ class DestinationService {
     // Get back the db destination:
     destination = await this.getOneDestination(info.insertId);
 
-    // Return:
     return destination;
   }
 
-  // Update destination:
   public async updateDestination(destination: DestinationModel) {
-    //validation
     const error = destination.validateUpdate();
-    console.log('err :', error);
-    console.log('des:', destination);
+
     if (error) throw new ValidationError(error);
 
     // Save image to disk:
-   
     const imageName = destination.image ? await fileSaver.add(destination.image) : null;
-   
+
     let info: OkPacketParams;
     if (imageName === null) {
       const sql = 'update destinations set destination = ?, description = ?, fromDate = ?, untilDate = ?, price = ? where id = ?';
       info = await dal.execute(sql, [destination.destination, destination.description, parseDate(destination.fromDate), parseDate(destination.untilDate), destination.price, destination.id]);
-
     } else {
-         const sql = 'update destinations set destination = ?, description = ?, fromDate = ?, untilDate = ?, price = ?, imageName = ? where id = ?';
-         info = await dal.execute(sql, [destination.destination, destination.description, parseDate(destination.fromDate), parseDate(destination.untilDate), destination.price, imageName, destination.id]);
+      const sql = 'update destinations set destination = ?, description = ?, fromDate = ?, untilDate = ?, price = ?, imageName = ? where id = ?';
+      info = await dal.execute(sql, [destination.destination, destination.description, parseDate(destination.fromDate), parseDate(destination.untilDate), destination.price, imageName, destination.id]);
     }
-    
+
     // If destination not found:
     if (info.affectedRows === 0) throw new ResourceNotFoundError(destination.id);
 
-    // Return:
     return destination;
   }
 
-  // Delete destination:
   public async deleteDestination(id: number) {
-    // SQL:
     const sql = 'delete from destinations where id = ?';
 
     // Execute:
@@ -123,7 +105,6 @@ class DestinationService {
       throw new Error('Destination ID and User ID are required');
     }
 
-    // SQL:
     const sql = `
             
             INSERT INTO likes (destinationId, userId)
@@ -137,7 +118,7 @@ class DestinationService {
     } catch (err) {
       throw new Error('Failed to add like: ' + err.message);
     }
-    return info.affectedRows>0;
+    return info.affectedRows > 0;
   }
 
   private async deleteLike(like: { destinationId: number; userId: number }): Promise<any> {
@@ -146,7 +127,6 @@ class DestinationService {
       throw new Error('Destination ID and User ID are required');
     }
 
-    // SQL:
     const sql = `  
             DELETE FROM likes
             WHERE destinationId = ? AND userId = ?;
@@ -168,7 +148,6 @@ class DestinationService {
       throw new Error('Destination ID and User ID are required');
     }
 
-    // SQL:
     const sql = ` 
             SELECT * 
             FROM likes
@@ -190,7 +169,6 @@ class DestinationService {
   }
 
   public async changeLike(destinationId: number, user: UserModel): Promise<any> {
-
     const userId = user.id;
 
     //Validate:
@@ -199,20 +177,17 @@ class DestinationService {
     }
 
     if (user.roleId === 1) {
-         throw new Error('Admin not allowed to Like destination');
+      throw new Error('Admin not allowed to Like destination');
     }
 
     const isLike = await this.checkLike({ destinationId: destinationId, userId: userId });
-    console.log("isLike before", isLike)
+
     if (isLike === false) {
       const addLike = await this.addLike({ destinationId: destinationId, userId: userId });
-       console.log('addLike', addLike);
     } else {
       const deleteLike = await this.deleteLike({ destinationId: destinationId, userId: userId });
-       console.log('deleteLike', deleteLike);
     }
-     const isLikeAfter = await this.checkLike({ destinationId: destinationId, userId: userId });
-     console.log('isLike AFTER', isLikeAfter);
+    const isLikeAfter = await this.checkLike({ destinationId: destinationId, userId: userId });
     return !isLike;
   }
 }

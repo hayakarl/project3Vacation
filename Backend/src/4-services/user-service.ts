@@ -14,7 +14,7 @@ class UserService {
     const error = user.validate();
     if (error) throw new ValidationError(error);
 
-    // SQL:
+   
     const sql = 'insert into users values(default,?,?,?,?,?)';
 
     // Set role as regular user and not something else:
@@ -44,7 +44,7 @@ class UserService {
     const error = credentials.validate();
     if (error) throw new ValidationError(error);
 
-    // SQL:
+  
     const sql = 'select * from users where email = ? and password = ?';
 
     //Hash password

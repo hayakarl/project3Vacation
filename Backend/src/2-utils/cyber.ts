@@ -4,7 +4,6 @@ import { Role } from '../3-models/enums';
 import crypto from 'crypto';
 
 class Cyber {
-  // Secret key:
   private secretKey = 'TheBestVacation!';
 
   private hashingSalt = 'Good Luck';
@@ -16,7 +15,6 @@ class Cyber {
 
   // Generate new JWT token:
   public generateNewToken(user: UserModel): string {
-    // Remove password:
     delete user.password;
 
     // User container:
@@ -32,10 +30,8 @@ class Cyber {
     return token;
   }
 
-  // Is token valid:
   public isTokenValid(token: string): boolean {
     try {
-      // If no token:
       if (!token) return false;
 
       // Verify token:
@@ -49,7 +45,6 @@ class Cyber {
     }
   }
 
-  // Is user admin:
   public isAdmin(token: string): boolean {
     try {
       // Extract container object from token:

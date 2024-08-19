@@ -4,9 +4,7 @@ import { DestinationModel } from '../3-models/destination-model';
 import { StatusCode } from '../3-models/enums';
 import { securityMiddleware } from '../6-middleware/security-middleware';
 import { fileSaver } from 'uploaded-file-saver';
-import { UserModel } from '../3-models/user-model';
 
-// Destination controller - listening to destination requests:
 class DestinationController {
   // Creating a router object:
   public readonly router = express.Router();
@@ -22,7 +20,6 @@ class DestinationController {
     this.router.post('/destinations/:id([0-9]+)/changeLike', securityMiddleware.validateLogin, this.changeLike);
   }
 
-  // Get all destinations:
   private async getAllDestinations(request: Request, response: Response, next: NextFunction) {
     const userId = response.locals.tokenData.user.id;
     try {
@@ -33,7 +30,6 @@ class DestinationController {
     }
   }
 
-  // Get one destination:
   private async getOneDestination(request: Request, response: Response, next: NextFunction) {
     try {
       const id = +request.params.id;
@@ -44,7 +40,6 @@ class DestinationController {
     }
   }
 
-  // Add destination:
   private async addDestination(request: Request, response: Response, next: NextFunction) {
     try {
       //   Handle file upload
@@ -59,14 +54,13 @@ class DestinationController {
     }
   }
 
-  // Update destination:
   private async updateDestination(request: Request, response: Response, next: NextFunction) {
     try {
       const image = request.files?.image;
       const id = +request.params.id;
 
       request.body.id = id; //add id to the body
-      request.body.image = image
+      request.body.image = image;
 
       const destination = new DestinationModel(request.body);
 
@@ -77,7 +71,6 @@ class DestinationController {
     }
   }
 
-  // Delete destination:
   private async deleteDestination(request: Request, response: Response, next: NextFunction) {
     try {
       const id = +request.params.id;
@@ -99,7 +92,6 @@ class DestinationController {
     }
   }
 
-  // change like:
   private async changeLike(request: Request, response: Response, next: NextFunction) {
     try {
       const changedLike = await destinationService.changeLike(+request.params.id, response.locals.tokenData.user);

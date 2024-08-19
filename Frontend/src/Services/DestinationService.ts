@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { DestinationModel } from '../Models/DestinationModel';
 import { appConfig } from '../Utils/AppConfig';
-import { Public } from '@mui/icons-material';
 
 class DestinationService {
   //Get all destinations from backend: --asaf
@@ -17,8 +16,6 @@ class DestinationService {
 
   //Get one destination by id:
   public async getOneDestination(id: number): Promise<DestinationModel> {
-  
-
     //  - fetch them from backend:
     const response = await axios.get<DestinationModel>(appConfig.backendUrl + 'destinations/' + id);
     const destination = response.data;
@@ -51,7 +48,6 @@ class DestinationService {
   //Update destination
   public async updateDestination(destination: DestinationModel): Promise<void> {
     // Convert DestinationModel into FormData because we need to send text + image:
-    console.log("dest", destination);
     const formData = new FormData();
     formData.append('destination', destination.destination);
     formData.append('description', destination.description);
@@ -59,7 +55,6 @@ class DestinationService {
     formData.append('untilDate', destination.untilDate.toString());
     formData.append('price', destination.price.toString());
     formData.append('image', destination.image);
-    // formData.append("imageName", destination.imageUrl);
 
     // Send destination to backend:
     const options: AxiosRequestConfig = { headers: { 'Content-Type': 'multipart/form-data' } };
