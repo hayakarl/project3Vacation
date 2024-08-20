@@ -15,14 +15,14 @@ type DestinationCardProps = {
 };
 
 export function DestinationCard(props: DestinationCardProps): JSX.Element {
-  const [destination, setDestination] = useState<DestinationModel>(props.destination);
+  
   const onDelete = props.onDelete;
   const onLike = props.onLike
   async function changeLike() {
     try {
-      onLike(destination.id, Boolean(destination.isLiked));
-      const changedLike = await destinationService.changeLike(props.destination.id);
-      setDestination({ ...destination, isLiked: changedLike });
+
+      onLike(props.destination.id, Boolean(props.destination.isLiked));
+      await destinationService.changeLike(props.destination.id);
     } catch (err: any) {
       notifyService.error(err);
     }
@@ -33,50 +33,50 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
     <div className="DestinationCard">
       <div className="information">
         <div>
-          <span>{destination.destination}</span>
+          <span>{props.destination.destination}</span> 
         </div>
 
         <div>
           {!userService.isAdmin() && (
             <>
-              <span onClick={changeLike}> {destination.isLiked == 1 ? 'like❤️' : 'unlike🩶'} </span> ||
+              <span onClick={changeLike}> {props.destination.isLiked == 1 ? 'like❤️' : 'unlike🩶'} </span> ||
             </>
           )}
-          <span>💞 {destination.likesCount}</span>
+          <span>💞 {props.destination.likesCount}</span>
         </div>
 
         <div>
-          <NavLink to={'/destinations/details/' + destination.id}>
-            <img src={appConfig.backendUrl + 'destinations/images/' + destination.imageName} />
+          <NavLink to={'/destinations/details/' + props.destination.id}>
+            <img src={appConfig.backendUrl + 'destinations/images/' + props.destination.imageName} />
           </NavLink>
         </div>
 
         <div>
           <br />
-          <span>{destination.description}</span>
+          <span>{props.destination.description}</span>
           <br />
           <br />
         </div>
 
         <div>
-          <span>מחיר :$ {destination.price} </span>
+          <span>מחיר :$ {props.destination.price} </span>
         </div>
 
         <div className="dates">
           <p>
-            <b> {new Date(destination.fromDate).toLocaleDateString()}</b>
+            <b> {new Date(props.destination.fromDate).toLocaleDateString()}</b>
             🔛
-            <b>{new Date(destination.untilDate).toLocaleDateString()}</b>
+            <b>{new Date(props.destination.untilDate).toLocaleDateString()}</b>
           </p>
         </div>
 
         <div>
           {userService.isAdmin() && (
             <>
-              <button onClick={() => onDelete(destination.id)}>Delete</button>
+              <button onClick={() => onDelete(props.destination.id)}>Delete</button>
 
               <span> | </span>
-              <NavLink to={'/destinations/edit/' + destination.id}>Edit</NavLink>
+              <NavLink to={'/destinations/edit/' + props.destination.id}>Edit</NavLink>
               <span> | </span>
             </>
           )}

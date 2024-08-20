@@ -19,53 +19,54 @@ export function DestinationList(): JSX.Element {
   const params = useParams();
 
   const [destinations, setDestinations] = useState<DestinationModel[]>([]);
-  const [filteredDestinations, setFilteredDestinations] = useState<DestinationModel[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [activeFilter, setActiveFilter] = useState<string>('all'); // Manage active filter
+  const [activeFilter, setActiveFilter] = useState<string>('all');
 
   const itemsPerPage = 9; // Number of items to display per page
 
-    const fetchDestinations = () => {   
+  const fetchDestinations = () => {
     destinationService
       .getAllDestinations()
       .then((destinations) => {
+        //filter
         if (Array.isArray(destinations)) {
-          setDestinations(destinations);
-          setFilteredDestinations(destinations);
+          const filteredDestinations = applyFilters(destinations);
+          setDestinations(filteredDestinations);
         } else {
           throw new Error('Invalid data format');
         }
       })
       .catch((err) => notify.error(errorHandler.getError(err)));
-  }
+  };
 
   useEffect(fetchDestinations, []);
 
-  useEffect(() => {
-    applyFilters();
-  }, [activeFilter]);
+  useEffect(fetchDestinations, [activeFilter]);
 
-  const applyFilters = async () => {
-    let filtered = destinations;
-
+  const applyFilters = (destinations: DestinationModel[]) => {
+    const now = new Date();
     switch (activeFilter) {
       case 'liked':
-        filtered = destinations.filter((destination) => destination.isLiked);
+        return destinations.filter((destination) => destination.isLiked);
         break;
       case 'active':
-        filtered = await destinationService.filterActiveDestinations(destinations);
+        return destinations.filter((d) => {
+          const fromDate = new Date(d.fromDate);
+          const untilDate = new Date(d.untilDate);
+          return fromDate <= now && untilDate >= now;
+        });
         break;
       case 'notStarted':
-        filtered = await destinationService.filterFutureDestinations(destinations);
+        return destinations.filter((d) => {
+          const fromDate = new Date(d.fromDate);
+          return fromDate > now;
+        });
         break;
       default:
         // "all" or any other value resets the filter
-        filtered = destinations;
+        return destinations;
         break;
     }
-
-    setFilteredDestinations(filtered);
-    setCurrentPage(1); // Reset to the first page when filters change
   };
 
   const handleFilterChange = (filter: string) => {
@@ -80,22 +81,11 @@ export function DestinationList(): JSX.Element {
   // Calculate the destinations to display on the current page
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentDestinations = filteredDestinations.slice(indexOfFirstItem, indexOfLastItem);
+  const currentDestinations = destinations.slice(indexOfFirstItem, indexOfLastItem);
 
   async function handleDestinationLike(destinationId: number, isLiked: boolean) {
-    const updateDestination = destinations.find(d => d.id === destinationId) 
-
-    updateDestination.isLiked = isLiked ? 0 : 1;
-    if (isLiked == true) {
-       updateDestination.likesCount--
-    }else {
-        updateDestination.likesCount++
-        
-    }
-    setDestinations(destinations);
+    setDestinations([]);
   }
-
-
 
   async function handleDestinationDelete(destinationId: number) {
     try {
@@ -122,24 +112,24 @@ export function DestinationList(): JSX.Element {
       </div>
 
       <div>
-         {userService.isAdmin() && (
-            <>
-        <NavLink to="/new-destination"> הוספת חופשה ➕</NavLink>
-        <br />
-        <NavLink to="/destination/destinationReport"> דוח חופשות 📊</NavLink>
-        <br />
-        <NavLink to="/destination/destinationCsv"> קובץ חופשות 📋</NavLink>
-      </>
-      )}
+        {userService.isAdmin() && (
+          <>
+            <NavLink to="/new-destination"> הוספת חופשה ➕</NavLink>
+            <br />
+            <NavLink to="/destination/destinationReport"> דוח חופשות 📊</NavLink>
+            <br />
+            <NavLink to="/destination/destinationCsv"> קובץ חופשות 📋</NavLink>
+          </>
+        )}
       </div>
 
-      {currentDestinations.map((p) => (
+      {destinations.map((p) => (
         <DestinationCard key={p.id} destination={p} onDelete={handleDestinationDelete} onLike={handleDestinationLike} />
       ))}
 
       <div className="pagination">
         <Stack spacing={2}>
-          <Pagination count={Math.ceil(filteredDestinations.length / itemsPerPage)} page={currentPage} onChange={handlePageChange} color="primary" />
+          <Pagination count={Math.ceil(destinations.length / itemsPerPage)} page={currentPage} onChange={handlePageChange} color="primary" />
         </Stack>
       </div>
     </div>
