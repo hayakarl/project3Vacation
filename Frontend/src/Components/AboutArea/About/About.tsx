@@ -6,20 +6,20 @@ export function About(): JSX.Element {
   return (
     <div className="About">
       <Typography variant="h3">
-        Contact Us &nbsp;&nbsp;
+        צור קשר &nbsp;&nbsp;
         <ContactMail fontSize="large" />
       </Typography>
 
       <form>
-        <TextField label="Name" type="text" />
-        <TextField label="Email" type="email" />
-        <TextField label="Message" type="text" />
-        <FormControlLabel control={<Checkbox />} label="Send me promotional emails" />
+        <TextField label="שם פרטי ושם משפחה" type="text" />
+        <TextField label="אימייל" type="email" />
+        <TextField label="הודעה" type="text" />
+        <FormControlLabel control={<Checkbox />} label="שלח הודעה" />
 
         <ButtonGroup variant="contained" fullWidth>
-          <Button color="primary">Send</Button>
+          <Button color="primary">שלח</Button>
           <Button color="secondary" type="reset">
-            Clear
+            נקה
           </Button>
         </ButtonGroup>
       </form>

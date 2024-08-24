@@ -13,28 +13,30 @@ export function UserMenu(): JSX.Element {
 
   function logout() {
     userService.logout();
+    window.location.href = '/home';
     setUser(null);
-    notify.success('We want to thank you for your visit, hope to see you soon');
+    notify.success('תודה שבקרת באתר שלנו, נשמח לראותך שוב');
   }
 
   return (
     <div className="UserMenu">
       {!user && (
         <>
-          <span>Hello Guest || </span>
-          <NavLink to="/register">Register</NavLink>
+          <span>שלום אורח | </span>
+          <NavLink to="/register">הרשמה</NavLink>
           <span> | </span>
-          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/login">כניסה</NavLink>
         </>
       )}
 
       {user && (
         <>
           <span>
-            Hello {user.firstName} {user.lastName} ||{' '}
+           Hello {user.firstName} {user.lastName}  |{' '}
           </span>
+
           <NavLink to="/home" onClick={logout}>
-            Logout
+            התנתקות
           </NavLink>
         </>
       )}

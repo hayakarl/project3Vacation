@@ -11,7 +11,6 @@ export function DestinationDetails(): JSX.Element {
   // Getting all route parameters:
   const params = useParams();
 
-  // Navigate method:
   const navigate = useNavigate();
 
   // State for the single destination:
@@ -29,25 +28,34 @@ export function DestinationDetails(): JSX.Element {
 
   async function deleteDestination() {
     try {
-      const iAmSure = window.confirm('Are you sure you want to delete this destination?');
+      const iAmSure = window.confirm('האם את.אתה בטוח שמעוניין למחוק');
       if (!iAmSure) return;
 
       await destinationService.deleteDestination(destination.id);
-      notifyService.success('Destination has been deleted');
+      notifyService.success('היעד נמחק');
       navigate('/destination');
     } catch (err: any) {
       notifyService.error(err);
     }
   }
 
+  
   return (
     <div className="DestinationDetails">
       {destination && (
         <>
           <h3>יעד : {destination.destination}</h3>
           <h3>{destination.description}</h3>
-          {destination.fromDate}🔛 {destination.untilDate}
-          <h3>מחיר : {destination.price}</h3>
+          {new Date(destination.fromDate).toLocaleDateString()} 🔛 {new Date(destination.untilDate).toLocaleDateString()}
+          <h3>
+            מחיר :
+            <span className="price">
+              $
+              {Number(destination.price)
+                .toFixed(0)
+                .replace(/\B(?=(\d{3})+(?!\d))/g, '')}
+            </span>
+          </h3>
           <img src={appConfig.backendUrl + 'destinations/images/' + destination.imageName} />
           <br />
           <br />

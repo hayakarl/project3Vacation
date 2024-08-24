@@ -17,12 +17,12 @@ import { userService } from '../../../Services/UserService';
 export function DestinationList(): JSX.Element {
   // Getting all route parameters:
   const params = useParams();
+  const itemsPerPage = 9; // Number of items to display per page
 
   const [destinations, setDestinations] = useState<DestinationModel[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [activeFilter, setActiveFilter] = useState<string>('all');
-
-  const itemsPerPage = 9; // Number of items to display per page
+  const [destinationsCount, setDestinationsCount] = useState<number>(itemsPerPage);
 
   const fetchDestinations = () => {
     destinationService
@@ -31,7 +31,9 @@ export function DestinationList(): JSX.Element {
         //filter
         if (Array.isArray(destinations)) {
           const filteredDestinations = applyFilters(destinations);
-          setDestinations(filteredDestinations);
+          setDestinationsCount(filteredDestinations.length);
+          const pageDestinations = applyPagination(filteredDestinations);
+          setDestinations(pageDestinations);
         } else {
           throw new Error('Invalid data format');
         }
@@ -41,7 +43,14 @@ export function DestinationList(): JSX.Element {
 
   useEffect(fetchDestinations, []);
 
-  useEffect(fetchDestinations, [activeFilter]);
+  useEffect(fetchDestinations, [activeFilter, currentPage]);
+
+  const applyPagination = (destinations: DestinationModel[]) => {
+    // Calculate the destinations to display on the current page
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    return destinations.slice(indexOfFirstItem, indexOfLastItem);
+  };
 
   const applyFilters = (destinations: DestinationModel[]) => {
     const now = new Date();
@@ -78,13 +87,15 @@ export function DestinationList(): JSX.Element {
     setCurrentPage(page);
   };
 
-  // Calculate the destinations to display on the current page
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentDestinations = destinations.slice(indexOfFirstItem, indexOfLastItem);
-
   async function handleDestinationLike(destinationId: number, isLiked: boolean) {
-    setDestinations([]);
+    setDestinations(
+      destinations.map((d) => {
+        if (destinationId == d.id) {
+          return { ...d, isLiked: d.isLiked ? 0 : 1, likesCount: d.likesCount + (d.isLiked ? -1 : +1) };
+        }
+        return d;
+      })
+    );
   }
 
   async function handleDestinationDelete(destinationId: number) {
@@ -107,17 +118,15 @@ export function DestinationList(): JSX.Element {
           <FormControlLabel control={<Checkbox checked={activeFilter === 'all'} onChange={() => handleFilterChange('all')} />} label="כל החופשות" />
           <FormControlLabel control={<Checkbox checked={activeFilter === 'liked'} onChange={() => handleFilterChange('liked')} />} label="Like חופשות" />
           <FormControlLabel control={<Checkbox checked={activeFilter === 'active'} onChange={() => handleFilterChange('active')} />} label="חופשות פעילות" />
-          <FormControlLabel control={<Checkbox checked={activeFilter === 'notStarted'} onChange={() => handleFilterChange('notStarted')} />} label="חופשות שעדיין לא התחילו" />
+          <FormControlLabel control={<Checkbox checked={activeFilter === 'notStarted'} onChange={() => handleFilterChange('notStarted')} />} label="חופשות עתידיות" />
         </FormGroup>
       </div>
 
-      <div>
+      <div className='admin-links'>
         {userService.isAdmin() && (
           <>
             <NavLink to="/new-destination"> הוספת חופשה ➕</NavLink>
-            <br />
             <NavLink to="/destination/destinationReport"> דוח חופשות 📊</NavLink>
-            <br />
             <NavLink to="/destination/destinationCsv"> קובץ חופשות 📋</NavLink>
           </>
         )}
@@ -129,7 +138,7 @@ export function DestinationList(): JSX.Element {
 
       <div className="pagination">
         <Stack spacing={2}>
-          <Pagination count={Math.ceil(destinations.length / itemsPerPage)} page={currentPage} onChange={handlePageChange} color="primary" />
+          <Pagination count={Math.ceil(destinationsCount / itemsPerPage)} page={currentPage} onChange={handlePageChange} color="primary" />
         </Stack>
       </div>
     </div>

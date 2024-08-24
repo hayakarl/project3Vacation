@@ -1,37 +1,54 @@
+
 .DestinationCard {
-    width: 250px;
-    display: inline-flex;
-    text-align: left;
-    background-image: linear-gradient(90deg, lavender, white);
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px;
+  width: 32%;
+  display: inline-block;
+  text-align: left;
+  background-image: linear-gradient(90deg, lavender, white);
+  margin: 5px;
+  padding: 3px;
+  border: 1px solid;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px;
+  height: 380px;
+  box-sizing: border-box;
+  vertical-align: top;
 }
 
 .DestinationCard img {
-    width: 180px;
-    height: 100%;
-    border: 2px solid;
-    border-radius: 10px;
-    vertical-align: middle;
+  width: 60%;
+  height: auto;
+  max-height: 80%;
+  border: 2px solid;
+  border-radius: 10px;
+  vertical-align: middle;
+  margin-bottom: 8px;
 }
 
 .DestinationCard > div:first-child {
-    display: flex; 
-    flex-direction: column;
-    
+  display: flex;
+  flex-direction: column;
 }
 
 .DestinationCard > div:last-child {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .information {
-    text-align: center;
-    font-size: small;
-    padding: 15px;
-    font-family:Cambria;
+  text-align: center;
+  font-size: small;
+  padding: px;
+  font-family: Cambria;
 }
 
+.information div {
+  margin-bottom: 1px; /* Add this to create space between different elements in the information section */
+}
+
+.information .destination-name {
+  font-size: 1.2em; /* Increase the font size for the destination name */
+  font-weight: bold; /* Make it bold for emphasis */
+  margin-bottom: 3px; /* Add some space below the destination name */
+}
+.dates {
+  padding:0.1px; /* Adjust the values to control the margin */
+}

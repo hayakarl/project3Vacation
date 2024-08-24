@@ -22,16 +22,16 @@ export function Login(): JSX.Element {
   return (
     <div className="Login">
       <form onSubmit={handleSubmit(send)}>
-        <label>Email: </label>
+        <label>אימייל </label>
         <input type="email" {...register('email')} />
 
-        <label>Password: </label>
+        <label>סיסמה </label>
         <input type="password" {...register('password')} />
 
         <br />
         <br />
 
-        <button>Login</button>
+        <button>כניסה</button>
       </form>
     </div>
   );

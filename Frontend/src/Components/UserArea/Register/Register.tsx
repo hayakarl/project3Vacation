@@ -13,8 +13,8 @@ export function Register(): JSX.Element {
   async function send(user: UserModel) {
     try {
       await userService.register(user);
-      notify.success('Welcome ' + user.firstName);
-      navigate('/destination');
+      notify.success('שמחים שנרשמת ' + user.firstName);
+      window.location.href = '/destination';
     } catch (err: any) {
       notify.error(errorHandler.getError(err));
     }
@@ -23,16 +23,16 @@ export function Register(): JSX.Element {
   return (
     <div className="Register">
       <form onSubmit={handleSubmit(send)}>
-        <label>First name: </label>
+        <label>שם פרטי </label>
         <input type="text" {...register('firstName')} />
-        <label>Last name: </label>
+        <label>שם משפחה </label>
         <input type="text" {...register('lastName')} />
-        <label>Email: </label>
+        <label>אימייל </label>
         <input type="email" {...register('email')} />
-        <label>Password: </label>
+        <label>סיסמה </label>
         <input type="password" {...register('password')} />
-        <br /> <br />
-        <button>Register</button>
+       
+        <button>הרשמה</button>
       </form>
     </div>
   );

@@ -11,16 +11,14 @@ type DestinationCardProps = {
   destination: DestinationModel;
   onDelete: (id: number) => void;
   onLike: (id: number, isLiked: boolean) => void;
-
 };
 
 export function DestinationCard(props: DestinationCardProps): JSX.Element {
-  
   const onDelete = props.onDelete;
-  const onLike = props.onLike
+  const onLike = props.onLike;
+
   async function changeLike() {
     try {
-
       onLike(props.destination.id, Boolean(props.destination.isLiked));
       await destinationService.changeLike(props.destination.id);
     } catch (err: any) {
@@ -28,12 +26,11 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
     }
   }
 
-
   return (
     <div className="DestinationCard">
       <div className="information">
-        <div>
-          <span>{props.destination.destination}</span> 
+        <div className="destination-name">
+          <span>{props.destination.destination}</span>
         </div>
 
         <div>
@@ -46,20 +43,21 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
         </div>
 
         <div>
-          <NavLink to={'/destinations/details/' + props.destination.id}>
-            <img src={appConfig.backendUrl + 'destinations/images/' + props.destination.imageName} />
-          </NavLink>
+          {userService.isAdmin() ? (
+            <NavLink to={'/destinations/details/' + props.destination.id}>
+              <img src={appConfig.backendUrl + 'destinations/images/' + props.destination.imageName} alt={props.destination.destination} />
+            </NavLink>
+          ) : (
+            <img src={appConfig.backendUrl + 'destinations/images/' + props.destination.imageName} alt={props.destination.destination} />
+          )}
         </div>
 
         <div>
-          <br />
           <span>{props.destination.description}</span>
-          <br />
-          <br />
         </div>
 
         <div>
-          <span>מחיר :$ {props.destination.price} </span>
+          <span>מחיר :$ {Number(props.destination.price).toLocaleString('he-IL')}</span>
         </div>
 
         <div className="dates">
@@ -73,11 +71,10 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
         <div>
           {userService.isAdmin() && (
             <>
-              <button onClick={() => onDelete(props.destination.id)}>Delete</button>
+              <button onClick={() => onDelete(props.destination.id)}>מחיקה</button>
 
-              <span> | </span>
-              <NavLink to={'/destinations/edit/' + props.destination.id}>Edit</NavLink>
-              <span> | </span>
+              <span> || </span>
+              <NavLink to={'/destinations/edit/' + props.destination.id}>עריכה</NavLink>
             </>
           )}
         </div>
