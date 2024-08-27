@@ -10,6 +10,7 @@ import { TextField, Typography, Button, Box, IconButton } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { JSX } from 'react/jsx-runtime';
 import { PhotoCamera } from '@mui/icons-material';
+import { userService } from '../../../Services/UserService';
 
 export function AddDestination(): JSX.Element {
   const {
@@ -23,6 +24,9 @@ export function AddDestination(): JSX.Element {
   const [minUntilDate, setMinUntilDate] = useState<string>('');
 
   useEffect(() => {
+      if (!userService.isAdmin()) {
+        navigate('/home');
+      }
     const today = new Date();
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0');

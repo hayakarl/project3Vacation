@@ -1,22 +1,35 @@
-.DestinationList .pagination {
+.DestinationListContainer .pagination {
   margin: 10 auto;
   display: flex;
   justify-content: space-evenly;
 }
 
-.DestinationList .filter {
+.DestinationListContainer .filter {
   display: block;
   font-style: italic;
 }
 
-.DestinationList .admin-links {
+.DestinationListContainer .admin-links {
   display: flex;
   gap: 10px;
   margin-top: 10px;
   justify-content: center;
 }
 
-.DestinationList .pagination {
+.DestinationListContainer .pagination {
   background-color: beige;
   padding: 5px;
+  margin-top: 5px;
+}
+
+.DestinationListContainer .Button {
+    padding: 1px 4px 1px 4px;
+    margin: 2px 5px 2px 5px;
+    border-radius: 0.5rem; 
+    font-size: 0.875rem;
+    line-height: 1.0rem; 
+    font-weight: 500; 
+    color: #ffffff; 
+    text-decoration: none;
+    background-color: #1D4ED8;
 }

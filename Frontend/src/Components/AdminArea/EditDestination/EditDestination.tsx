@@ -8,15 +8,21 @@ import notifyService from '../../../Services/NotifyService';
 import { appConfig } from '../../../Utils/AppConfig';
 import { TextField, Typography, Button, Box, IconButton, Stack } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';
+import { userService } from '../../../Services/UserService';
+import { UserModel } from '../../../Models/UserModel';
 
 export function EditDestination(): JSX.Element {
   const params = useParams();
   const navigate = useNavigate();
+
   const { register, handleSubmit, formState, setValue, watch } = useForm<DestinationModel>();
   const [imageName, setImageName] = useState<string>('');
   const [minUntilDate, setMinUntilDate] = useState<string>('');
 
   useEffect(() => {
+      if (!userService.isAdmin()) {
+        navigate('/home');
+      }
     // fetching the selected vacation by the ID from the route:
     const id = +params.destinationId;
     destinationService

@@ -36,7 +36,7 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
         <div>
           {!userService.isAdmin() && (
             <>
-              <span onClick={changeLike}> {props.destination.isLiked == 1 ? 'like❤️' : 'unlike🩶'} </span> ||
+              <span className="Cursor" onClick={changeLike}> {props.destination.isLiked == 1 ? 'like❤️' : 'unlike🩶'} </span> ||
             </>
           )}
           <span>💞 {props.destination.likesCount}</span>
@@ -52,7 +52,7 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
           )}
         </div>
 
-        <div>
+        <div className="destinationDescription">
           <span>{props.destination.description}</span>
         </div>
 
@@ -71,10 +71,13 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
         <div>
           {userService.isAdmin() && (
             <>
-              <button onClick={() => onDelete(props.destination.id)}>מחיקה</button>
+              <a className="Button" href="#" onClick={() => onDelete(props.destination.id)}>
+                מחיקה
+              </a>
 
-              <span> || </span>
-              <NavLink to={'/destinations/edit/' + props.destination.id}>עריכה</NavLink>
+              <NavLink className="Button" to={'/destinations/edit/' + props.destination.id}>
+                עריכה
+              </NavLink>
             </>
           )}
         </div>

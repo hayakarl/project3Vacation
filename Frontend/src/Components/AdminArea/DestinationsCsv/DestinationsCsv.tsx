@@ -1,6 +1,6 @@
 import './DestinationsCsv.css';
 import React, { useState, useEffect } from 'react';
-import { Button } from '@mui/material';
+import { Button, CircularProgress, Typography } from '@mui/material';
 import Papa from 'papaparse';
 import { saveAs } from 'file-saver';
 import { destinationService } from '../../../Services/DestinationService';
@@ -9,15 +9,16 @@ import { notify } from '../../../Utils/notify';
 import { errorHandler } from '../../../Utils/ErrorHandler';
 import { useNavigate } from 'react-router-dom';
 
-
 const downloadCSV = (csv: string, filename: string) => {
   const utf8Bom = '\uFEFF'; // UTF-8 BOM
   const blob = new Blob([utf8Bom + csv], { type: 'text/csv;charset=utf-8;' });
-  saveAs(blob, filename);
+  saveAs(blob, `${filename}.csv`);
 };
 
 const DestinationsCsv: React.FC = () => {
   const [destinations, setDestinations] = useState<DestinationModel[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,7 +31,12 @@ const DestinationsCsv: React.FC = () => {
           throw new Error('Invalid data format');
         }
       })
-      .catch((err) => notify.error(errorHandler.getError(err)));
+      .catch((err) => {
+        const errorMsg = errorHandler.getError(err);
+        setError(errorMsg);
+        notify.error(errorMsg);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const handleDownloadCSV = () => {
@@ -39,13 +45,21 @@ const DestinationsCsv: React.FC = () => {
       Likes: dest.likesCount,
     }));
 
-    const csv = Papa.unparse(csvData);
+    const csv = Papa.unparse(csvData, { delimiter: ',' }); // or { delimiter: ';' } based on locale
     downloadCSV(csv, 'destinations_report.csv');
   };
 
   const handleGoBack = () => {
     navigate(-1); // This will navigate the user back to the previous page
   };
+
+  if (loading) {
+    return <CircularProgress />;
+  }
+
+  if (error) {
+    return <Typography color="error">{error}</Typography>;
+  }
 
   return (
     <div>

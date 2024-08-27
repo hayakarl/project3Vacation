@@ -32,7 +32,7 @@ export function UserMenu(): JSX.Element {
       {user && (
         <>
           <span>
-           Hello {user.firstName} {user.lastName}  |{' '}
+           היי {user.firstName} {user.lastName}  
           </span>
 
           <NavLink to="/home" onClick={logout}>

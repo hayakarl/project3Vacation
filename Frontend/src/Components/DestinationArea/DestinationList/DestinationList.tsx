@@ -5,7 +5,7 @@ import './DestinationList.css';
 import { DestinationCard } from '../DestinationCard/DestinationCard';
 import { notify } from '../../../Utils/notify';
 import { errorHandler } from '../../../Utils/ErrorHandler';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { FormControlLabel, FormGroup } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 
@@ -23,6 +23,7 @@ export function DestinationList(): JSX.Element {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [destinationsCount, setDestinationsCount] = useState<number>(itemsPerPage);
+  const navigate = useNavigate();
 
   const fetchDestinations = () => {
     destinationService
@@ -41,7 +42,12 @@ export function DestinationList(): JSX.Element {
       .catch((err) => notify.error(errorHandler.getError(err)));
   };
 
-  useEffect(fetchDestinations, []);
+
+  useEffect(()=> {
+    if (userService.getUserData() === null) {
+      navigate('/home');
+    }
+  }, []);
 
   useEffect(fetchDestinations, [activeFilter, currentPage]);
 
@@ -54,6 +60,7 @@ export function DestinationList(): JSX.Element {
 
   const applyFilters = (destinations: DestinationModel[]) => {
     const now = new Date();
+    
     switch (activeFilter) {
       case 'liked':
         return destinations.filter((destination) => destination.isLiked);
@@ -79,6 +86,7 @@ export function DestinationList(): JSX.Element {
   };
 
   const handleFilterChange = (filter: string) => {
+    setCurrentPage(1);
     setActiveFilter(filter);
   };
 
@@ -112,7 +120,7 @@ export function DestinationList(): JSX.Element {
   }
 
   return (
-    <div className="DestinationList">
+    <div className="DestinationListContainer">
       <div>
         <FormGroup className="filter">
           <FormControlLabel control={<Checkbox checked={activeFilter === 'all'} onChange={() => handleFilterChange('all')} />} label="כל החופשות" />
@@ -122,20 +130,30 @@ export function DestinationList(): JSX.Element {
         </FormGroup>
       </div>
 
-      <div className='admin-links'>
+      <div className="admin-links">
         {userService.isAdmin() && (
           <>
-            <NavLink to="/new-destination"> הוספת חופשה ➕</NavLink>
-            <NavLink to="/destination/destinationReport"> דוח חופשות 📊</NavLink>
-            <NavLink to="/destination/destinationCsv"> קובץ חופשות 📋</NavLink>
+            <NavLink className="Button" to="/new-destination">
+              {' '}
+              הוספת חופשה ➕
+            </NavLink>
+            <NavLink className="Button" to="/destination/destinationReport">
+              {' '}
+              דוח חופשות 📊
+            </NavLink>
+            <NavLink className="Button" to="/destination/destinationCsv">
+              {' '}
+              קובץ חופשות 📋
+            </NavLink>
           </>
         )}
       </div>
 
-      {destinations.map((p) => (
-        <DestinationCard key={p.id} destination={p} onDelete={handleDestinationDelete} onLike={handleDestinationLike} />
-      ))}
-
+      <div className="DestinationList">
+        {destinations.map((p) => (
+          <DestinationCard key={p.id} destination={p} onDelete={handleDestinationDelete} onLike={handleDestinationLike} />
+        ))}
+      </div>
       <div className="pagination">
         <Stack spacing={2}>
           <Pagination count={Math.ceil(destinationsCount / itemsPerPage)} page={currentPage} onChange={handlePageChange} color="primary" />

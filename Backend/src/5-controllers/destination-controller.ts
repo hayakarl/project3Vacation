@@ -12,7 +12,7 @@ class DestinationController {
   // Register routes:
   public constructor() {
     this.router.get('/destinations', securityMiddleware.validateLogin, this.getAllDestinations);
-    this.router.get('/destinations/:id([0-9]+)', this.getOneDestination);
+    this.router.get('/destinations/:id([0-9]+)', securityMiddleware.validateLogin, this.getOneDestination);
     this.router.post('/destinations', securityMiddleware.validateAdmin, this.addDestination);
     this.router.put('/destinations/:id([0-9]+)', securityMiddleware.validateAdmin, this.updateDestination);
     this.router.delete('/destinations/:id([0-9]+)', securityMiddleware.validateAdmin, this.deleteDestination);
