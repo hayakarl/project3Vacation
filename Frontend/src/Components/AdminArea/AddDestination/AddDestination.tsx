@@ -24,9 +24,9 @@ export function AddDestination(): JSX.Element {
   const [minUntilDate, setMinUntilDate] = useState<string>('');
 
   useEffect(() => {
-      if (!userService.isAdmin()) {
-        navigate('/home');
-      }
+    if (!userService.isAdmin()) {
+      navigate('/home');
+    }
     const today = new Date();
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0');
@@ -65,7 +65,6 @@ export function AddDestination(): JSX.Element {
       </Typography>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        
         <TextField
           label="יעד"
           fullWidth
@@ -190,7 +189,6 @@ export function AddDestination(): JSX.Element {
         />
 
         <Box mt={2} mb={2}>
-         
           <Box display="flex" alignItems="center" justifyContent="flex-end">
             <IconButton color="primary" aria-label="upload picture" component="label">
               <input hidden type="file" accept="image/*" {...register('image')} />

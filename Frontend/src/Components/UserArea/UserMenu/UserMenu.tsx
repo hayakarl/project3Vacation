@@ -7,9 +7,8 @@ import { notify } from '../../../Utils/notify';
 import { useState } from 'react';
 
 export function UserMenu(): JSX.Element {
-    const userData: UserModel = userService.getUserData() ;
-    const [user, setUser] = useState<UserModel | null >(userData);
- 
+  const userData: UserModel = userService.getUserData();
+  const [user, setUser] = useState<UserModel | null>(userData);
 
   function logout() {
     userService.logout();
@@ -32,7 +31,7 @@ export function UserMenu(): JSX.Element {
       {user && (
         <>
           <span>
-           היי {user.firstName} {user.lastName}  
+            היי {user.firstName} {user.lastName}
           </span>
 
           <NavLink to="/home" onClick={logout}>

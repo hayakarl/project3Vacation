@@ -36,7 +36,11 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
         <div>
           {!userService.isAdmin() && (
             <>
-              <span className="Cursor" onClick={changeLike}> {props.destination.isLiked == 1 ? 'like❤️' : 'unlike🩶'} </span> ||
+              <span className="Cursor" onClick={changeLike}>
+                {' '}
+                {props.destination.isLiked == 1 ? 'like❤️' : 'unlike🩶'}{' '}
+              </span>{' '}
+              ||
             </>
           )}
           <span>💞 {props.destination.likesCount}</span>

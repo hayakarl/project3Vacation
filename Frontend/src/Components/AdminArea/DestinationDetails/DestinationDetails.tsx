@@ -39,7 +39,6 @@ export function DestinationDetails(): JSX.Element {
     }
   }
 
-  
   return (
     <div className="DestinationDetails">
       {destination && (

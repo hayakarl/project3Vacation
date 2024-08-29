@@ -23,13 +23,13 @@
 }
 
 .DestinationListContainer .Button {
-    padding: 1px 4px 1px 4px;
-    margin: 2px 5px 2px 5px;
-    border-radius: 0.5rem; 
-    font-size: 0.875rem;
-    line-height: 1.0rem; 
-    font-weight: 500; 
-    color: #ffffff; 
-    text-decoration: none;
-    background-color: #1D4ED8;
+  padding: 1px 4px 1px 4px;
+  margin: 2px 5px 2px 5px;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #1d4ed8;
 }

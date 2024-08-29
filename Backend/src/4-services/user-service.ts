@@ -14,7 +14,6 @@ class UserService {
     const error = user.validate();
     if (error) throw new ValidationError(error);
 
-   
     const sql = 'insert into users values(default,?,?,?,?,?)';
 
     // Set role as regular user and not something else:
@@ -32,10 +31,10 @@ class UserService {
       user.id = info.insertId;
       return cyber.generateNewToken(user);
     } catch (err) {
-        if (err.code === "ER_DUP_ENTRY") {
-            throw new ValidationError('This email all ready in use');
-        }
-        throw (err); 
+      if (err.code === 'ER_DUP_ENTRY') {
+        throw new ValidationError('This email all ready in use');
+      }
+      throw err;
     }
   }
 
@@ -44,7 +43,6 @@ class UserService {
     const error = credentials.validate();
     if (error) throw new ValidationError(error);
 
-  
     const sql = 'select * from users where email = ? and password = ?';
 
     //Hash password

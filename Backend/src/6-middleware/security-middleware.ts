@@ -13,7 +13,7 @@ class SecurityMiddleware {
         return;
       }
     }
-    next(); 
+    next();
   }
   //=====================
   // Validate token:
@@ -21,7 +21,6 @@ class SecurityMiddleware {
     // Take header:
     const authorizationHeader = request.headers.authorization;
 
-   
     // ?. if its null or undefine then not allowed to enter
     const token = authorizationHeader?.substring(7);
 

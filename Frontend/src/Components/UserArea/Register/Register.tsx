@@ -31,7 +31,7 @@ export function Register(): JSX.Element {
         <input type="email" {...register('email')} />
         <label>סיסמה </label>
         <input type="password" {...register('password')} />
-       
+
         <button>הרשמה</button>
       </form>
     </div>

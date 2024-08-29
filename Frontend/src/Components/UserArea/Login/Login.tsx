@@ -7,7 +7,7 @@ import { notify } from '../../../Utils/notify';
 
 export function Login(): JSX.Element {
   const { register, handleSubmit } = useForm<CredentialsModel>();
- 
+
   async function send(credentials: CredentialsModel) {
     try {
       await userService.login(credentials);

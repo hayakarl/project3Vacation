@@ -6,10 +6,9 @@ import { useEffect, useState } from 'react';
 import { destinationService } from '../../../Services/DestinationService';
 import notifyService from '../../../Services/NotifyService';
 import { appConfig } from '../../../Utils/AppConfig';
-import { TextField, Typography, Button, Box, IconButton, Stack } from '@mui/material';
+import { TextField, Typography, Button, Box, IconButton } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';
 import { userService } from '../../../Services/UserService';
-import { UserModel } from '../../../Models/UserModel';
 
 export function EditDestination(): JSX.Element {
   const params = useParams();
@@ -20,9 +19,9 @@ export function EditDestination(): JSX.Element {
   const [minUntilDate, setMinUntilDate] = useState<string>('');
 
   useEffect(() => {
-      if (!userService.isAdmin()) {
-        navigate('/home');
-      }
+    if (!userService.isAdmin()) {
+      navigate('/home');
+    }
     // fetching the selected vacation by the ID from the route:
     const id = +params.destinationId;
     destinationService
@@ -40,7 +39,7 @@ export function EditDestination(): JSX.Element {
       .catch((err) => notifyService.error(err));
   }, []);
 
-  // מעקב אחר שדה מתאריך לעדכון מינימום תאריך הסיום בהתאם
+  //Update fromDate effect untilDate
   const fromDate = watch('fromDate');
 
   useEffect(() => {
@@ -54,7 +53,7 @@ export function EditDestination(): JSX.Element {
       destination.image = (destination.image as unknown as FileList)[0];
 
       await destinationService.updateDestination(destination);
-      notifyService.success('Destination has been updated');
+      notifyService.success('היעד עודכן בהצלחה');
       navigate('/destination');
     } catch (err: any) {
       notifyService.error(err);

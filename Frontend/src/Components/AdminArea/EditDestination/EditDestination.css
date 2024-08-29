@@ -1,9 +1,4 @@
 .EditDestination form {
-    background-color: white;
-    display: 'flex', 
-} 
-
-/* form > input {
-text-align: right;
-
-} */
+  background-color: white;
+  display: 'flex';
+}

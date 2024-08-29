@@ -42,8 +42,7 @@ export function DestinationList(): JSX.Element {
       .catch((err) => notify.error(errorHandler.getError(err)));
   };
 
-
-  useEffect(()=> {
+  useEffect(() => {
     if (userService.getUserData() === null) {
       navigate('/home');
     }
@@ -60,7 +59,7 @@ export function DestinationList(): JSX.Element {
 
   const applyFilters = (destinations: DestinationModel[]) => {
     const now = new Date();
-    
+
     switch (activeFilter) {
       case 'liked':
         return destinations.filter((destination) => destination.isLiked);
@@ -112,7 +111,7 @@ export function DestinationList(): JSX.Element {
       if (!iAmShure) return;
 
       await destinationService.deleteDestination(destinationId);
-      notifyService.success('Destination has been deleted');
+      notifyService.success('היעד נמחק');
       fetchDestinations();
     } catch (err: any) {
       notifyService.error(err);
