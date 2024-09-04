@@ -15,8 +15,6 @@ import notifyService from '../../../Services/NotifyService';
 import { userService } from '../../../Services/UserService';
 
 export function DestinationList(): JSX.Element {
-  // Getting all route parameters:
-  const params = useParams();
   const itemsPerPage = 9; // Number of items to display per page
 
   const [destinations, setDestinations] = useState<DestinationModel[]>([]);
@@ -31,7 +29,7 @@ export function DestinationList(): JSX.Element {
       .then((destinations) => {
         //filter
         if (Array.isArray(destinations)) {
-          const filteredDestinations = applyFilters(destinations);
+          const filteredDestinations = destinationService.applyFilters(destinations, activeFilter);
           setDestinationsCount(filteredDestinations.length);
           const pageDestinations = applyPagination(filteredDestinations);
           setDestinations(pageDestinations);
@@ -57,33 +55,6 @@ export function DestinationList(): JSX.Element {
     return destinations.slice(indexOfFirstItem, indexOfLastItem);
   };
 
-  const applyFilters = (destinations: DestinationModel[]) => {
-    const now = new Date();
-
-    switch (activeFilter) {
-      case 'liked':
-        return destinations.filter((destination) => destination.isLiked);
-        break;
-      case 'active':
-        return destinations.filter((d) => {
-          const fromDate = new Date(d.fromDate);
-          const untilDate = new Date(d.untilDate);
-          return fromDate <= now && untilDate >= now;
-        });
-        break;
-      case 'notStarted':
-        return destinations.filter((d) => {
-          const fromDate = new Date(d.fromDate);
-          return fromDate > now;
-        });
-        break;
-      default:
-        // "all" or any other value resets the filter
-        return destinations;
-        break;
-    }
-  };
-
   const handleFilterChange = (filter: string) => {
     setCurrentPage(1);
     setActiveFilter(filter);
@@ -107,8 +78,8 @@ export function DestinationList(): JSX.Element {
 
   async function handleDestinationDelete(destinationId: number) {
     try {
-      const iAmShure = window.confirm(`Are you sure you want to delete this destination?`);
-      if (!iAmShure) return;
+      const iAmSure = window.confirm(`Are you sure you want to delete this destination?`);
+      if (!iAmSure) return;
 
       await destinationService.deleteDestination(destinationId);
       notifyService.success('היעד נמחק');

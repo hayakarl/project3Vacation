@@ -75,22 +75,32 @@ class DestinationService {
     return response.data.changedLike;
   }
 
-  public async filterFutureDestinations(destinations: DestinationModel[]): Promise<DestinationModel[]> {
+  public applyFilters(destinations: DestinationModel[], activeFilter: string)  {
     const now = new Date();
-    return destinations.filter((d) => {
-      const fromDate = new Date(d.fromDate);
-      return fromDate > now;
-    });
-  }
 
-  public async filterActiveDestinations(destinations: DestinationModel[]): Promise<DestinationModel[]> {
-    const now = new Date();
-    return destinations.filter((d) => {
-      const fromDate = new Date(d.fromDate);
-      const untilDate = new Date(d.untilDate);
-      return fromDate <= now && untilDate >= now;
-    });
-  }
+    switch (activeFilter) {
+      case 'liked':
+        return destinations.filter((destination) => destination.isLiked);
+        break;
+      case 'active':
+        return destinations.filter((d) => {
+          const fromDate = new Date(d.fromDate);
+          const untilDate = new Date(d.untilDate);
+          return fromDate <= now && untilDate >= now;
+        });
+        break;
+      case 'notStarted':
+        return destinations.filter((d) => {
+          const fromDate = new Date(d.fromDate);
+          return fromDate > now;
+        });
+        break;
+      default:
+        // "all" or any other value resets the filter
+        return destinations;
+        break;
+    }
+  };
 }
 
 export const destinationService = new DestinationService();

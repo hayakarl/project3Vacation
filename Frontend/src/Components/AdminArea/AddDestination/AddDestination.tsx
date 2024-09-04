@@ -22,6 +22,15 @@ export function AddDestination(): JSX.Element {
   const navigate = useNavigate();
   const [minDate, setMinDate] = useState<string>('');
   const [minUntilDate, setMinUntilDate] = useState<string>('');
+  const InputLabelProps = {
+    shrink: true, // Keep the label on top
+    sx: {
+      color: 'inherit', // Keep the label color consistent
+      '&.Mui-focused': {
+        color: 'inherit', // Keep the label color consistent when focused
+      },
+    },
+  };
 
   useEffect(() => {
     if (!userService.isAdmin()) {
@@ -76,21 +85,7 @@ export function AddDestination(): JSX.Element {
           error={!!errors.destination}
           helperText={errors.destination?.message}
           margin="normal"
-          InputLabelProps={{
-            sx: {
-              textAlign: 'right',
-              right: 18,
-              left: 'auto',
-              transformOrigin: 'top right',
-              color: 'inherit', // Keep the label color consistent
-              '&.Mui-focused': {
-                color: 'inherit', // Keep the label color consistent when focused
-              },
-            },
-          }}
-          inputProps={{
-            style: { textAlign: 'right', direction: 'rtl' }, // Align input text to right
-          }}
+          InputLabelProps={InputLabelProps}
         />
 
         <TextField
@@ -106,21 +101,7 @@ export function AddDestination(): JSX.Element {
           error={!!errors.description}
           helperText={errors.description?.message}
           margin="normal"
-          InputLabelProps={{
-            sx: {
-              textAlign: 'right',
-              right: 18,
-              left: 'auto',
-              transformOrigin: 'top right',
-              color: 'inherit', // Keep the label color consistent
-              '&.Mui-focused': {
-                color: 'inherit', // Keep the label color consistent when focused
-              },
-            },
-          }}
-          inputProps={{
-            style: { textAlign: 'right', direction: 'rtl' }, // Align input text to right
-          }}
+          InputLabelProps={InputLabelProps}
         />
 
         <TextField
@@ -171,21 +152,7 @@ export function AddDestination(): JSX.Element {
           error={!!errors.price}
           helperText={errors.price?.message}
           margin="normal"
-          InputLabelProps={{
-            sx: {
-              textAlign: 'right',
-              right: 18,
-              left: 'auto',
-              transformOrigin: 'top right',
-              color: 'inherit', // Keep the label color consistent
-              '&.Mui-focused': {
-                color: 'inherit', // Keep the label color consistent when focused
-              },
-            },
-          }}
-          inputProps={{
-            style: { textAlign: 'right', direction: 'rtl' }, // Align input text to right
-          }}
+          InputLabelProps={InputLabelProps}
         />
 
         <Box mt={2} mb={2}>

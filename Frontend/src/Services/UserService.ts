@@ -53,7 +53,12 @@ class UserService {
     }
 
     // Extract db user from token:
-    const container = jwtDecode<{ user: UserModel }>(token);
+    const container = jwtDecode<{ user: UserModel, exp: number }>(token);
+    const now = new Date();
+    if (now.getTime() > (container.exp * 1000)){
+        localStorage.removeItem("token")
+        return null;
+    }
     return container.user;
   }
 

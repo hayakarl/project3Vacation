@@ -6,6 +6,7 @@ export function Header(): JSX.Element {
     <div className="Header">
       <UserMenu />
       <h1>לרכוב בחו"ל 🚴‍♂️🚴🎯 </h1>
+      <UserMenu />
     </div>
   );
 }

@@ -1,10 +1,9 @@
 import { DestinationModel } from '../../../Models/DestinationModel';
 import { destinationService } from '../../../Services/DestinationService';
 import './DestinationCard.css';
-import { useState } from 'react';
 import { userService } from '../../../Services/UserService';
 import notifyService from '../../../Services/NotifyService';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { appConfig } from '../../../Utils/AppConfig';
 
 type DestinationCardProps = {
@@ -61,7 +60,7 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
         </div>
 
         <div>
-          <span>מחיר :$ {Number(props.destination.price).toLocaleString('he-IL')}</span>
+          <span>מחיר :$ {Number(props.destination.price).toLocaleString()}</span>
         </div>
 
         <div className="dates">

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { DestinationModel } from '../../../Models/DestinationModel';
 import './EditDestination.css';
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { destinationService } from '../../../Services/DestinationService';
 import notifyService from '../../../Services/NotifyService';
@@ -13,6 +13,20 @@ import { userService } from '../../../Services/UserService';
 export function EditDestination(): JSX.Element {
   const params = useParams();
   const navigate = useNavigate();
+
+  const InputLabelProps = {
+    shrink: true, // Keep the label on top
+    sx: {
+      color: 'inherit', // Keep the label color consistent
+      '&.Mui-focused': {
+        color: 'inherit', // Keep the label color consistent when focused
+      },
+    },
+  };
+
+  const inputProps = {
+    style: { textAlign: 'right', direction: 'rtl' }, // Align input text to right
+  };
 
   const { register, handleSubmit, formState, setValue, watch } = useForm<DestinationModel>();
   const [imageName, setImageName] = useState<string>('');
@@ -81,22 +95,7 @@ export function EditDestination(): JSX.Element {
           error={!!formState.errors.destination}
           helperText={formState.errors.destination?.message}
           margin="normal"
-          InputLabelProps={{
-            shrink: true, // Keep the label on top
-            sx: {
-              textAlign: 'right',
-              right: 18,
-              left: 'auto',
-              transformOrigin: 'top right',
-              color: 'inherit', // Keep the label color consistent
-              '&.Mui-focused': {
-                color: 'inherit', // Keep the label color consistent when focused
-              },
-            },
-          }}
-          inputProps={{
-            style: { textAlign: 'right', direction: 'rtl' }, // Align input text to right
-          }}
+          InputLabelProps={InputLabelProps}
         />
 
         <TextField
@@ -107,27 +106,12 @@ export function EditDestination(): JSX.Element {
           {...register('description', {
             required: { value: true, message: 'Missing description' },
             minLength: { value: 2, message: 'Description must be minimum 2 chars' },
-            maxLength: { value: 1000, message: "Description can't exceed 100 chars" },
+            maxLength: { value: 1000, message: "Description can't exceed 1000 chars" },
           })}
           error={!!formState.errors.description}
           helperText={formState.errors.description?.message}
           margin="normal"
-          InputLabelProps={{
-            shrink: true, // Keep the label on top
-            sx: {
-              textAlign: 'right',
-              right: 18,
-              left: 'auto',
-              transformOrigin: 'top right',
-              color: 'inherit', // Keep the label color consistent
-              '&.Mui-focused': {
-                color: 'inherit', // Keep the label color consistent when focused
-              },
-            },
-          }}
-          inputProps={{
-            style: { textAlign: 'right', direction: 'rtl' }, // Align input text to right
-          }}
+          InputLabelProps={InputLabelProps}
         />
 
         <TextField
@@ -137,9 +121,7 @@ export function EditDestination(): JSX.Element {
           {...register('fromDate', {
             required: { value: true, message: 'Missing from date' },
           })}
-          InputLabelProps={{
-            shrink: true,
-          }}
+          InputLabelProps={InputLabelProps}
           error={!!formState.errors.fromDate}
           helperText={formState.errors.fromDate?.message}
           margin="normal"
@@ -151,9 +133,7 @@ export function EditDestination(): JSX.Element {
           {...register('untilDate', {
             required: { value: true, message: 'Missing until date' },
           })}
-          InputLabelProps={{
-            shrink: true,
-          }}
+          InputLabelProps={InputLabelProps}
           inputProps={{
             min: minUntilDate,
           }}
@@ -173,22 +153,7 @@ export function EditDestination(): JSX.Element {
           error={!!formState.errors.price}
           helperText={formState.errors.price?.message}
           margin="normal"
-          InputLabelProps={{
-            shrink: true, // Keep the label on top
-            sx: {
-              textAlign: 'right',
-              right: 18,
-              left: 'auto',
-              transformOrigin: 'top right',
-              color: 'inherit', // Keep the label color consistent
-              '&.Mui-focused': {
-                color: 'inherit', // Keep the label color consistent when focused
-              },
-            },
-          }}
-          inputProps={{
-            style: { textAlign: 'right', direction: 'rtl' }, // Align input text to right
-          }}
+          InputLabelProps={InputLabelProps}
         />
         <Box mt={2} mb={2}>
           <Typography variant="body1" gutterBottom>
