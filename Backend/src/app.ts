@@ -14,7 +14,7 @@ import path from 'path';
 fileSaver.config(path.join(__dirname, '1-assets', 'images'));
 
 // Create main server object:
-const server = express();
+export const server = express();
 server.options('*', cors());
 
 //enable corse
