@@ -1,11 +1,3 @@
-// npm i ts-node -D
-// npm i mocha -D
-// npm i @types/mocha -D
-// npm i chai@4 -D
-// npm i @types/chai -D
-// npm i supertest -D
-// npm i @types/supertest -D
-
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
 import supertest from 'supertest';
@@ -25,9 +17,9 @@ describe('Testing DestinationController', () => {
     const response = await supertest(server).get('/api/destinations').set('Authorization', `bearer ${token}`);
     const destinations: DestinationModel[] = response.body;
     expect(destinations.length).to.be.greaterThanOrEqual(1);
-
     expect(destinations[0]).to.be.contain.keys('id', 'destination', 'description', 'fromDate', 'untilDate', 'price', 'imageName', 'isLiked', 'likesCount');
   });
+
   it('Should return a single destination', async () => {
     const response = await supertest(server).get('/api/destinations/108').set('Authorization', `bearer ${token}`);
     const destination: DestinationModel = response.body;
@@ -38,14 +30,13 @@ describe('Testing DestinationController', () => {
   it('Should add a new destination', async () => {
     const response = await supertest(server)
       .post('/api/destinations')
-      .set('Authorization', 'Bearer ' + token)
+      .set('Authorization', `bearer ${token}`)
       .field('destination', 'מרוקו')
       .field('description', 'מסע מופלא בהרים למחוזות חדשים')
       .field('fromDate', '2025-04-21')
       .field('untilDate', '2025-04-30')
       .field('price', 1000)
       .attach('image', path.join(__dirname, 'testPicture.jpeg'));
-    console.log('res:', response);
     const addedDestination = response.body;
     expect(response.status).to.equal(201);
     expect(addedDestination).to.contain.keys('id', 'destination', 'description', 'fromDate', 'untilDate', 'price', 'imageName');

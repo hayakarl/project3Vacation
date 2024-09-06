@@ -1771,3 +1771,13 @@ Message: Route /api/nothing-here on method GET not exist.
 Stack: undefined
 ---------------------------------------
 
+Time: Fri Sep 06 2024 19:35:00 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/nothing-here on method GET not exist.
+Stack: undefined
+---------------------------------------
+
+Time: Fri Sep 06 2024 19:37:46 GMT+0300 (שעון ישראל (קיץ))
+Message: Route /api/nothing-here on method GET not exist.
+Stack: undefined
+---------------------------------------
+

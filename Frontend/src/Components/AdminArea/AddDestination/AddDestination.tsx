@@ -81,6 +81,7 @@ export function AddDestination(): JSX.Element {
             required: 'Missing destination',
             minLength: { value: 2, message: 'Destination must be minimum 2 chars' },
             maxLength: { value: 200, message: "Destination can't exceed 200 chars" },
+            pattern: { value: /^[\u0590-\u05FF\s]+$/, message: 'Only Hebrew characters are allowed' },
           })}
           error={!!errors.destination}
           helperText={errors.destination?.message}
@@ -97,6 +98,7 @@ export function AddDestination(): JSX.Element {
             required: 'Missing description',
             minLength: { value: 2, message: 'Description must be minimum 2 chars' },
             maxLength: { value: 1000, message: "Description can't exceed 1000 chars" },
+            pattern: { value: /^[\u0590-\u05FF\s]+$/, message: 'Only Hebrew characters are allowed' },
           })}
           error={!!errors.description}
           helperText={errors.description?.message}
