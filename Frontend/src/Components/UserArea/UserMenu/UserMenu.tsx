@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import './UserMenu.css';
 import { UserModel } from '../../../Models/UserModel';
 import { NavLink } from 'react-router-dom';

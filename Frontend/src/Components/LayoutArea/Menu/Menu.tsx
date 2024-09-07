@@ -6,7 +6,7 @@ import { userService } from '../../../Services/UserService';
 
 export function Menu(): JSX.Element {
   const userData: UserModel = userService.getUserData();
-  const [user, setUser] = useState<UserModel | null>(userData);
+  const [user] = useState<UserModel | null>(userData);
 
   return (
     <div className="Menu">

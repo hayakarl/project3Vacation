@@ -1,15 +1,13 @@
 import { useForm } from 'react-hook-form';
 import './Register.css';
 import { UserModel } from '../../../Models/UserModel';
-import { useNavigate } from 'react-router-dom';
 import { userService } from '../../../Services/UserService';
 import { notify } from '../../../Utils/notify';
 import { errorHandler } from '../../../Utils/ErrorHandler';
 
 export function Register(): JSX.Element {
   const { register, handleSubmit } = useForm<UserModel>();
-  const navigate = useNavigate();
-
+  
   async function send(user: UserModel) {
     try {
       await userService.register(user);

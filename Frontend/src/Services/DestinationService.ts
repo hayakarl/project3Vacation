@@ -7,7 +7,6 @@ class DestinationService {
   public async getAllDestinations(): Promise<DestinationModel[]> {
     // fetch them from backend:
     const response = await axios.get<DestinationModel[]>(appConfig.backendUrl + 'destinations');
-
     const destinations = response.data;
 
     // Return:
@@ -42,7 +41,7 @@ class DestinationService {
     const response = await axios.post<DestinationModel>(appConfig.backendUrl + 'destinations', formData, options);
 
     // Get back the added destination:
-    const addedDestination = response.data;
+    // const addedDestination = response.data;
   }
 
   //Update destination
@@ -61,7 +60,7 @@ class DestinationService {
     const response = await axios.put<DestinationModel>(appConfig.backendUrl + 'destinations/' + destination.id, formData, options);
 
     // Get back the added destination:
-    const updateDestination = response.data;
+    // const updateDestination = response.data;
   }
 
   //   Delete destination :
@@ -75,32 +74,28 @@ class DestinationService {
     return response.data.changedLike;
   }
 
-  public applyFilters(destinations: DestinationModel[], activeFilter: string)  {
+  public applyFilters(destinations: DestinationModel[], activeFilter: string) {
     const now = new Date();
 
     switch (activeFilter) {
       case 'liked':
         return destinations.filter((destination) => destination.isLiked);
-        break;
       case 'active':
         return destinations.filter((d) => {
           const fromDate = new Date(d.fromDate);
           const untilDate = new Date(d.untilDate);
           return fromDate <= now && untilDate >= now;
         });
-        break;
       case 'notStarted':
         return destinations.filter((d) => {
           const fromDate = new Date(d.fromDate);
           return fromDate > now;
         });
-        break;
       default:
         // "all" or any other value resets the filter
         return destinations;
-        break;
     }
-  };
+  }
 }
 
 export const destinationService = new DestinationService();

@@ -3,8 +3,7 @@ import { UserModel } from '../Models/UserModel';
 import { appConfig } from '../Utils/AppConfig';
 import { jwtDecode } from 'jwt-decode'; // npm i jwt-decode
 import { CredentialsModel } from '../Models/CredentialsModel';
-import { Token } from '@mui/icons-material';
-// import { initUser } from '../Redux/reducers';
+
 
 class UserService {
   //token if user refresh page
