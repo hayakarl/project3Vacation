@@ -1,0 +1,32 @@
+# YML = YAML = Yaml Aint Markup Language
+# Declaration file, like JSON
+
+# Creating the image inside: 
+#  docker compose build
+
+# Run docker-compose + free the terminal (-d = Detached)
+# docker compose up -d
+
+# Stop containers: 
+# docker compose down
+
+# All apps: 
+services:
+
+   # Only our REST API: 
+  backend-service: 
+
+    # Image name: 
+    image: haya1701/vacations-backend-image:1.0
+
+    # Build above image from Dockefile specified here: 
+    build: ./Backend
+
+    container_name: vacations-container
+
+    ports:
+      - 4040:4000
+
+    # On crash / other reasons - when to restart the server: 
+    restart: unless-stopped
+
