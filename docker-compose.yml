@@ -7,14 +7,58 @@
 # Run docker-compose + free the terminal (-d = Detached)
 # docker compose up -d
 
+# Run docker-compose + rebuild the image + free the terminal (-d = Detached)
+# docker compose up -d --build
+
 # Stop containers: 
 # docker compose down
 
 # All apps: 
 services:
 
-   # Only our REST API: 
+  # Vacations MySQL service:
+  database-service:
+
+    # Image name to create from Dockerfile:
+    image: haya1701/vacations-database-image:1.0
+
+    # Build the image from specified Dockerfile location:
+    build: ./Database
+
+    # Container name:
+    container_name: vacations-database-container
+
+    # On crash - restart container, unless manually stopped:
+    restart: unless-stopped
+
+    # Environment variables needed by MySQL:
+    environment:
+      MYSQL_HOST: localhost # Internally for the container.
+      MYSQL_USER: Alice
+      MYSQL_PASSWORD: Wonderland
+      MYSQL_DATABASE: vacations # Case-Sensitive!
+      MYSQL_ROOT_PASSWORD: Wonderland # Needed by MySQL image.
+
+    # Named Volume for persisting MySQL from container to host:
+    volumes:
+      - vacations-volume:/var/lib/mysql
+
+    # Check every 5 sec if the database is up and running, so the backend service could wait for it before running:
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"] # Ping to the database.
+      timeout: 5s # Timeout to wait until current check considered as failed (no ping back).
+      interval: 5s # Time to wait between checks.
+      retries: 24 # Max checks before entire health-check fails.
+
+  # ------------------------------------------------------------
+
+  # Only our REST API: 
   backend-service: 
+
+    # On which service we're depending on:
+    depends_on:
+      database-service: 
+        condition: service_healthy # Wait until health-check passes before starting container.
 
     # Image name: 
     image: haya1701/vacations-backend-image:1.0
@@ -22,11 +66,54 @@ services:
     # Build above image from Dockefile specified here: 
     build: ./Backend
 
-    container_name: vacations-container
+    container_name: vacations-backend-container
 
+     # Port mapping (host:container)
     ports:
       - 4040:4000
 
     # On crash / other reasons - when to restart the server: 
     restart: unless-stopped
 
+    # Overriding environment variables needed by the dockerized REST API:
+    environment:
+      MYSQL_HOST: database-service # Above database service name is the database computer name in a container network created by docker, thus the backend can connect directly to the database using "database-service:3306".
+      MYSQL_USER: Alice
+      MYSQL_PASSWORD: Wonderland
+      MYSQL_DATABASE: vacations
+
+# ------------------------------------------------------------
+
+  # Vacations frontend service: 
+  frontend-service:
+
+    # On which service we're depending on (starting/stopping order):
+    depends_on:
+      - backend-service
+
+    # Image name to create from Dockerfile:
+    image: haya1701/vacations-frontend-image:1.0
+
+    # Build the image from specified Dockerfile location:
+    build: ./Frontend
+    
+    # Container name:
+    container_name: vacations-frontend-container
+
+    # Port mapping (host:container):
+    ports:
+      - 80:3000
+
+    # On crash - restart container, unless manually stopped:
+    restart: unless-stopped
+
+    # Hot-Reloading Host Volume: mount development ./src to container /app/src (suppose to work only when using: "start": "WATCHPACK_POLLING=true react-scripts start" in package.json):
+    volumes:
+      - ./Frontend/src:/app/src
+
+# ------------------------------------------------------------
+
+# List all named-volumes: 
+volumes:
+  vacations-volume:
+ 

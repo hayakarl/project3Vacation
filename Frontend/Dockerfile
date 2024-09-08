@@ -1,10 +1,6 @@
 # Installing Linux Alpine OS Specific version + Node.js Specific version:
 FROM node:20-alpine3.20
 
-# Intall ts-node and nodemon globally during image creation:
-RUN npm i -g ts-node
-RUN npm i -g nodemon
-
 # Create app directory: 
 WORKDIR /app
 
