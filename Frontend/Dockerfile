@@ -10,6 +10,7 @@ COPY package.json /app
 # Intall node_modules in a terminal inside the image: 
 RUN npm i
 
+
 # Copy our code from host machine (located in current folder) into image /app folder:
 COPY . /app
 

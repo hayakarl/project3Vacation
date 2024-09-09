@@ -1781,3 +1781,8 @@ Message: Route /api/nothing-here on method GET not exist.
 Stack: undefined
 ---------------------------------------
 
+Time: Mon Sep 09 2024 19:18:59 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+
