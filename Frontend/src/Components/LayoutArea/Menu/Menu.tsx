@@ -12,7 +12,7 @@ export function Menu(): JSX.Element {
     <div className="Menu">
       <NavLink to="/home">ראשי 🛫</NavLink>
       {user && <NavLink to="/destination">חופשות רכיבה🚲</NavLink>}
-      <NavLink to="/about">צור קשר🧙</NavLink>
+      {/* <NavLink to="/about">צור קשר🧙</NavLink> */}
     </div>
   );
 }

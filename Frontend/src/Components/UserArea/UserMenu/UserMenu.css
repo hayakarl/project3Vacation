@@ -1,4 +1,17 @@
 .UserMenu {
+  display: flex;
+  justify-content: space-between; /* Distributes items to the sides */
+  align-items: center; /* Centers items vertically */
   font-size: medium;
   color: #a81818;
+  height: 4vh;
+
+}
+
+.UserMenu .left-side {
+  margin-right: auto; /* Pushes the left-side items to the left */
+}
+
+.UserMenu .right-side {
+  margin-left: 10px; /* Pushes the right-side items to the right */
 }

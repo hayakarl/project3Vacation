@@ -5,7 +5,7 @@ body,
   padding: 0;
   height: 100%;
   text-align: center;
-  background-image: linear-gradient(lightblue, #8da1e4);
+  background-image: linear-gradient(#0A3D62, #8da1e4);
 }
 
 a {

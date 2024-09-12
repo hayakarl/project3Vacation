@@ -1,11 +1,17 @@
 .Header {
-  min-height: 150px;
-  font-size: 1.5vh;
   display: flex;
-  font-style: italic;
+  justify-content: space-between; /* Aligns the UserMenu components to the sides */
+  align-items: center; /* Centers items vertically */
+  padding-right: 200px;
+  padding-left: 200px;
+  background-color: #f0f0f0; /* Example background color, adjust as needed */
   color: blue;
-  width: 100%;
-  justify-content: space-between;
-  padding: 20px 40px;
-  max-width: 768px;
+  background-color: azure;
+}
+
+.Header h1 {
+  margin: 0; /* Removes any default margin */
+  text-align: center; /* Centers the text */
+  font-size: 2.5em; /* Adjusts font size */
+  flex-grow: 1; /* Allows the title to take up the remaining space between the menus */
 }

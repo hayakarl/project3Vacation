@@ -4,9 +4,9 @@ import './Header.css';
 export function Header(): JSX.Element {
   return (
     <div className="Header">
-      <UserMenu />
+      <UserMenu isLeft={false} />
       <h1>לרכוב בחו"ל 🚴‍♂️🚴🎯 </h1>
-      <UserMenu />
+      <UserMenu isLeft={true} />
     </div>
   );
 }

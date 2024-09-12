@@ -1,4 +1,3 @@
-// UserMenu.test.tsx
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { UserMenu } from './UserMenu';
@@ -20,8 +19,19 @@ jest.mock('../../../Utils/notify', () => ({
 }));
 
 describe('UserMenu Component', () => {
+  // Store the original window.location before tests
+  const originalLocation = window.location;
+
   beforeEach(() => {
     jest.clearAllMocks();
+    // Mock window.location to prevent real navigation
+    delete window.location;
+    window.location = { ...originalLocation, href: '' };
+  });
+
+  afterAll(() => {
+    // Restore the original window.location after tests
+    window.location = originalLocation;
   });
 
   test('should display login and registration links when user is not logged in', () => {
@@ -30,13 +40,13 @@ describe('UserMenu Component', () => {
 
     render(
       <Router>
-        <UserMenu />
+        <UserMenu isLeft={false} />
       </Router>
     );
 
     expect(screen.getByText('שלום אורח |')).toBeInTheDocument();
     expect(screen.getByText('הרשמה')).toBeInTheDocument();
-    expect(screen.getByText('כניסה')).toBeInTheDocument();
+    expect(screen.getByText('התחברות')).toBeInTheDocument();
   });
 
   test('should display user name and logout link when user is logged in', () => {
@@ -46,7 +56,7 @@ describe('UserMenu Component', () => {
 
     render(
       <Router>
-        <UserMenu />
+        <UserMenu isLeft={false} />
       </Router>
     );
 
@@ -60,7 +70,7 @@ describe('UserMenu Component', () => {
 
     render(
       <Router>
-        <UserMenu />
+        <UserMenu isLeft={false} />
       </Router>
     );
 
@@ -68,6 +78,6 @@ describe('UserMenu Component', () => {
 
     expect(userService.logout).toHaveBeenCalled();
     expect(notify.success).toHaveBeenCalledWith('תודה שבקרת באתר שלנו, נשמח לראותך שוב');
-    // Note: window.location.href assignment is not testable as-is; you may need to mock it
+    expect(window.location.href).toBe('/home');
   });
 });
