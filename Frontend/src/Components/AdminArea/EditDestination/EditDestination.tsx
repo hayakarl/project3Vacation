@@ -91,7 +91,7 @@ export function EditDestination(): JSX.Element {
             required: { value: true, message: 'Missing destination' },
             minLength: { value: 2, message: 'Destination must be minimum 2 chars' },
             maxLength: { value: 200, message: "Destination can't exceed 200 chars" },
-            pattern: { value: /^[\u0590-\u05FF\s]+$/, message: 'Only Hebrew characters are allowed' },
+            pattern: { value: /^[\u0590-\u05FF\s,.-]+$/, message: 'Only Hebrew characters are allowed' },
           })}
           error={!!formState.errors.destination}
           helperText={formState.errors.destination?.message}
@@ -108,7 +108,6 @@ export function EditDestination(): JSX.Element {
             required: { value: true, message: 'Missing description' },
             minLength: { value: 2, message: 'Description must be minimum 2 chars' },
             maxLength: { value: 1000, message: "Description can't exceed 1000 chars" },
-            pattern: { value: /^[\u0590-\u05FF\s]+$/, message: 'Only Hebrew characters are allowed' },
           })}
           error={!!formState.errors.description}
           helperText={formState.errors.description?.message}
