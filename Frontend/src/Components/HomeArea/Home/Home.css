@@ -2,7 +2,7 @@
 .Home {
   padding: 1px;
   text-align: center;
-  margin: 1px;
+  margin-top: 15px;
   position:fixed; /* Required for positioning animations */
   overflow: hidden; /* Prevents bicycles from overflowing the container */
   background-size: cover; /* Cover the entire container */

@@ -17,14 +17,16 @@
 }
 
 .DestinationListContainer .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: red;
+  margin: 20px auto 0 auto;
   padding: 5px;
-  margin-top: 22px;
-  margin-right: 500px;
   width: 500px;
   border: 1px solid;
   border-radius: 5px;
- 
+  position: relative;
 }
 
 .DestinationListContainer .Button {
@@ -38,4 +40,3 @@
   text-decoration: none;
   background-color: #1d4ed8;
 }
-
