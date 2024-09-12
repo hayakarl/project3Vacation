@@ -15,3 +15,8 @@
 .UserMenu .right-side {
   margin-left: 10px; /* Pushes the right-side items to the right */
 }
+
+.UserMenu > span, a {
+    font-size: x-large;
+    padding: 15px;
+}

@@ -1,3 +1,9 @@
 .About > form {
   width: 400px;
 }
+
+.About {
+margin-top: 200PX;
+padding: 10px;
+text-align: center;
+}
