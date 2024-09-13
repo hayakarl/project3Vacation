@@ -1,6 +1,5 @@
 import './About.css';
-import { ContactMail } from '@mui/icons-material';
-import { Button, ButtonGroup, Checkbox, FormControlLabel, TextField, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 export function About(): JSX.Element {
   return (
