@@ -173,7 +173,7 @@ export function AddDestination(): JSX.Element {
           הוסף
         </Button>
 
-        <Button variant="text" color="secondary" fullWidth component={NavLink} to="/destination">
+        <Button variant="text" color="primary" fullWidth component={NavLink} to="/destination">
           חזור
         </Button>
       </form>
