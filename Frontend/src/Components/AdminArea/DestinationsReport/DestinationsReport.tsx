@@ -43,16 +43,34 @@ const DestinationsReport: React.FC = () => {
     plugins: {
       legend: {
         position: 'top' as const,
+        labels: {
+            color:'red',
+        },
       },
       title: {
         display: true,
         text: 'דוח חופשות',
+        color: 'red',
+        font: {
+            size:24,
+    
+        },
+        padding: {
+            top:20,
+            bottom:20,
+        },
       },
     },
     scales: {
+      x: {
+        ticks: {
+            color: 'red',
+        },
+      },
       y: {
         beginAtZero: true,
         ticks: {
+          color: 'red',
           stepSize: 1,
         },
       },
