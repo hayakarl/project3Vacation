@@ -25,7 +25,7 @@ export function UserMenu({ isLeft }: { isLeft: boolean }): JSX.Element {
           <span>שלום אורח | </span>
           <NavLink to="/register">הרשמה</NavLink>
           <span> | </span>
-          <NavLink to="/login">התחברות</NavLink>
+          <NavLink to="/login">כניסה</NavLink>
        </>
       )
    ) : isLeft ? (

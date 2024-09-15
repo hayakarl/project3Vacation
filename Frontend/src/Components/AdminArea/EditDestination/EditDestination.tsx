@@ -31,6 +31,7 @@ export function EditDestination(): JSX.Element {
   const { register, handleSubmit, formState, setValue, watch } = useForm<DestinationModel>();
   const [imageName, setImageName] = useState<string>('');
   const [minUntilDate, setMinUntilDate] = useState<string>('');
+  const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
 
   useEffect(() => {
     if (!userService.isAdmin()) {
@@ -48,19 +49,33 @@ export function EditDestination(): JSX.Element {
         setValue('untilDate', destination.untilDate.split('T')[0]);
         setValue('price', destination.price);
         setImageName(destination.imageName);
-        setMinUntilDate(destination.fromDate.split('T')[0]); // Set initial min value for untilDate
+
+        // Determine the initial min value for untilDate
+        const initialFromDate = destination.fromDate.split('T')[0];
+        const initialUntilDate = destination.untilDate.split('T')[0];
+
+        // Set minUntilDate to the greater of fromDate or today
+        setMinUntilDate(initialUntilDate < today && initialFromDate < today ? initialFromDate : today);
       })
+
       .catch((err) => notifyService.error(err));
   }, []);
 
-  //Update fromDate effect untilDate
+  // Watch the values of fromDate and untilDate
   const fromDate = watch('fromDate');
+  const untilDate = watch('untilDate');
 
   useEffect(() => {
-    if (fromDate) {
-      setMinUntilDate(fromDate);
+    if (fromDate && untilDate) {
+      // If fromDate is in the past, allow untilDate to be before today
+      if (fromDate < today) {
+        setMinUntilDate(fromDate); // Allow any date from fromDate onward
+      } else {
+        // If fromDate is today or in the future, set minUntilDate to today or fromDate, whichever is later
+        setMinUntilDate(fromDate > today ? fromDate : today);
+      }
     }
-  }, [fromDate]);
+  }, [fromDate, untilDate]);
 
   async function send(destination: DestinationModel) {
     try {
@@ -136,7 +151,7 @@ export function EditDestination(): JSX.Element {
           })}
           InputLabelProps={InputLabelProps}
           inputProps={{
-            min: minUntilDate,
+            min: minUntilDate || undefined, // Apply the calculated min value
           }}
           error={!!formState.errors.untilDate}
           helperText={formState.errors.untilDate?.message}

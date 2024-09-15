@@ -1,10 +1,15 @@
-.About > form {
-  width: 400px;
+.About {
+  text-align: center;
+  margin: 20px;
 }
 
-.About {
-margin-top: 200PX;
-padding: 10px;
-text-align: center;
-color: red;
+.About .MuiButton-containedSuccess {
+  background-color: #25D366; /* WhatsApp green color */
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.About .MuiButton-containedSuccess:hover {
+  background-color: #1ebd60;
 }

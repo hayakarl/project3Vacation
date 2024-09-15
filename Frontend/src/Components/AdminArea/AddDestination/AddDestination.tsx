@@ -149,7 +149,7 @@ export function AddDestination(): JSX.Element {
           {...register('price', {
             required: 'Missing price',
             min: { value: 100, message: "Price can't be less than 100" },
-            max: { value: 5000, message: "Price can't exceed 5000" },
+            max: { value: 10000, message: "Price can't exceed 10000" },
           })}
           error={!!errors.price}
           helperText={errors.price?.message}
