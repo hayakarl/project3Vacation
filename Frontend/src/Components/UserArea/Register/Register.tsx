@@ -71,7 +71,7 @@ export function Register(): JSX.Element {
           })}
         />
 
-        <button>הרשמה</button>
+        <button type='submit'>הרשמה</button>
       </form>
     </div>
   );

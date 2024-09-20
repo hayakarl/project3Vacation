@@ -1,4 +1,24 @@
 .AddDestination form {
   background-color: white;
-  display: 'flex';
+  display: flex;
+  flex-direction: column;
 }
+
+.errInput {
+  padding: 3px;
+  font-size: small;
+  background-color: red;
+  color: white;
+  border-radius: 25px;
+  margin-left: 10px; /* Adjusts space between label and error */
+}
+
+.labelContainer {
+  display: flex;
+  align-items: center; /* Ensures the label and error are vertically centered */
+  justify-content: space-between;
+  margin-bottom: 2px;
+  gap: 10px; /* Space between label and error message */
+  width: 100%; /* Ensure it takes the full width */
+}
+

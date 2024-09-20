@@ -74,44 +74,49 @@ export function AddDestination(): JSX.Element {
       </Typography>
 
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="labelContainer">
+          <label>יעד</label>
+          {errors.destination && <span className="errInput">{errors.destination.message}</span>}
+        </div>
         <TextField
-          label="יעד"
           fullWidth
           {...register('destination', {
-            required: 'Missing destination',
-            minLength: { value: 2, message: 'Destination must be minimum 2 chars' },
-            maxLength: { value: 200, message: "Destination can't exceed 200 chars" },
-            pattern: { value: /^[\u0590-\u05FF\s]+$/, message: 'Only Hebrew characters are allowed' },
+            required: 'יעד נדרש',
+            minLength: { value: 2, message: 'מינימום 2 תווים ליעד' },
+            maxLength: { value: 200, message: 'שם יעד לא יכול להיות מעל 200 תווים' },
+            pattern: { value: /^[\u0590-\u05FF\s]+$/, message: 'יעד בעברית' },
           })}
-          error={!!errors.destination}
-          helperText={errors.destination?.message}
           margin="normal"
           InputLabelProps={InputLabelProps}
         />
 
+        <div className="labelContainer">
+          <label>תיאור יעד</label>
+          {errors.description && <span className="errInput">{errors.description.message}</span>}
+        </div>
         <TextField
-          label="תיאור יעד"
           fullWidth
           multiline
           rows={4}
           {...register('description', {
-            required: 'Missing description',
-            minLength: { value: 2, message: 'Description must be minimum 2 chars' },
-            maxLength: { value: 1000, message: "Description can't exceed 1000 chars" },
-            pattern: { value: /^[\u0590-\u05FF\s]+$/, message: 'Only Hebrew characters are allowed' },
+            required: 'תיאור יעד נדרש',
+            minLength: { value: 2, message: 'מינימום 2 תווים לתיאור יעד' },
+            maxLength: { value: 1000, message: 'תיאור יעד לא יכול להיות מעל 1,000 תווים' },
+            pattern: { value: /^[\u0590-\u05FF\s]+$/, message: 'תיאור יעד בעברית' },
           })}
-          error={!!errors.description}
-          helperText={errors.description?.message}
           margin="normal"
           InputLabelProps={InputLabelProps}
         />
 
+        <div className="labelContainer">
+          <label>מתאריך</label>
+          {errors.fromDate && <span className="errInput">{errors.fromDate.message}</span>}
+        </div>
         <TextField
-          label="מתאריך"
           type="date"
           fullWidth
           {...register('fromDate', {
-            required: 'Missing from date',
+            required: 'תאריך התחלה נדרש',
           })}
           InputLabelProps={{
             shrink: true,
@@ -119,17 +124,19 @@ export function AddDestination(): JSX.Element {
           inputProps={{
             min: minDate, // Prevent selecting past dates
           }}
-          error={!!errors.fromDate}
-          helperText={errors.fromDate?.message}
           margin="normal"
         />
 
+        <div className="labelContainer">
+          <label>עד תאריך</label>
+          {errors.untilDate && <span className="errInput">{errors.untilDate.message}</span>}
+        </div>
         <TextField
           label="עד תאריך"
           type="date"
           fullWidth
           {...register('untilDate', {
-            required: 'Missing until date',
+            required: 'תאריך סיום נדרש',
           })}
           InputLabelProps={{
             shrink: true,
@@ -137,22 +144,21 @@ export function AddDestination(): JSX.Element {
           inputProps={{
             min: minUntilDate,
           }}
-          error={!!errors.untilDate}
-          helperText={errors.untilDate?.message}
           margin="normal"
         />
 
+        <div className="labelContainer">
+          <label>מחיר במטבע 💲</label>
+          {errors.price && <span className="errInput">{errors.price.message}</span>}
+        </div>
         <TextField
-          label="מחיר במטבע 💲"
           type="number"
           fullWidth
           {...register('price', {
-            required: 'Missing price',
-            min: { value: 100, message: "Price can't be less than 100" },
-            max: { value: 10000, message: "Price can't exceed 10000" },
+            required: 'מחיר נדרש',
+            min: { value: 100, message: 'מחיר מינימלי 100 דולר' },
+            max: { value: 10000, message: 'מחיר מאקסימלי 10,000 דולר' },
           })}
-          error={!!errors.price}
-          helperText={errors.price?.message}
           margin="normal"
           InputLabelProps={InputLabelProps}
         />

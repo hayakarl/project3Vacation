@@ -1886,3 +1886,8 @@ Message: "email" must be a valid email
 Stack: undefined
 ---------------------------------------
 
+Time: Fri Sep 20 2024 14:23:22 GMT+0300 (שעון ישראל (קיץ))
+Message: "email" is not allowed to be empty
+Stack: undefined
+---------------------------------------
+
