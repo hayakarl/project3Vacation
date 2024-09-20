@@ -1,3 +1,17 @@
 .Register > form {
   background-color: lavender;
 }
+
+.errInput {
+padding: 3px;
+font-size: small;
+background-color: red;
+color: white;
+border-radius: 25px;
+}
+
+.labelContainer {
+    display: flex;
+    justify-content:space-between;
+    margin-bottom: 2px;
+}

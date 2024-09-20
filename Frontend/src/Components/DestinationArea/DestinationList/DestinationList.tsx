@@ -124,11 +124,19 @@ export function DestinationList(): JSX.Element {
           <DestinationCard key={p.id} destination={p} onDelete={handleDestinationDelete} onLike={handleDestinationLike} />
         ))}
       </div>
-      <div className="pagination">
-        <Stack spacing={2}>
-          <Pagination count={Math.ceil(destinationsCount / itemsPerPage)} page={currentPage} onChange={handlePageChange} color="primary" />
-        </Stack>
-      </div>
+      {destinations.length === 0 && (
+        <div>
+          <h3>לא נמצאו חופשות</h3>
+        </div>
+      )}
+
+      {destinations.length > itemsPerPage && (
+        <div className="pagination">
+          <Stack spacing={2}>
+            <Pagination count={Math.ceil(destinationsCount / itemsPerPage)} page={currentPage} onChange={handlePageChange} color="primary" />
+          </Stack>
+        </div>
+      )}
     </div>
   );
 }

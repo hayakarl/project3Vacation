@@ -111,6 +111,9 @@ services:
     volumes:
       - ./Frontend/src:/app/src
 
+    environment:
+      REACT_APP_ENVIRONMENT: production
+
 # ------------------------------------------------------------
 
 # List all named-volumes: 

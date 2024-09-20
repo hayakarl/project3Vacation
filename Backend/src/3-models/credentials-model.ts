@@ -1,8 +1,7 @@
 import Joi from 'joi';
 
-import joi from 'joi';
 import { joiPasswordExtendCore } from 'joi-password';
-const joiPassword = joi.extend(joiPasswordExtendCore);
+const joiPassword = Joi.extend(joiPasswordExtendCore);
 
 export class CredentialsModel {
   public email: string;

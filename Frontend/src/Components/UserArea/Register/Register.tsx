@@ -21,38 +21,45 @@ export function Register(): JSX.Element {
   return (
     <div className="Register">
       <form onSubmit={handleSubmit(send)}>
-        <label>שם פרטי </label>
+        <div className="labelContainer">
+          <label>שם פרטי </label>
+          {formState.errors.firstName && <span className="errInput">{formState.errors.firstName.message}</span>}
+        </div>
         <input
           type="text"
           {...register('firstName', {
             required: 'שם פרטי נדרש',
           })}
         />
-        {formState.errors.firstName && <span>{formState.errors.firstName.message}</span>}
 
-        <label>שם משפחה </label>
+        <div className="labelContainer">
+          <label>שם משפחה </label>
+          {formState.errors.lastName && <span className="errInput">{formState.errors.lastName.message}</span>}
+        </div>
         <input
           type="text"
           {...register('lastName', {
             required: 'שם משפחה נדרש',
           })}
         />
-        {formState.errors.lastName && <span>{formState.errors.lastName.message}</span>}
-
-        <label>אימייל </label>
+        <div className="labelContainer">
+          <label>אימייל </label>
+          {formState.errors.email && <span className="errInput">{formState.errors.email.message}</span>}
+        </div>
         <input
           type="email"
           {...register('email', {
             required: 'אימייל נדרש',
             pattern: {
-              value: /^[a-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/,
               message: 'כתובת אימייל לא תקינה',
             },
           })}
         />
-        {formState.errors.email && <span>{formState.errors.email.message}</span>}
-
-        <label>סיסמה </label>
+        <div className="labelContainer">
+          <label>סיסמה </label>
+          {formState.errors.password && <span className="errInput">{formState.errors.password.message}</span>}
+        </div>
         <input
           type="password"
           {...register('password', {
@@ -63,7 +70,6 @@ export function Register(): JSX.Element {
             },
           })}
         />
-        {formState.errors.password && <span>{formState.errors.password.message}</span>}
 
         <button>הרשמה</button>
       </form>
