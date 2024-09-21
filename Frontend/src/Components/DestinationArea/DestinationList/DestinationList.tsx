@@ -5,7 +5,7 @@ import './DestinationList.css';
 import { DestinationCard } from '../DestinationCard/DestinationCard';
 import { notify } from '../../../Utils/notify';
 import { errorHandler } from '../../../Utils/ErrorHandler';
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FormControlLabel, FormGroup } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 
@@ -27,7 +27,7 @@ export function DestinationList(): JSX.Element {
     destinationService
       .getAllDestinations()
       .then((destinations) => {
-        //filter
+        // Filter destinations based on activeFilter
         if (Array.isArray(destinations)) {
           const filteredDestinations = destinationService.applyFilters(destinations, activeFilter);
           setDestinationsCount(filteredDestinations.length);
@@ -44,9 +44,11 @@ export function DestinationList(): JSX.Element {
     if (userService.getUserData() === null) {
       navigate('/home');
     }
-  }, []);
+  }, [navigate]);
 
-  useEffect(fetchDestinations, [activeFilter, currentPage]);
+  useEffect(() => {
+    fetchDestinations();
+  }, [activeFilter, currentPage]);
 
   const applyPagination = (destinations: DestinationModel[]) => {
     // Calculate the destinations to display on the current page
@@ -78,11 +80,11 @@ export function DestinationList(): JSX.Element {
 
   async function handleDestinationDelete(destinationId: number) {
     try {
-      const iAmSure = window.confirm(`Are you sure you want to delete this destination?`);
+      const iAmSure = window.confirm(`האם אתה בטוח שמעוניין למחוק יעד זה?`);
       if (!iAmSure) return;
 
       await destinationService.deleteDestination(destinationId);
-      notifyService.success('היעד נמחק');
+      notifyService.success(' היעד נמחק בהצלחה');
       fetchDestinations();
     } catch (err: any) {
       notifyService.error(err);
@@ -130,7 +132,7 @@ export function DestinationList(): JSX.Element {
         </div>
       )}
 
-      {destinations.length > itemsPerPage && (
+      {destinationsCount > itemsPerPage && (
         <div className="pagination">
           <Stack spacing={2}>
             <Pagination count={Math.ceil(destinationsCount / itemsPerPage)} page={currentPage} onChange={handlePageChange} color="primary" />

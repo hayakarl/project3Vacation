@@ -74,7 +74,7 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
         <div>
           {userService.isAdmin() && (
             <>
-              <a className="Button" href="#" onClick={() => onDelete(props.destination.id)}>
+              <a className="Button" href="javascript:void(0)" onClick={() => onDelete(props.destination.id)}>
                 מחיקה
               </a>
 

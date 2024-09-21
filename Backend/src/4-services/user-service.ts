@@ -32,7 +32,7 @@ class UserService {
       return cyber.generateNewToken(user);
     } catch (err) {
       if (err.code === 'ER_DUP_ENTRY') {
-        throw new ValidationError('This email all ready in use');
+        throw new ValidationError('המייל הזה כבר בשימוש');
       }
       throw err;
     }
@@ -58,7 +58,7 @@ class UserService {
     const user = users[0];
 
     // If no user:
-    if (!user) throw new UnauthorizedError('Incorrect email or password.');
+    if (!user) throw new UnauthorizedError('אימייל או סיסמא שגויים');
 
     // Create JWT (Json Web Token):
     const token = cyber.generateNewToken(user);

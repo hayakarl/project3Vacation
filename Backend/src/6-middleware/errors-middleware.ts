@@ -11,7 +11,7 @@ class ErrorsMiddleware {
     const statusCode = err.status || StatusCode.InternalServerError;
 
     const isCrash = statusCode >= 500 && statusCode <= 599;
-    const message = appConfig.isProduction && isCrash ? 'Some error, please try again.' : err.message;
+    const message = appConfig.isProduction && isCrash ? 'שגיאה, בבקשה נסה שוב' : err.message;
 
     response.status(statusCode).send(message);
   }

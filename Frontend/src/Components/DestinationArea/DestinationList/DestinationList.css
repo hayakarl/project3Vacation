@@ -2,6 +2,8 @@
   display: block;
   font-style: italic;
   color: blanchedalmond;
+  direction: rtl;
+  margin-bottom: 10px;
 }
 
 .DestinationListContainer .admin-links {
@@ -15,19 +17,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
+  background-color: cornsilk;
   margin: 20px auto 0 auto;
   padding: 5px;
   width: 500px;
   border: 1px solid;
   border-radius: 5px;
   position: relative;
-  /* justify-content: space-evenly; */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .DestinationListContainer .pagination {
+    width: 90%; /* Adjusts the width to take up most of the screen while leaving some padding */
+    padding: 10px; /* Increases padding for better touch target size */
+    font-size: 14px; /* Reduces the font size slightly to fit better on smaller screens */
+    margin: 15px auto; /* Reduces the margin to fit smaller screens */
+  }
 }
 
 .DestinationListContainer .Button {
-  padding: 1px 4px 1px 4px;
-  margin: 2px 5px 2px 5px;
+  padding: 1px 4px;
+  margin: 2px 5px;
   border-radius: 0.5rem;
   font-size: 0.875rem;
   line-height: 1rem;
@@ -35,4 +46,28 @@
   color: #ffffff;
   text-decoration: none;
   background-color: #1d4ed8;
+  transition: background-color 0.3s ease;
+}
+
+.DestinationListContainer {
+  direction: ltr;
+}
+
+.DestinationListContainer .Button:hover {
+  background-color: #2563eb;
+}
+
+.DestinationListContainer .DestinationList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.DestinationListContainer h3 {
+  text-align: center;
+  color: #ff6347;
+  margin-top: 20px;
+  font-size: xx-large;
 }

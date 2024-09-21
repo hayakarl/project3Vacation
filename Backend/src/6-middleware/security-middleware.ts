@@ -51,7 +51,7 @@ class SecurityMiddleware {
 
     // If not valid:
     if (!isValid) {
-      next(new UnauthorizedError('You are not logged in.'));
+      next(new UnauthorizedError('אתה לא מחובר'));
       return;
     }
 
@@ -60,7 +60,7 @@ class SecurityMiddleware {
 
     // If not admin:
     if (!isAdmin) {
-      next(new UnauthorizedError('You are not authorized.'));
+      next(new UnauthorizedError('אין לך הרשאות'));
       return;
     }
     next();

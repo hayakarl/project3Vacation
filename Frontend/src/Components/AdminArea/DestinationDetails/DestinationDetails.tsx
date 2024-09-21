@@ -24,7 +24,7 @@ export function DestinationDetails(): JSX.Element {
       .getOneDestination(id)
       .then((destination) => setDestination(destination))
       .catch((err) => notify.error(err));
-  }, []);
+  }, [params.destinationId]);
 
   async function deleteDestination() {
     try {
@@ -56,6 +56,7 @@ export function DestinationDetails(): JSX.Element {
             </span>
           </h3>
           <img src={appConfig.backendUrl + 'destinations/images/' + destination.imageName} />
+          alt={destination.description || 'תמונת יעד'}
           <br />
           <br />
           <NavLink to="/destination">Back</NavLink>

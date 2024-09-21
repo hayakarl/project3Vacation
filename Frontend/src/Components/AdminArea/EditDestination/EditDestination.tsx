@@ -24,10 +24,6 @@ export function EditDestination(): JSX.Element {
     },
   };
 
-  const inputProps = {
-    style: { textAlign: 'right', direction: 'rtl' }, // Align input text to right
-  };
-
   const { register, handleSubmit, formState, setValue, watch } = useForm<DestinationModel>();
   const [imageName, setImageName] = useState<string>('');
   const [minUntilDate, setMinUntilDate] = useState<string>('');
@@ -59,7 +55,7 @@ export function EditDestination(): JSX.Element {
       })
 
       .catch((err) => notifyService.error(err));
-  }, []);
+  }, [navigate, params.destinationId, setValue, today]);
 
   // Watch the values of fromDate and untilDate
   const fromDate = watch('fromDate');
@@ -75,7 +71,7 @@ export function EditDestination(): JSX.Element {
         setMinUntilDate(fromDate > today ? fromDate : today);
       }
     }
-  }, [fromDate, untilDate]);
+  }, [fromDate, untilDate, today]);
 
   async function send(destination: DestinationModel) {
     try {

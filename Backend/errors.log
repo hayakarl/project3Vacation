@@ -1891,3 +1891,8 @@ Message: "email" is not allowed to be empty
 Stack: undefined
 ---------------------------------------
 
+Time: Sat Sep 21 2024 14:00:46 GMT+0300 (שעון ישראל (קיץ))
+Message: Incorrect email or password.
+Stack: undefined
+---------------------------------------
+

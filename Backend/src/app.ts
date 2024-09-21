@@ -23,9 +23,6 @@ server.use(cors());
 // Create the body from json:
 server.use(express.json());
 
-// server.get('/', (request: Request, response: Response) => 
-//     response.send('<h1>Welcome to Vacations REST API (Dockerizing MySQL + Node)</h1>'));
-
 // Read files into request.files:
 server.use(expressFileUpload());
 

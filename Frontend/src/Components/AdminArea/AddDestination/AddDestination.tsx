@@ -41,7 +41,7 @@ export function AddDestination(): JSX.Element {
     const month = String(today.getMonth() + 1).padStart(2, '0');
     const day = String(today.getDate()).padStart(2, '0');
     setMinDate(`${year}-${month}-${day}`);
-  }, []);
+  }, [navigate]); // Added navigate as a dependency
 
   // Watch the fromDate field to update the minUntilDate accordingly
   const fromDate = watch('fromDate');
