@@ -5,22 +5,25 @@
   font-size: medium;
   color: #acc235;
   height: 4vh;
-
+  font-family: 'Inter', sans-serif;
 }
 
 .UserMenu .left-side {
   margin-right: auto; /* Pushes the left-side items to the left */
+  font-family: 'Inter', sans-serif;
   
 }
 
 .UserMenu .right-side {
   margin-left: 10px; /* Pushes the right-side items to the right */
+  font-family: 'Inter', sans-serif;
 }
 
 .UserMenu > span, a {
     font-size: x-large;
     padding: 15px;
     color: #acc235;
+    font-family: 'Inter', sans-serif;
 }
 
 

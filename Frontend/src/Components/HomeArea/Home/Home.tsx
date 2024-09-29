@@ -6,9 +6,9 @@ export function Home(): JSX.Element {
       {/* Fixed image */}
       <img src="/images/bicycle.jpg" alt="Fixed Bicycle" className="fixed-image" />
 
-      <h1>גלה את היעדים המובילים לרכיבות אופניים בחו"ל</h1>
+      <h1>גלו את היעדים המובילים לרכיבות אופניים בחו"ל</h1>
       <h2>רוצה להצטרף לחוויה ועדיין לא נרשמת?</h2>
-      <h2>הירשם עכשיו כדי לראות את כל האפשרויות לרכיבה מושלמת</h2>
+      <h2>תירשמו עכשיו כדי לראות את כל האפשרויות לרכיבה מושלמת</h2>
 
       {/* SVG with Path Animation */}
       <svg className="bicycle-path" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">

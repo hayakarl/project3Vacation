@@ -2,6 +2,7 @@
   background-color: white;
   display: 'flex';
   flex-direction: column;
+  font-family: 'Inter', sans-serif;
 }
 
 .errInput {
@@ -20,4 +21,5 @@
   margin-bottom: 2px;
   gap: 10px; /* Space between label and error message */
   width: 100%; /* Ensure it takes the full width */
+  font-family: 'Inter', sans-serif;
 }

@@ -1,13 +1,16 @@
 /* ChartStyles.css */
 .chart-title {
-  color: red;
+  color: rgb(0, 255, 123);
   font-size: 24px;
   font-weight: bold;
   padding-top: 20px;
   padding-bottom: 20px;
+  font-family: 'Inter', sans-serif;
 }
 
 .chart-legend-labels,
 .chart-axis-labels {
   color: red;
+  font-family: 'Inter', sans-serif;
+  font-size: large;
 }

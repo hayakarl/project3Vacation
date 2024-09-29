@@ -96,7 +96,7 @@ export function DestinationList(): JSX.Element {
       <div>
         <FormGroup className="filter">
           <FormControlLabel control={<Checkbox checked={activeFilter === 'all'} onChange={() => handleFilterChange('all')} />} label="כל החופשות" />
-          <FormControlLabel control={<Checkbox checked={activeFilter === 'liked'} onChange={() => handleFilterChange('liked')} />} label="Like חופשות" />
+          <FormControlLabel control={<Checkbox checked={activeFilter === 'liked'} onChange={() => handleFilterChange('liked')} />} label=" חופשות שאהבתי" />
           <FormControlLabel control={<Checkbox checked={activeFilter === 'active'} onChange={() => handleFilterChange('active')} />} label="חופשות פעילות" />
           <FormControlLabel control={<Checkbox checked={activeFilter === 'notStarted'} onChange={() => handleFilterChange('notStarted')} />} label="חופשות עתידיות" />
         </FormGroup>

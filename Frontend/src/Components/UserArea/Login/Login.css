@@ -15,6 +15,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  font-family: 'Inter', sans-serif;
 }
 
 .labelContainer {
@@ -24,6 +25,7 @@
   margin-bottom: 8px;
   font-size: 20px;
   color: #333;
+  font-family: 'Inter', sans-serif;
 }
 
 input {
@@ -32,6 +34,7 @@ input {
   border-radius: 4px;
   font-size: 14px;
   transition: border-color 0.3s;
+  font-family: 'Inter', sans-serif;
 }
 
 input:focus {
@@ -51,6 +54,7 @@ button {
   transition: background-color 0.3s, transform 0.2s;
   font-weight: bold; /* Enhance visibility */
   line-height: 1; /* Adjusts the vertical alignment of the text */
+  font-family: 'Inter', sans-serif;
 }
 
 button:hover {

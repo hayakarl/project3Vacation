@@ -2,6 +2,7 @@
   background-color: white;
   display: flex;
   flex-direction: column;
+  font-family: 'Inter', sans-serif;
 }
 
 .errInput {
@@ -11,6 +12,7 @@
   color: white;
   border-radius: 25px;
   margin-left: 10px; /* Adjusts space between label and error */
+  font-family: 'Inter', sans-serif;
 }
 
 .labelContainer {
@@ -20,5 +22,6 @@
   margin-bottom: 2px;
   gap: 10px; /* Space between label and error message */
   width: 100%; /* Ensure it takes the full width */
+  font-family: 'Inter', sans-serif;
 }
 

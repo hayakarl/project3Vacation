@@ -5,12 +5,13 @@
   background-image: linear-gradient(90deg, #ffe0b2, #ffffff);
   margin-left: 30px;
   margin-top: 10px;
-  padding: 5px;
+  padding: 1px;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-sizing: border-box;
   vertical-align: top;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+  font-family: 'Inter', sans-serif;
 }
 
 .DestinationCard img {
@@ -21,34 +22,37 @@
   border-radius: 10px;
   display: block;
   margin: 0 auto 0.1px auto;
-  
 }
 
 .DestinationCard > div:first-child {
   display: flex;
   flex-direction: column;
+  font-family: 'Inter', sans-serif;
 }
 
 .DestinationCard > div:last-child {
   margin-left: auto;
+  font-family: 'Inter', sans-serif;
 }
 
 .information {
   text-align: center;
   font-size: small;
   padding: 3px 5px;
-  font-family: Cambria, serif;
   color: #333;
+  font-family: 'Inter', sans-serif;
 }
 
 .information div {
-  margin-bottom: 2px;
+  margin-bottom: 1px;
+  font-family: 'Inter', sans-serif;
 }
 
 .information .destination-name {
-  font-size: 1.2em; /* Increase the font size for the destination name */
+  font-size: 1.9em; /* Increase the font size for the destination name */
   font-weight: bold; /* Make it bold for emphasis */
   margin-bottom: 1px; /* Add some space below the destination name */
+  font-family: 'Inter', sans-serif;
 }
 
 .dates {
@@ -60,7 +64,9 @@
   height: 90px;
   overflow: hidden; /* Ensures long text doesn't overflow */
   text-overflow: ellipsis;
-   margin-top: 1px;
+  margin-top: 1px;
+  font-size: 1em;
+  font-family: 'Inter', sans-serif;
 }
 
 .information .Button {
@@ -74,6 +80,7 @@
   text-decoration: none;
   background-color: #007bff;
   transition: background-color 0.3s, box-shadow 0.3s;
+  font-family: 'Inter', sans-serif;
 }
 
 .Cursor {
@@ -84,4 +91,5 @@
 .information .Button:hover {
   background-color: #0056b3; /* Darken on hover */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow on hover */
+  font-family: 'Inter', sans-serif;
 }

@@ -66,7 +66,7 @@ export function DestinationCard(props: DestinationCardProps): JSX.Element {
         <div className="dates">
           <p>
             <b>{new Date(props.destination.untilDate).toLocaleDateString()}</b>
-            🔛
+            ◀️ ◀️
             <b> {new Date(props.destination.fromDate).toLocaleDateString()}</b>
           </p>
         </div>

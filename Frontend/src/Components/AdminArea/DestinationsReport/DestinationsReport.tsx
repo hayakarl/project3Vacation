@@ -52,7 +52,7 @@ const DestinationsReport: React.FC = () => {
         text: 'דוח חופשות',
         color: 'red',
         font: {
-            size:24,
+            size:40,
     
         },
         padding: {
@@ -65,6 +65,9 @@ const DestinationsReport: React.FC = () => {
       x: {
         ticks: {
             color: 'red',
+        font: {
+            size:15,
+        }
         },
       },
       y: {
