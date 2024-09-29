@@ -22,7 +22,7 @@ export function Register(): JSX.Element {
     <div className="Register">
       <form onSubmit={handleSubmit(send)}>
         <div className="labelContainer">
-          <label>שם פרטי </label>
+          <label>שם פרטי :</label>
           {formState.errors.firstName && <span className="errInput">{formState.errors.firstName.message}</span>}
         </div>
         <input
@@ -33,7 +33,7 @@ export function Register(): JSX.Element {
         />
 
         <div className="labelContainer">
-          <label>שם משפחה </label>
+          <label>שם משפחה :</label>
           {formState.errors.lastName && <span className="errInput">{formState.errors.lastName.message}</span>}
         </div>
         <input
@@ -43,7 +43,7 @@ export function Register(): JSX.Element {
           })}
         />
         <div className="labelContainer">
-          <label>אימייל </label>
+          <label>אימייל :</label>
           {formState.errors.email && <span className="errInput">{formState.errors.email.message}</span>}
         </div>
         <input
@@ -57,13 +57,13 @@ export function Register(): JSX.Element {
           })}
         />
         <div className="labelContainer">
-          <label>סיסמה </label>
+          <label>סיסמה :</label>
           {formState.errors.password && <span className="errInput">{formState.errors.password.message}</span>}
         </div>
         <input
           type="password"
           {...register('password', {
-            required: 'ססמה נדרשת',
+            required: 'סיסמה נדרשת',
             minLength: {
               value: 4,
               message: 'סיסמה חייבת להיות לפחות 4 תווים',

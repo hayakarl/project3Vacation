@@ -1,29 +1,23 @@
-
 .Home {
-  padding: 1px;
   text-align: center;
-  margin-top: 15px;
-  position:fixed; /* Required for positioning animations */
-  overflow: hidden; /* Prevents bicycles from overflowing the container */
-  background-size: cover; /* Cover the entire container */
-  background-position: center; /* Center the image */
-  color: red;
+  padding: 20px;
+  color: white;
   font-size: x-large;
+  position: relative;
 }
 
-.bicycle-animation {
-  display:inline-block;
-  font-size: 11em; /* Adjust size as needed */
-  position:relative;
-  animation: moveBicycles 10s linear infinite; /* Animation duration and type */
+.bicycle-path {
+  margin: 20px auto;
+  display: block;
 }
 
-/* Define the animation */
-@keyframes moveBicycles {
-  0% {
-    transform: translateX(100%); /* Start from outside the left side of the container */
-  }
-  100% {
-    transform: translateX(-100%); /* End outside the right side of the container */
-  }
+.fixed-image {
+  width: 300px; /* Adjust size as needed */
+  position: absolute; /* Position the image as desired */
+  top: 280px; /* Adjust top position */
+  left: 70%; /* Center the image horizontally */
+  transform: translateX(-50%); /* Center correction */
+  border-radius: 20px;
 }
+
+

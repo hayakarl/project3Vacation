@@ -14,11 +14,19 @@ export function About(): JSX.Element {
     
   return (
     <div className="About">
-      <Typography variant="h3">פרויקט סיכום : קורס Fullstack 2024 &nbsp;&nbsp;</Typography>
+      <Typography variant="h3" gutterBottom>
+        פרויקט סיכום : קורס Fullstack 2024 &nbsp;&nbsp;
+      </Typography>
 
-      <h1>אהבת את האתר?</h1>
-      <h1>אשמח לקבל like ב LinkedIn</h1>
-      
+      <Typography variant="h4">נהנית מהאתר?</Typography>
+      <Typography variant="h5">אם אהבת, נשמח ללייק ב-LinkedIn ושתף את החוויה עם חברים!</Typography>
+
+      <Typography variant="h4" className="infinity-symbols">
+        ♾️♾️♾️♾️♾️♾️♾️♾️♾️♾️♾️♾️♾️
+      </Typography>
+
+      <Typography variant="h5">רוצה לשמוע עוד? נשמח לשוחח!</Typography>
+
       {/* WhatsApp Contact Button */}
       <Button variant="contained" color="success" onClick={handleWhatsAppClick} style={{ marginTop: '20px' }}>
         צור קשר ב-WhatsApp

@@ -41,7 +41,7 @@ export function AddDestination(): JSX.Element {
     const month = String(today.getMonth() + 1).padStart(2, '0');
     const day = String(today.getDate()).padStart(2, '0');
     setMinDate(`${year}-${month}-${day}`);
-  }, [navigate]); // Added navigate as a dependency
+  }, []); 
 
   // Watch the fromDate field to update the minUntilDate accordingly
   const fromDate = watch('fromDate');
@@ -59,7 +59,7 @@ export function AddDestination(): JSX.Element {
       destination.image = (destination.image as unknown as FileList)[0];
 
       await destinationService.addDestination(destination);
-      notify.success('Destination has been added');
+      notify.success('הוספת היעד הסתיימה בהצלחה');
       navigate('/destination');
     } catch (err: any) {
       notify.error(errorHandler.getError(err));
@@ -84,7 +84,7 @@ export function AddDestination(): JSX.Element {
             required: 'יעד נדרש',
             minLength: { value: 2, message: 'מינימום 2 תווים ליעד' },
             maxLength: { value: 200, message: 'שם יעד לא יכול להיות מעל 200 תווים' },
-            pattern: { value: /^[\u0590-\u05FF\s]+$/, message: 'יעד בעברית' },
+            pattern: { value: /^[\u0590-\u05FF\s,.-]+$/, message: 'יעד בעברית' },
           })}
           margin="normal"
           InputLabelProps={InputLabelProps}
@@ -102,7 +102,7 @@ export function AddDestination(): JSX.Element {
             required: 'תיאור יעד נדרש',
             minLength: { value: 2, message: 'מינימום 2 תווים לתיאור יעד' },
             maxLength: { value: 1000, message: 'תיאור יעד לא יכול להיות מעל 1,000 תווים' },
-            pattern: { value: /^[\u0590-\u05FF\s]+$/, message: 'תיאור יעד בעברית' },
+            pattern: { value: /^[\u0590-\u05FF\s,.-]+$/, message: 'תיאור יעד בעברית' },
           })}
           margin="normal"
           InputLabelProps={InputLabelProps}

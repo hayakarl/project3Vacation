@@ -1,15 +1,41 @@
 .About {
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
   text-align: center;
-  margin: 20px;
+  margin: 80px auto; /* Center horizontally with some margin */
+  max-height: 600px; /* Set a max height to limit the size */
+  max-width: 800px; /* Set a max width to reduce width on sides */
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  background-color: #1e1e1e; /* Dark background to highlight text */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Light shadow for depth */
+}
+
+.About h1,
+.About h2,
+.About h3 {
+  margin: 10px 0;
 }
 
 .About .MuiButton-containedSuccess {
-  background-color: #25D366; /* WhatsApp green color */
-  color: white;
+  background-color: #acc235; /* WhatsApp green color */
+  color: #fff;
   font-size: 16px;
   border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition on hover */
 }
 
 .About .MuiButton-containedSuccess:hover {
-  background-color: #1ebd60;
+  background-color: #8aa524; /* Darker shade of green */
+  color: #fff; /* White text on hover */
+}
+
+.About .infinity-symbols {
+  font-size: 24px; /* Larger font size for symbols */
+  margin: 20px 0;
+  letter-spacing: 5px; /* Space between symbols */
 }

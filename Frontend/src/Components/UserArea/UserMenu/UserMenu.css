@@ -3,13 +3,14 @@
   justify-content: space-between; /* Distributes items to the sides */
   align-items: center; /* Centers items vertically */
   font-size: medium;
-  color: #a81818;
+  color: #acc235;
   height: 4vh;
 
 }
 
 .UserMenu .left-side {
   margin-right: auto; /* Pushes the left-side items to the left */
+  
 }
 
 .UserMenu .right-side {
@@ -19,4 +20,7 @@
 .UserMenu > span, a {
     font-size: x-large;
     padding: 15px;
+    color: #acc235;
 }
+
+

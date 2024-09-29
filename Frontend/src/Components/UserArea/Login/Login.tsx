@@ -27,7 +27,7 @@ export function Login(): JSX.Element {
     <div className="Login">
       <form onSubmit={handleSubmit(send)}>
         <div className="labelContainer">
-          <label htmlFor="email">אימייל</label>
+          <label htmlFor="email">אימייל :</label>
           {errors.email && <span className="errInput">{errors.email.message}</span>}
         </div>
         <input
@@ -43,7 +43,7 @@ export function Login(): JSX.Element {
         />
 
         <div className="labelContainer">
-          <label htmlFor="password">סיסמה</label>
+          <label htmlFor="password">סיסמה :</label>
           {errors.password && <span className="errInput">{errors.password.message}</span>}
         </div>
 

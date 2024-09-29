@@ -39,7 +39,10 @@ class DestinationService {
     // Send destination to backend:
     const options: AxiosRequestConfig = { headers: { 'Content-Type': 'multipart/form-data' } };
     const response = await axios.post<DestinationModel>(appConfig.backendUrl + 'destinations', formData, options);
+  
 
+   // Get back the added destination:
+    const addedDestination = response.data;
   }
 
   //Update destination
@@ -56,9 +59,6 @@ class DestinationService {
     // Send destination to backend:
     const options: AxiosRequestConfig = { headers: { 'Content-Type': 'multipart/form-data' } };
     const response = await axios.put<DestinationModel>(appConfig.backendUrl + 'destinations/' + destination.id, formData, options);
-
-    // Get back the added destination:
-    // const updateDestination = response.data;
   }
 
   //   Delete destination :

@@ -10,8 +10,8 @@ class UserService {
   public constructor() {
     const token = localStorage.getItem('token');
     if (!token) return;
-    const container = jwtDecode<{ user: UserModel }>(token);
-    const dbUser = container.user;
+    // const container = jwtDecode<{ user: UserModel }>(token);
+    // const dbUser = container.user;
   }
 
   public async register(user: UserModel) {
@@ -25,8 +25,8 @@ class UserService {
     localStorage.setItem('token', token);
 
     // Extract db user from token:
-    const container = jwtDecode<{ user: UserModel }>(token);
-    const dbUser = container.user;
+    // const container = jwtDecode<{ user: UserModel }>(token);
+    // const dbUser = container.user;
   }
 
   public async login(credentials: CredentialsModel) {
@@ -40,8 +40,8 @@ class UserService {
     localStorage.setItem('token', token);
 
     // Extract db user from token:
-    const container = jwtDecode<{ user: UserModel }>(token);
-    const dbUser = container.user;
+    // const container = jwtDecode<{ user: UserModel }>(token);
+    // const dbUser = container.user;
   }
 
   public getUserData() {

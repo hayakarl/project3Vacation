@@ -82,11 +82,20 @@ const DestinationsReport: React.FC = () => {
   };
 
   return (
-    <div>
-      <div style={{ width: '60%', height: '400px', margin: '0 auto' }}>
+    <div style={{ backgroundColor: 'white', padding: '20px' }}>
+      <div style={{ width: '70%', height: '500px', margin: '0 auto' }}>
         <Chart type="bar" data={chartData} options={options} />
       </div>
-      <Button variant="contained" color="primary" onClick={handleGoBack} style={{ marginTop: '20px' }}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleGoBack}
+        sx={{
+          color: 'black', // Set the text color to red
+          margin: '20px auto',
+          display: 'block',
+        }}
+      >
         חזור
       </Button>
     </div>

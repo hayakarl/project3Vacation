@@ -64,7 +64,7 @@ const DestinationsCsv: React.FC = () => {
   return (
     <div className='excel'>
       <h1>קובץ חופשות</h1>
-      <Button variant="contained" color="secondary" onClick={handleDownloadCSV} style={{ marginTop: '200px', marginLeft: "200px"}}>
+      <Button variant="contained" color="primary" onClick={handleDownloadCSV} style={{ marginTop: '200px', marginLeft: "200px"}}>
         הורד קובץ
       </Button>
 
