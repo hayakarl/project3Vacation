@@ -4,8 +4,8 @@
   align-items: center; /* Center items horizontally */
   justify-content: center; /* Center items vertically */
   text-align: center;
-  margin: 80px auto; /* Center horizontally with some margin */
-  max-height: 600px; /* Set a max height to limit the size */
+  margin: 30px auto; /* Center horizontally with some margin */
+  max-height: 400px; /* Set a max height to limit the size */
   max-width: 800px; /* Set a max width to reduce width on sides */
   font-family: 'Inter', sans-serif;
   color: #fff;

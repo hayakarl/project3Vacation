@@ -1,12 +1,11 @@
 .DestinationDetails img {
-  border: 1px solid whitesmoke;
-  height: 50px;
-}
-
-.DestinationDetails img {
-  width: 250px;
-  height: 200px;
+  width: 35%;
+  height: 190px;
   border: 1px solid;
   border-radius: 10px;
-  vertical-align: middle;
+  max-height: 80%;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto 0.1px auto;
 }

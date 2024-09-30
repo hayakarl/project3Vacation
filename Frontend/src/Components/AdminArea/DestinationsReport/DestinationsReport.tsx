@@ -44,7 +44,7 @@ const DestinationsReport: React.FC = () => {
       legend: {
         position: 'top' as const,
         labels: {
-            color:'red',
+          color: 'red',
         },
       },
       title: {
@@ -52,22 +52,21 @@ const DestinationsReport: React.FC = () => {
         text: 'דוח חופשות',
         color: 'red',
         font: {
-            size:40,
-    
+          size: 40,
         },
         padding: {
-            top:20,
-            bottom:20,
+          top: 20,
+          bottom: 20,
         },
       },
     },
     scales: {
       x: {
         ticks: {
-            color: 'red',
-        font: {
-            size:15,
-        }
+          color: 'red',
+          font: {
+            size: 15,
+          },
         },
       },
       y: {
@@ -86,9 +85,6 @@ const DestinationsReport: React.FC = () => {
 
   return (
     <div style={{ backgroundColor: 'white', padding: '20px' }}>
-      <div style={{ width: '70%', height: '500px', margin: '0 auto' }}>
-        <Chart type="bar" data={chartData} options={options} />
-      </div>
       <Button
         variant="contained"
         color="primary"
@@ -101,6 +97,9 @@ const DestinationsReport: React.FC = () => {
       >
         חזור
       </Button>
+      <div style={{ width: '70%', height: '500px', margin: '0 auto' }}>
+        <Chart type="bar" data={chartData} options={options} />
+      </div>
     </div>
   );
 };

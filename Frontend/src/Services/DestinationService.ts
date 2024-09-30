@@ -3,7 +3,7 @@ import { DestinationModel } from '../Models/DestinationModel';
 import { appConfig } from '../Utils/AppConfig';
 
 class DestinationService {
-  //Get all destinations from backend: --asaf
+  //Get all destinations from backend: 
   public async getAllDestinations(): Promise<DestinationModel[]> {
     // fetch them from backend:
     const response = await axios.get<DestinationModel[]>(appConfig.backendUrl + 'destinations');
@@ -23,7 +23,7 @@ class DestinationService {
     return destination;
   }
 
-  //Add new destination  asaf
+  //Add new destination  
   public async addDestination(destination: DestinationModel): Promise<void> {
     // Convert DestinationModel into FormData
     const formData = new FormData();

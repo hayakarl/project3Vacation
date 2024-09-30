@@ -1,8 +1,19 @@
-.AddDestination form {
+.AddDestination {
+  font-family: 'Inter', sans-serif;
+}
+
+.AddDestination > form {
   background-color: white;
   display: flex;
   flex-direction: column;
   font-family: 'Inter', sans-serif;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 300px;
+  gap: 1px;
+  
 }
 
 .errInput {
@@ -24,4 +35,3 @@
   width: 100%; /* Ensure it takes the full width */
   font-family: 'Inter', sans-serif;
 }
-

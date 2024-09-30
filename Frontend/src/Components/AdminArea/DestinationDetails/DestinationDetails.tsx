@@ -56,7 +56,6 @@ export function DestinationDetails(): JSX.Element {
             </span>
           </h3>
           <img src={appConfig.backendUrl + 'destinations/images/' + destination.imageName} />
-          alt={destination.description || 'תמונת יעד'}
           <br />
           <br />
           <NavLink to="/destination">Back</NavLink>
