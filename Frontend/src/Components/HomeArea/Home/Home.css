@@ -15,7 +15,7 @@
 .fixed-image {
   width: 300px; /* Adjust size as needed */
   position: absolute; /* Position the image as desired */
-  top: 230px; /* Adjust top position */
+  top: 210px; /* Adjust top position */
   left: 70%; /* Center the image horizontally */
   transform: translateX(-50%); /* Center correction */
   border-radius: 20px;
