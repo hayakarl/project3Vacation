@@ -22,8 +22,8 @@ export class UserModel {
     id: Joi.number().optional().positive().integer(),
     firstName: Joi.string().required().min(2).max(100),
     lastName: Joi.string().required().min(2).max(100),
-    email: Joi.string().email({ minDomainSegments: 2}),
-    password: Joi.string().required().min(4).max(100).pattern(new RegExp('(?=.*[a-z])')), // At least one lowercase letter,
+    email: Joi.string().email({ minDomainSegments: 2 }),
+    password: Joi.string().required().min(4).max(100).pattern(new RegExp('(?=.*[a-zA-Z])')), // At least one lowercase letter,
     roleId: Joi.string().optional().min(4).max(100),
   });
 

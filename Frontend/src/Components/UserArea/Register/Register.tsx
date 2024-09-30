@@ -29,6 +29,10 @@ export function Register(): JSX.Element {
           type="text"
           {...register('firstName', {
             required: 'שם פרטי נדרש',
+            minLength: {
+              value: 2,
+              message: 'שם פרטי חייב להיות לפחות 2 תווים',
+            },
           })}
         />
 
@@ -40,6 +44,10 @@ export function Register(): JSX.Element {
           type="text"
           {...register('lastName', {
             required: 'שם משפחה נדרש',
+            minLength: {
+              value: 2,
+              message: 'שם משפחה חייב להיות לפחות 2 תווים',
+            },
           })}
         />
         <div className="labelContainer">
@@ -68,10 +76,14 @@ export function Register(): JSX.Element {
               value: 4,
               message: 'סיסמה חייבת להיות לפחות 4 תווים',
             },
+            pattern: {
+              value: /(?=.*[a-zA-Z])/,
+              message: 'סיסמה חייבת לכלול לפחות אות אחת',
+            },
           })}
         />
 
-        <button type='submit'>הרשמה</button>
+        <button type="submit">הרשמה</button>
       </form>
     </div>
   );

@@ -31,6 +31,9 @@ export function AddDestination(): JSX.Element {
       },
     },
   };
+  const InputProps = {
+    style: { padding: 2 },
+  };
 
   useEffect(() => {
     if (!userService.isAdmin()) {
@@ -41,7 +44,7 @@ export function AddDestination(): JSX.Element {
     const month = String(today.getMonth() + 1).padStart(2, '0');
     const day = String(today.getDate()).padStart(2, '0');
     setMinDate(`${year}-${month}-${day}`);
-  }, []); 
+  }, []);
 
   // Watch the fromDate field to update the minUntilDate accordingly
   const fromDate = watch('fromDate');
@@ -67,10 +70,9 @@ export function AddDestination(): JSX.Element {
   };
 
   return (
-    <Box className="AddDestination" sx={{ p: 3, maxWidth: 600, margin: 'auto' }}>
-      <Typography variant="h4" component="h2" gutterBottom>
-        הוסף חופשה &nbsp;
-        <Add fontSize="small" />
+    <Box className="AddDestination" sx={{ maxWidth: 600, margin: 'auto' }}>
+      <Typography variant="h4" component="h4" gutterBottom>
+        הוסף חופשה
       </Typography>
 
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -88,6 +90,7 @@ export function AddDestination(): JSX.Element {
           })}
           margin="normal"
           InputLabelProps={InputLabelProps}
+          inputProps={InputProps}
         />
 
         <div className="labelContainer">
@@ -106,6 +109,7 @@ export function AddDestination(): JSX.Element {
           })}
           margin="normal"
           InputLabelProps={InputLabelProps}
+          inputProps={InputProps}
         />
 
         <div className="labelContainer">
@@ -121,10 +125,8 @@ export function AddDestination(): JSX.Element {
           InputLabelProps={{
             shrink: true,
           }}
-          inputProps={{
-            min: minDate, // Prevent selecting past dates
-          }}
           margin="normal"
+          inputProps={{ ...InputProps, min: minDate }}
         />
 
         <div className="labelContainer">
@@ -141,10 +143,8 @@ export function AddDestination(): JSX.Element {
           InputLabelProps={{
             shrink: true,
           }}
-          inputProps={{
-            min: minUntilDate,
-          }}
           margin="normal"
+          inputProps={{ ...InputProps, min: minUntilDate }}
         />
 
         <div className="labelContainer">
@@ -161,6 +161,7 @@ export function AddDestination(): JSX.Element {
           })}
           margin="normal"
           InputLabelProps={InputLabelProps}
+          inputProps={InputProps}
         />
 
         <Box mt={2} mb={2}>
